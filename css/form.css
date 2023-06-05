@@ -1,0 +1,128 @@
+
+/* PAGINA DEL FORMULARIO */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+body{
+    background-color: #b5dbf1;
+}
+.container{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/* Estilos de contenedor del formulario */
+form{
+    width: 90%;
+    margin: auto;
+    /* border: 2px solid red; */
+    overflow: hidden;
+}
+.wrap{
+    width: 100%;
+}
+.field{
+    width: 80%; /*330px*/
+    height: 35px; /*45*/
+    margin: 45px 0;
+    display: flex;
+    /* flex-direction: column; */
+    position: relative;
+}
+.label{
+    position: absolute;
+    top: -30px;
+    font-weight: 500;
+}
+input{
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+
+/* Titulo Principal y Subtitulo */
+.title_1{
+    /* background-color: red; */
+    text-align: center;
+    padding: 10px 0;
+}
+.subtitle_1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* DATOS PERSONALES */
+.nombre_apellido{
+    display: flex;
+    /* border: 1px dashed green; */
+}
+.nombre,
+.apellido,
+.columna_1,
+.columna_2{
+    width: 50%;
+}
+
+/* Datos personales adicionales */
+.mas{
+    list-style: none;
+    color: red;
+    cursor: pointer;
+    border-bottom: 1px solid lightgray;
+}
+.informacion_adicional,
+.experiencia_laboral,
+.educacion,
+.curso,
+.idiomas,
+.referencias{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    /* border-bottom: 1px solid lightgray; */
+}
+
+/* Fin de Datos personales */
+
+/* Perfil */
+.perfil{
+    height: 400px;
+    padding-top: 30px;
+    margin-bottom: 50px;
+}
+.perfil p{
+    margin-bottom: 10px ;
+}
+.text_area{
+    height:200px;
+    width: 100%;
+}
+
+/* educacion */
+.periodo_cursado{
+    display: flex;
+}
+.descripcion_educacion{
+    background-color: green;
+    height:200px ;
+}
+
+
+
+
+
+
