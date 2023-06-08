@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
     <title>Formulario</title>
 </head>
-<header>
+<!-- <header>
     <div class="navbar">
         <div class="logo"><a href="#">LOGO</a></div>
         <ul class="links">
@@ -18,8 +19,57 @@
             <a href="Index.html" class="action_btn cancel_btn" >CANCELAR</a>
         </ul>
     </div>
-</header>
+</header> -->
 <body>
+    <div class="aside">
+        <ul>
+            <li>
+                <a href="#dp">DATOS PERSONALES</a>
+            </li>
+            <li>
+                <span><a href="#da">Datos Adicionales</a></span>
+            </li>
+            <li>
+                <a href="#pe">PERFIL</a>
+            </li>
+            <LI>
+                <a href="#el">EXPERIENCIA LABORAL</a>
+            </LI>
+            <li>
+                <span><a href="#ele">Experiencia Extra</a></span>
+            </li>
+            <li>
+                <a href="#hab">HABILIDADAES</a>
+            </li>
+            <LI>
+                <span><a href="#habit">Habilidades IT</a></span>
+            </LI>
+            <li>
+                <a href="#fa">FORMACION ACADEMICA</a>
+            </li>
+            <li>
+                <span><a href="#cu">Cursos</a></span>
+            </li>
+            <li>
+                <span><a href="#cert">Certificados</a></span>
+            </li>
+            <li>
+                <a href="#id">IDIOMAS</a>
+            </li>
+            <li>
+                <a href="#dis">DISPONIBILIDAD</a>
+            </li>
+            <li>
+                <a href="#sitioweb">SITIO Y RED SOCIAL</a>
+            </li>
+            <li>
+                <a href="#ref">REFERENCIAS</a>
+            </li>
+        </ul>
+    </div>           
+
+    <!-- fin de side bar -->
+
     <main class="container">
         <div class="title">
             <h1 class="title_1">Crea tu Propio CV </h1>
@@ -27,7 +77,7 @@
         </div>
 
         <form action="#">
-            <div class="datos_personales">
+            <div class="datos_personales" id="dp">
                 <h2 class="h2">DATOS PERSONALES</h2>
                 <div class="nombre_apellido">
                     <div class="nombre">
@@ -55,7 +105,7 @@
 
             <!-- informacion adicional -->
             <details>
-                <summary class="mas">Editar Infomacion Adicional V</summary>
+                <summary class="mas" id="da">Editar Infomacion Adicional V</summary>
                 <div class="informacion_adicional">
                     <div class="columna_1">
                         <div class="field">
@@ -107,7 +157,7 @@
             </details>
 
             <!-- PERFIL -->
-            <div class="perfil">
+            <div class="perfil" id="pe">
                 <h2 class="h2">PERFIL</h2>
                 <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un curriculum. <br>
                 Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
@@ -115,59 +165,59 @@
             </div>
 
             <!-- EXPERIENCIA LABORAL -->
-            <h2 class="h2">EXPERIENCIA LABORAL</h2>
+            <h2 class="h2" id="el">EXPERIENCIA LABORAL</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae optio neque possimus aliquid consectetur quae amet inventore et velit, at facilis similique dolorem ipsam nihil! Suscipit non temporibus eius voluptate!</p>
             <div class="experiencia_laboral">
                 <div class="columna_1">
-                  <div class="field">
+                <div class="field">
                     <div class="label" for="empleo_1">Titulo del Empleo</div>
                     <input type="text" id="empleo_1" name="empleo_1">
-                  </div>
-                  <div class="field">
+                </div>
+                <div class="field">
                     <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
                     <input type="text" id="ciudad_empleo_1" name="ciudad_empleo_1">
-                  </div>
+                </div>
                 </div>
                 <div class="columna_2">
                     <div class="field">
                         <div class="label" for="empresa_empleo_1">Empresa</div>
                         <input type="text" id="empresa_empleo_1" name="empresa_empleo_1">
-                      </div>
-                      <div class="periodo_empleo">
+                    </div>
+                    <div class="periodo_empleo">
                         <div class="field">
                             <div class="label" for="desde_empleo_1">Periodo</div>
                             <input type="date" id="desde_empleo_1" name="desde_empleo_">
                             <input type="date" id="hasta_empleo_1" name="hasta_empleo_">
-                          </div>
-                      </div>
+                        </div>
+                    </div>
                 </div>
                     <!-- PAGINA LABORAL EXTRA 2 -->
             </div>
             <details>
-                <summary class="mas">Agregar Mas Experiencia Laboral</summary>
+                <summary class="mas" id="ele">Agregar Mas Experiencia Laboral</summary>
                 <div class="experiencia_laboral">
                     <div class="columna_1">
-                      <div class="field">
+                    <div class="field">
                         <div class="label" for="empleo_2">Titulo del Empleo</div>
                         <input type="text" id="empleo_2" name="empleo_2">
-                      </div>
-                      <div class="field">
+                    </div>
+                    <div class="field">
                         <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
                         <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2">
-                      </div>
+                    </div>
                     </div>
                     <div class="columna_2">
                         <div class="field">
                             <div class="label" for="empresa_empleo_2">Empresa</div>
                             <input type="text" id="empresa_empleo_2" name="empresa_empleo_2">
-                          </div>
-                          <div class="periodo_empleo">
+                        </div>
+                        <div class="periodo_empleo">
                             <div class="field">
                                 <div class="label" for="desde_empleo_2">Periodo</div>
                                 <input type="date" id="desde_empleo_2" name="desde_empleo_2">
                                 <input type="date" id="hasta_empleo_2" name="hasta_empleo_2">
-                              </div>
-                          </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- EXPEIENCIA LABORAL EXTRA 3 -->
                 </div>
@@ -175,27 +225,27 @@
                     <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                     <div class="experiencia_laboral">
                         <div class="columna_1">
-                          <div class="field">
+                        <div class="field">
                             <div class="label" for="empleo_3">Titulo del Empleo</div>
                             <input type="text" id="empleo_3" name="empleo_3">
-                          </div>
-                          <div class="field">
+                        </div>
+                        <div class="field">
                             <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
                             <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3">
-                          </div>
+                        </div>
                         </div>
                         <div class="columna_2">
                             <div class="field">
                                 <div class="label" for="empresa_empleo_3">Empresa</div>
                                 <input type="text" id="empresa_empleo_3" name="empresa_empleo_3">
-                              </div>
-                              <div class="periodo_empleo">
+                            </div>
+                            <div class="periodo_empleo">
                                 <div class="field">
                                     <div class="label" for="desde_empleo_3">Periodo</div>
                                     <input type="date" id="desde_empleo_3" name="desde_empleo3">
                                     <input type="date" id="hasta_empleo_3" name="hasta_empleo3">
-                                  </div>
-                              </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- EXPERIENCIA LABORAL EXTRA 4 -->
                     </div>
@@ -203,27 +253,27 @@
                         <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                         <div class="experiencia_laboral">
                             <div class="columna_1">
-                              <div class="field">
+                            <div class="field">
                                 <div class="label" for="empleo_4">Titulo del Empleo</div>
                                 <input type="text" id="empleo_4" name="empleo_4">
-                              </div>
-                              <div class="field">
+                            </div>
+                            <div class="field">
                                 <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
                                 <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4">
-                              </div>
+                            </div>
                             </div>
                             <div class="columna_2">
                                 <div class="field">
                                     <div class="label" for="empresa_empleo_4">Empresa</div>
                                     <input type="text" id="empresa_empleo_4" name="empresa_empleo_4">
-                                  </div>
-                                  <div class="periodo_empleo">
+                                </div>
+                                <div class="periodo_empleo">
                                     <div class="field">
                                         <div class="label" for="desde_empleo_4">Periodo</div>
                                         <input type="date" id="desde_empleo_4" name="desde_empleo_4">
                                         <input type="date" id="hasta_empleo_4" name="hasta_empleo_4">
-                                      </div>
-                                  </div>
+                                    </div>
+                                </div>
                             </div>
             
                         </div>
@@ -234,7 +284,7 @@
             
             <!-- HABILIDADES -->
             <div class="habilidad wrap">
-                <H2 class="H2">HABILIDADES</H2>
+                <H2 class="H2" id="hab">HABILIDADES</H2>
                 <p class="txt_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam minus expedita, repellendus harum nobis atque laborum consequatur quo blanditiis officia voluptates magni, dolorum voluptatibus libero tempore commodi dolores amet recusandae.</p>
                 <div class="field">
                     <div class="label" for="habilidad">Agregar una Habilidad</div>
@@ -270,15 +320,15 @@
                 </details>
             </div> <!--FIN DE HABILIDADES-->
 
-             <!-- HABILIDADAES IT -->
-             <h2 class="h2">HABILIDADES IT</h2>
-             <P class="text_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem itaque libero quasi quo. Impedit incidunt dolorum quibusdam amet, dicta facilis iusto est esse! Beatae voluptatibus fugiat iure voluptas. Nostrum!</P>
-             <div class="habilidades_it">
+            <!-- HABILIDADAES IT -->
+            <h2 class="h2" id="habit">HABILIDADES IT</h2>
+            <P class="text_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem itaque libero quasi quo. Impedit incidunt dolorum quibusdam amet, dicta facilis iusto est esse! Beatae voluptatibus fugiat iure voluptas. Nostrum!</P>
+            <div class="habilidades_it">
                 <div class="field">
                     <label class="label" for="habilidad_it">Agregar Habilidad IT</label>
                     <input type="text" id="hab_it" name="hab_it" placeholder="Ej: Power Point">
                 </div>
-             </div>
+            </div>
             <details>
                 <summary class="mas">Agregar Mas Habilidades IT</summary>
                 <div class="habilidades_it">
@@ -286,7 +336,7 @@
                         <label class="label" for="habilidad_it_2">Agregar Habilidad IT</label>
                         <input type="text" id="hab_it_2" name="hab_it_2" placeholder="Ej: Power Point">
                     </div>
-                 </div>
+                </div>
                 <details>
                     <summary class="mas">Agregar Mas Habilidades IT</summary>
                     <div class="habilidades_it">
@@ -294,7 +344,7 @@
                             <label class="label" for="habilidad_it_3">Agregar Habilidad IT</label>
                             <input type="text" id="hab_it_3" name="hab_it_3" placeholder="Ej: Power Point">
                         </div>
-                     </div>
+                    </div>
                     <details>
                         <summary class="mas">Agregar Mas Habilidades IT</summary>
                         <div class="habilidades_it">
@@ -302,7 +352,7 @@
                                 <label class="label" for="habilidad_it_4">Agregar Habilidad IT</label>
                                 <input type="text" id="hab_it_4" name="hab_it_4" placeholder="Ej: Power Point">
                             </div>
-                         </div>
+                        </div>
                         <details>
                             <summary class="mas">Agregar Mas Habilidades IT</summary>
                             
@@ -313,7 +363,7 @@
 
 
             <!-- EDUCACION -->
-            <h2 class="h2">FORMACION ACADEMICA</h2>
+            <h2 class="h2" id="fa">FORMACION ACADEMICA</h2>
             <P class="txt_info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quod, reprehenderit numquam aliquid fuga fugit natus sapiente rerum sequi, autem sint nobis ab facere nostrum ipsa amet non eaque blanditiis?</P>
             <div class="educacion">
                 <!-- columna 1 -->
@@ -338,16 +388,15 @@
                             <div class="label" for="periodo_cursado">Periodo</div>
                             <input type="date" id="cursado_desde" name="cursado_desde">
                             <input type="date" id="cursado_hasta" name="cursado_hasta">
-                          </div>
-                      </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
-            </div>
-            <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-            <!-- educacion 2 -->
-            <details>
-                <summary class="mas">Agregar Educacion</summary>
+                <label for="">Descripcion</label>
+                <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                <!-- educacion 2 -->
+                <details>
+                    <summary class="mas">Agregar Educacion</summary>
                 <div class="educacion">
                     <div class="columna_1">
                         <div class="field">
@@ -370,19 +419,18 @@
                                 <div class="label" for="periodo_cursado_2">Periodo</div>
                                 <input type="date" id="cursado_desde_2" name="cursado_desde_2">
                                 <input type="date" id="cursado_hasta_2" name="cursado_hasta_2">
-                              </div>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <label for="">Descripcion</label>
                 <textarea class="text_area" name="desc_educacion_2" id="desc_educacion_2" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
                 <details>
-                    <summary class="mas">Agregar Educacion</summary>
-                    <div class="educacion">
-                        <!-- columna 1 -->
-                        <div class="columna_1">
-                            <div class="field">
+                <summary class="mas">Agregar Educacion</summary>
+                <div class="educacion">
+                    <!-- columna 1 -->
+                    <div class="columna_1">
+                        <div class="field">
                                 <div class="label" for="instituto_3">Instituto</div>
                                 <input type="text" id="instituto_3" name="instituto_3">
                             </div>
@@ -402,19 +450,19 @@
                                     <div class="label" for="periodo_cursado_3">Periodo</div>
                                     <input type="date" id="cursado_desde_3" name="cursado_desde_3">
                                     <input type="date" id="cursado_hasta_3" name="cursado_hasta_3">
-                                  </div>
-                              </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <label for="">Descripcion</label>
-                    <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-                    <details>
-                        <summary class="mas">Agregar Educacion</summary>
-                        <div class="educacion">
-                            <!-- columna 1 -->
-                            <div class="columna_1">
-                                <div class="field">
+                </div>
+                <label for="">Descripcion</label>
+                <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                <details>
+                    <summary class="mas">Agregar Educacion</summary>
+                    <div class="educacion">
+                        <!-- columna 1 -->
+                        <div class="columna_1">
+                            <div class="field">
                                     <div class="label" for="instituto_4">Instituto</div>
                                     <input type="text" id="instituto_4" name="instituto_4">
                                 </div>
@@ -434,15 +482,15 @@
                                         <div class="label" for="periodo_cursado_4">Periodo</div>
                                         <input type="date" id="cursado_desde_4" name="cursado_desde_4">
                                         <input type="date" id="cursado_hasta_4" name="cursado_hasta_4">
-                                      </div>
-                                  </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <label for="">Descripcion</label>
-                        <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-                        <details>
-                            <summary class="mas">Agregar Educacion</summary>
+                    </div>
+                    <label for="">Descripcion</label>
+                    <textarea class="text_area" name="desc_educacion" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                    <details>
+                        <summary class="mas">Agregar Educacion</summary>
                             
                         </details> 
                     </details>
@@ -452,7 +500,7 @@
 
             <!-- FIN DE EDUCACION  -->
 
-            <h2 class="h2">CURSOS</h2>
+                <h2 class="h2" id="cu">CURSOS</h2>
             <p class="txt_info">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, mollitia magni incidunt, laboriosam et rerum aut voluptatem culpa voluptatibus dolores beatae aspernatur amet provident! Nesciunt vel delectus soluta voluptas quo.</p>
             <div class="curso">
                 <!-- columna 1 -->
@@ -476,8 +524,8 @@
                         <div class="field">
                             <div class="label" for="periodo_curso">(Hasta)</div>
                             <input type="date" id="perdiodo_curso_hasta" name="perdiodo_curso_hasta">
-                          </div>
-                      </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -508,8 +556,8 @@
                             <div class="field">
                                 <div class="label" for="periodo_curso_2">(Hasta)</div>
                                 <input type="date" id="perdiodo_curso_hasta_2" name="perdiodo_curso_hasta_2">
-                              </div>
-                          </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -517,7 +565,7 @@
                 <textarea class="text_area" name="desc_curso_2" id="desc_curso_2" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
             </details>
             <!-- FIN DE CURSOS  -->
-            <H2 class="h2">CERTIFICADOS</H2>
+            <H2 class="h2" id="cert">CERTIFICADOS</H2>
             <div class="field">
                 <div class="label" for="nom_cert">Nombre del Certificado</div>
                 <input type="text" id="nomb_cert" name="nomb_cert">
@@ -565,7 +613,7 @@
             <!-- FIN DE CERTIFICADO -->
             
             <!-- IDIOMAS -->
-            <h2 class="h2">IDIOMAS</h2>
+            <h2 class="h2" id="id">IDIOMAS</h2>
             <p class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio laudantium fugit animi, autem est eaque? Unde natus inventore facilis officiis, culpa esse fuga iure iusto sit, deleniti rem consectetur velit.
             </p>
             <div class="idiomas">
@@ -727,13 +775,13 @@
             </details> 
 
             <!-- DISPONIBILIDAD -->
-            <h2 class="h2">DISPONIBILIDAD</h2>
+            <h2 class="h2" id="dis">DISPONIBILIDAD</h2>
             <div class="field">
                 <input type="text">
             </div>
 
             <!-- SITIO WEB Y REDES SOCIALES -->
-            <h2 class="h2">SITIOS WEB & REDES SOCIALES</h2>
+            <h2 class="h2" id="sitioweb">SITIOS WEB & REDES SOCIALES</h2>
             <div class="sitio_web">
                 <div class="field">
                     <div class="label" for="nom_link">Nombre del Enlace</div>
@@ -758,9 +806,9 @@
                 </div>
                 <details>
                     <summary class="mas">Agregar Sitio Web/ Red Social</summary>
-                         <div class="sitio_web">
-                <div class="field">
-                    <div class="label" for="nom_link">Nombre del Enlace</div>
+                    <div class="sitio_web">
+                        <div class="field">
+                            <div class="label" for="nom_link">Nombre del Enlace</div>
                     <input type="text">
                 </div>
                 <div class="field">
@@ -772,7 +820,7 @@
             </details>
 
             <!-- REFERENCIAS -->
-            <h2 class="h2">REFERENCIAS</h2>
+            <h2 class="h2" id="ref">REFERENCIAS</h2>
             <div class="referencias">
                 <div class="columna_1">
                     <div class="field">
@@ -798,7 +846,9 @@
             <details>
                 <summary class="mas">Agregar Otro Contacto de Referencia</summary>
             </details>
-        </form>
-    </main>
+        </div>
+    </form>
+</main>
+</div>
 </body>
 </html>

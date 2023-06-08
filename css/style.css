@@ -69,17 +69,17 @@ header{
   gap: 2rem;
   
 }
-li{
+.navbar li{
   list-style: none;
 }
 
-a{
+.navbar a{
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
 }
 
-a:hover{
+navbar a:hover{
  color: orange;
  scale: 1.25;
   transition: .3s;
