@@ -17,6 +17,7 @@ body{
     height: auto;
     margin: auto;
     margin-top: 50px;
+    margin-bottom: 100px;
     background-color: #fff;
     border-radius: 10px;
     /* position: absolute; */
@@ -109,8 +110,10 @@ input{
     margin-bottom: 10px ;
 }
 .text_area{
-    height:200px;
-    width: 100%;
+    min-height:200px;
+    max-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 /* educacion */
@@ -166,6 +169,26 @@ main{
     color: white;
 }
 
+/* BOTON ENVIAR */
+.buttn-send{
+    height: 100px;
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enviar{
+    width: 200px;
+    height: 50px;
+    background-color: #FBC118;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+
+}
 
 
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/nocturno.css">
     <title>Formulario</title>
 </head>
 <!-- <header>
@@ -72,24 +73,28 @@
 
     <main class="container">
         <div class="title">
+            <!-- icono boton de modo nocturno -->
+            <div class="modo" id="modo"><img src="/assets/boton.svg" class="fas fa-toggle-on"></img></div>
+            <!-- fin de icono de modo nocturno -->
+
             <h1 class="title_1">Crea tu Propio CV </h1>
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form action="#">
+        <form action="post" method="post">
             <div class="datos_personales" id="dp">
                 <h2 class="h2">DATOS PERSONALES</h2>
                 <div class="nombre_apellido">
                     <div class="nombre">
                         <div class="field">
                             <label class="label" for="iname">Nombre(s)</label>
-                            <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                            <input id="name" type="text" name="name[]" placeholder="Juan Esteban">
                         </div>
                     </div>
                     <div class="apellido">
                         <div class="field">
                             <label class="label" for="iapellido">Apellido</label>
-                            <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
+                            <input id="apellido" type="text" name="apellido[]" placeholder="Gonzales">
                         </div>
                     </div>
             </div>
@@ -99,7 +104,7 @@
                 </div>
                 <div class="field">
                     <div class="label" for="iempleo_actual">Empleo Actual</div>
-                    <input id="empleo_actual" type="text" name="empleo_actual">
+                    <input id="empleo_actual" type="text" name="empleo_actual[]">
                 </div>        
             </div>
 
@@ -142,10 +147,10 @@
                         <div class="field">
                             <div class="label">Genero</div>
                             <select>
-                                <option value="#">Seleccione su genero</option>
-                                <option value="maculino">Masculino</option>
-                                <option value="en_curso">En Curso</option>
-                                <option value="otros">Otros</option>
+                                <option name="#">Seleccione su genero</option>
+                                <option name="maculino" name>Masculino</option>
+                                <option name="en_curso">En Curso</option>
+                                <option name="otros">Otros</option>
                             </select>
                         </div>
                         <div class="field">
@@ -576,7 +581,7 @@
             </div>
             <div class="field">
                 <div class="label" for="estado_cert">¿Completado?</div>
-                <select>
+                <select name="estadocertificado">
                     <option>Estado del Certificado</option>
                     <option value="si">Si</option>
                     <option value="no">No</option>
@@ -846,6 +851,9 @@
             <details>
                 <summary class="mas">Agregar Otro Contacto de Referencia</summary>
             </details>
+        </div>
+        <div class="field buttn-send">
+            <button type="submit" class="enviar action_btn">ENVIAR</button>
         </div>
     </form>
 </main>
