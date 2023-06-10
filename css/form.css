@@ -2,15 +2,16 @@
 /* PAGINA DEL FORMULARIO */
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+body{
+    width: 100%;
+    background-image: linear-gradient(green, red);
+}
 *{
   margin: 0;
   padding: 0;
   outline: none;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
-}
-body{
-    background-color: #b5dbf1;
 }
 .container{
     width: 60%;
@@ -190,9 +191,6 @@ main{
     font-size: 20px;
     cursor: pointer;
     border: none;
-
 }
-
-
 
 
