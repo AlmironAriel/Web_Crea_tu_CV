@@ -24,6 +24,9 @@ body{
 }
 
 /* Estilos de contenedor del formulario */
+.container .modo .fa-toggle-on{
+    font-size: 30px;
+}
 form{
     width: 90%;
     margin: auto;
@@ -167,9 +170,8 @@ main{
     border-radius: 10px;
 }
 .aside ul li a:hover{
-    color: white;
+    color: #fff;
 }
-
 /* BOTON ENVIAR */
 .buttn-send{
     height: 100px;

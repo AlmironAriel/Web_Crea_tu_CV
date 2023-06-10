@@ -3,13 +3,12 @@
     font-size: 80px;
     margin: auto;
     cursor: pointer;
-
 }
 .dark{
     background-color: rgb(4, 24, 27);
 }
 .dark #modo{
-    color: #fff;
+    color: orange;
 }
 .dark .aside,
 .dark .container{
@@ -19,7 +18,8 @@
     color: #fff;
 }
 .dark .aside ul li:hover{
-    background-color: #d6d4d4;
+    background-color: rgb(233, 154, 6);
+    color: #000;
 }
 .dark .aside ul li a:hover{
     color: rgb(48, 47, 47);
@@ -31,9 +31,9 @@
 .dark .container form h2{
     color: #fff;
 }
-form p{
+.dark form p{
     color: #fff;
 }
-form .field .label{
+.dark form .field .label{
     color: rgb(167, 161, 161);
 }
