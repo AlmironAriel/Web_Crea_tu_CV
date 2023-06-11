@@ -37,3 +37,13 @@
 .dark form .field .label{
     color: rgb(167, 161, 161);
 }
+.dark .vista_previa{
+    background-color: rgb(16, 43, 51);
+}
+.dark .vista_previa h2{
+    color:#fff;
+}
+.dark #abrir_modal + label{
+    background-color: orange;
+    color: #000;
+}
