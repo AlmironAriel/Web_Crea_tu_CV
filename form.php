@@ -1,14 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/form.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/sidebar.css">
-    <link rel="stylesheet" href="/css/nocturno.css">
-    <link href="/assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/nocturno.css">
+    <link rel="stylesheet" href="./css/curriculum.css">
+    <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
     <title>Formulario</title>
 </head>
 <!-- <header>
@@ -22,6 +25,7 @@
         </ul>
     </div>
 </header> -->
+
 <body>
     <div class="aside">
         <ul>
@@ -67,9 +71,9 @@
             <li>
                 <a href="#ref">REFERENCIAS</a>
             </li>
-            <a href="Index.html" class="action_btn cancel_btn" >CANCELAR</a>
+            <a href="Index.html" class="action_btn cancel_btn">CANCELAR</a>
         </ul>
-    </div>           
+    </div>
 
     <!-- fin de side bar -->
 
@@ -85,18 +89,18 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form action="post" method="post">
+        <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
                 <div class="columna_1">
-                        <div class="field">
-                            <label class="label" for="iname">Nombre(s)</label>
-                            <input id="name" type="text" name="name" placeholder="Juan Esteban">
-                        </div>
-                        <div class="field">
-                            <label class="label" for="iapellido">Apellido</label>
-                            <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
-                        </div>
+                    <div class="field">
+                        <label class="label" for="iname">Nombre(s)</label>
+                        <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                    </div>
+                    <div class="field">
+                        <label class="label" for="iapellido">Apellido</label>
+                        <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
+                    </div>
                     <div class="field">
                         <div class="label" for="dni">DNI</div>
                         <input type="numbre" name="dni" id="dni">
@@ -117,12 +121,12 @@
                     </div>
                     <div class="field">
                         <div class="label" for="cuil">Cuil</div>
-                        <input id="cuil" type="number" name="cuil">
+                        <input id="cuil" type="text" name="cuil">
                     </div>
                     <div class="field">
                         <div class="label" for="iempleo_actual">Empleo Actual</div>
-                        <input id="empleo_actual" type="text" name="empleo_actual[]">
-                    </div>        
+                        <input id="empleo_actual" type="text" name="empleo_actual">
+                    </div>
                 </div>
             </div>
 
@@ -165,11 +169,10 @@
                         </div>
                         <div class="field">
                             <div class="label">Genero</div>
-                            <select>
-                                <option name="#">Seleccione su genero</option>
-                                <option name="maculino" name>Masculino</option>
-                                <option name="en_curso">En Curso</option>
-                                <option name="otros">Otros</option>
+                            <select name="genero">
+                                <option value="#">Seleccione su genero</option>
+                                <option value="maculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
                             </select>
                         </div>
                         <div class="field">
@@ -183,24 +186,28 @@
             <!-- PERFIL -->
             <div class="perfil" id="pe">
                 <h2 class="h2">PERFIL</h2>
-                <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un curriculum. <br>
-                Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
-                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un
+                    curriculum. <br>
+                    Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
+                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5"
+                    placeholder="Describa aqui su perfil laboral"></textarea>
             </div>
 
             <!-- EXPERIENCIA LABORAL -->
             <h2 class="h2" id="el">EXPERIENCIA LABORAL</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae optio neque possimus aliquid consectetur quae amet inventore et velit, at facilis similique dolorem ipsam nihil! Suscipit non temporibus eius voluptate!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae optio neque possimus aliquid consectetur
+                quae amet inventore et velit, at facilis similique dolorem ipsam nihil! Suscipit non temporibus eius
+                voluptate!</p>
             <div class="experiencia_laboral">
                 <div class="columna_1">
-                <div class="field">
-                    <div class="label" for="empleo_1">Titulo del Empleo</div>
-                    <input type="text" id="empleo_1" name="empleo_1[]">
-                </div>
-                <div class="field">
-                    <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
-                    <input type="text" id="ciudad_empleo_1" name="ciudad_empleo_1[]">
-                </div>
+                    <div class="field">
+                        <div class="label" for="empleo_1">Titulo del Empleo</div>
+                        <input type="text" id="empleo_1" name="empleo_1[]">
+                    </div>
+                    <div class="field">
+                        <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
+                        <input type="text" id="ciudad_empleo_1" name="ciudad_empleo_1[]">
+                    </div>
                 </div>
                 <div class="columna_2">
                     <div class="field">
@@ -215,20 +222,20 @@
                         </div>
                     </div>
                 </div>
-                    <!-- PAGINA LABORAL EXTRA 2 -->
+                <!-- PAGINA LABORAL EXTRA 2 -->
             </div>
             <details>
                 <summary class="mas" id="ele">Agregar Mas Experiencia Laboral</summary>
                 <div class="experiencia_laboral">
                     <div class="columna_1">
-                    <div class="field">
-                        <div class="label" for="empleo_2">Titulo del Empleo</div>
-                        <input type="text" id="empleo_2" name="empleo_2[]">
-                    </div>
-                    <div class="field">
-                        <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
-                        <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2[]">
-                    </div>
+                        <div class="field">
+                            <div class="label" for="empleo_2">Titulo del Empleo</div>
+                            <input type="text" id="empleo_2" name="empleo_2[]">
+                        </div>
+                        <div class="field">
+                            <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
+                            <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2[]">
+                        </div>
                     </div>
                     <div class="columna_2">
                         <div class="field">
@@ -249,14 +256,14 @@
                     <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                     <div class="experiencia_laboral">
                         <div class="columna_1">
-                        <div class="field">
-                            <div class="label" for="empleo_3">Titulo del Empleo</div>
-                            <input type="text" id="empleo_3" name="empleo_3[]">
-                        </div>
-                        <div class="field">
-                            <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
-                            <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3[]">
-                        </div>
+                            <div class="field">
+                                <div class="label" for="empleo_3">Titulo del Empleo</div>
+                                <input type="text" id="empleo_3" name="empleo_3[]">
+                            </div>
+                            <div class="field">
+                                <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
+                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3[]">
+                            </div>
                         </div>
                         <div class="columna_2">
                             <div class="field">
@@ -277,14 +284,14 @@
                         <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                         <div class="experiencia_laboral">
                             <div class="columna_1">
-                            <div class="field">
-                                <div class="label" for="empleo_4">Titulo del Empleo</div>
-                                <input type="text" id="empleo_4" name="empleo_4[]">
-                            </div>
-                            <div class="field">
-                                <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
-                                <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4[]">
-                            </div>
+                                <div class="field">
+                                    <div class="label" for="empleo_4">Titulo del Empleo</div>
+                                    <input type="text" id="empleo_4" name="empleo_4[]">
+                                </div>
+                                <div class="field">
+                                    <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
+                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4[]">
+                                </div>
                             </div>
                             <div class="columna_2">
                                 <div class="field">
@@ -299,17 +306,19 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                         </div>
                     </details>
                 </details>
             </details>
             <!-- FIN DE HOJAS DE EXPERIENCIA LABORAL -->
-            
+
             <!-- HABILIDADES -->
             <div class="habilidad wrap">
                 <H2 class="H2" id="hab">HABILIDADES</H2>
-                <p class="txt_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam minus expedita, repellendus harum nobis atque laborum consequatur quo blanditiis officia voluptates magni, dolorum voluptatibus libero tempore commodi dolores amet recusandae.</p>
+                <p class="txt_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam minus expedita,
+                    repellendus harum nobis atque laborum consequatur quo blanditiis officia voluptates magni, dolorum
+                    voluptatibus libero tempore commodi dolores amet recusandae.</p>
                 <div class="field">
                     <div class="label" for="habilidad">Agregar una Habilidad</div>
                     <input type="text" id="habilidad" name="habilidad[]">
@@ -346,7 +355,9 @@
 
             <!-- HABILIDADAES IT -->
             <h2 class="h2" id="habit">HABILIDADES IT</h2>
-            <P class="text_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem itaque libero quasi quo. Impedit incidunt dolorum quibusdam amet, dicta facilis iusto est esse! Beatae voluptatibus fugiat iure voluptas. Nostrum!</P>
+            <P class="text_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem itaque
+                libero quasi quo. Impedit incidunt dolorum quibusdam amet, dicta facilis iusto est esse! Beatae
+                voluptatibus fugiat iure voluptas. Nostrum!</P>
             <div class="habilidades_it">
                 <div class="field">
                     <label class="label" for="habilidad_it">Agregar Habilidad IT</label>
@@ -379,7 +390,7 @@
                         </div>
                         <details>
                             <summary class="mas">Agregar Mas Habilidades IT</summary>
-                            
+
                         </details>
                     </details>
                 </details>
@@ -388,7 +399,9 @@
 
             <!-- EDUCACION -->
             <h2 class="h2" id="fa">FORMACION ACADEMICA</h2>
-            <P class="txt_info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quod, reprehenderit numquam aliquid fuga fugit natus sapiente rerum sequi, autem sint nobis ab facere nostrum ipsa amet non eaque blanditiis?</P>
+            <P class="txt_info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quod, reprehenderit
+                numquam aliquid fuga fugit natus sapiente rerum sequi, autem sint nobis ab facere nostrum ipsa amet non
+                eaque blanditiis?</P>
             <div class="educacion">
                 <!-- columna 1 -->
                 <div class="columna_1">
@@ -432,13 +445,14 @@
                             <input type="date" id="cursado_hasta" name="cursado_hasta[]">
                         </div>
                     </div>
-                    </div>
                 </div>
-                <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-                <!-- educacion 2 -->
-                <details>
-                    <summary class="mas">Agregar Educacion</summary>
+            </div>
+            <label for="">Descripcion</label>
+            <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
+                placeholder="Describa qui su educacion"></textarea>
+            <!-- educacion 2 -->
+            <details>
+                <summary class="mas">Agregar Educacion</summary>
                 <div class="educacion">
                     <div class="columna_1">
                         <div class="field">
@@ -466,13 +480,14 @@
                     </div>
                 </div>
                 <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_educacion_2[]" id="desc_educacion_2" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                <textarea class="text_area" name="desc_educacion_2[]" id="desc_educacion_2" cols="" rows=""
+                    placeholder="Describa qui su educacion"></textarea>
                 <details>
-                <summary class="mas">Agregar Educacion</summary>
-                <div class="educacion">
-                    <!-- columna 1 -->
-                    <div class="columna_1">
-                        <div class="field">
+                    <summary class="mas">Agregar Educacion</summary>
+                    <div class="educacion">
+                        <!-- columna 1 -->
+                        <div class="columna_1">
+                            <div class="field">
                                 <div class="label" for="instituto_3">Instituto</div>
                                 <input type="text" id="instituto_3" name="instituto_3[]">
                             </div>
@@ -496,15 +511,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-                <details>
-                    <summary class="mas">Agregar Educacion</summary>
-                    <div class="educacion">
-                        <!-- columna 1 -->
-                        <div class="columna_1">
-                            <div class="field">
+                    </div>
+                    <label for="">Descripcion</label>
+                    <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
+                        placeholder="Describa qui su educacion"></textarea>
+                    <details>
+                        <summary class="mas">Agregar Educacion</summary>
+                        <div class="educacion">
+                            <!-- columna 1 -->
+                            <div class="columna_1">
+                                <div class="field">
                                     <div class="label" for="instituto_4">Instituto</div>
                                     <input type="text" id="instituto_4" name="instituto_4[]">
                                 </div>
@@ -528,13 +544,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <label for="">Descripcion</label>
-                    <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
-                    <details>
-                        <summary class="mas">Agregar Educacion</summary>
-                            
-                        </details> 
+                        </div>
+                        <label for="">Descripcion</label>
+                        <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
+                            placeholder="Describa qui su educacion"></textarea>
+                        <details>
+                            <summary class="mas">Agregar Educacion</summary>
+
+                        </details>
                     </details>
                 </details>
             </details>
@@ -542,8 +559,10 @@
 
             <!-- FIN DE EDUCACION  -->
 
-                <h2 class="h2" id="cu">CURSOS</h2>
-            <p class="txt_info">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, mollitia magni incidunt, laboriosam et rerum aut voluptatem culpa voluptatibus dolores beatae aspernatur amet provident! Nesciunt vel delectus soluta voluptas quo.</p>
+            <h2 class="h2" id="cu">CURSOS</h2>
+            <p class="txt_info">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, mollitia magni
+                incidunt, laboriosam et rerum aut voluptatem culpa voluptatibus dolores beatae aspernatur amet
+                provident! Nesciunt vel delectus soluta voluptas quo.</p>
             <div class="curso">
                 <!-- columna 1 -->
                 <div class="columna_1">
@@ -568,11 +587,12 @@
                             <input type="date" id="perdiodo_curso_hasta" name="perdiodo_curso_hasta[]">
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
+            </div>
             <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_curso[]" id="desc_curso" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
+            <textarea class="text_area" name="desc_curso[]" id="desc_curso" cols="" rows=""
+                placeholder="Describa aqui su curso"></textarea>
             <!-- educacion 2 -->
             <details>
                 <summary class="mas">Agregar Curso</summary>
@@ -600,11 +620,12 @@
                                 <input type="date" id="perdiodo_curso_hasta_2" name="perdiodo_curso_hasta_2[]">
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
+                </div>
                 <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
+                <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows=""
+                    placeholder="Describa aqui su curso"></textarea>
             </details>
             <!-- FIN DE CURSOS  -->
             <!-- <H2 class="h2" id="cert">CERTIFICADOS</H2>
@@ -653,16 +674,18 @@
                 <textarea class="text_area" name="desc_cert_2" id="desc_cert_2" cols="" rows="" placeholder="Describa el Certificado"></textarea>
             </details>
             FIN DE CERTIFICADO -->
-            
+
             <!-- IDIOMAS -->
             <h2 class="h2" id="id">IDIOMAS</h2>
-            <p class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio laudantium fugit animi, autem est eaque? Unde natus inventore facilis officiis, culpa esse fuga iure iusto sit, deleniti rem consectetur velit.
+            <p class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio laudantium fugit
+                animi, autem est eaque? Unde natus inventore facilis officiis, culpa esse fuga iure iusto sit, deleniti
+                rem consectetur velit.
             </p>
             <div class="idiomas">
                 <div class="columna_1">
                     <div class="field">
                         <div class="label" for="idioma">Idioma</div>
-                        <select name="idioma"[]>
+                        <select name="idioma" []>
                             <option>Seleccione un Idioma</option>
                             <option value="ingles">Ingles</option>
                             <option value="frances">Frances</option>
@@ -677,7 +700,7 @@
                 <div class="columna_2">
                     <div class="field">
                         <div class="label" for="nivel_idioma">Nivel</div>
-                        <select name="idioma"[]>
+                        <select name="idioma" []>
                             <option value="#">Nivel</option>
                             <option value="nativo">Nativo</option>
                             <option value="basico">Basico</option>
@@ -699,7 +722,7 @@
                     <div class="columna_1">
                         <div class="field">
                             <div class="label" for="idioma_2">Idioma</div>
-                            <select name="idioma"[]>
+                            <select name="idioma" []>
                                 <option>Seleccione un Idioma</option>
                                 <option value="ingles">Ingles</option>
                                 <option value="frances">Frances</option>
@@ -714,7 +737,7 @@
                     <div class="columna_2">
                         <div class="field">
                             <div class="label" for="nivel_idioma_2">Nivel</div>
-                            <select name="idioma"[]>
+                            <select name="idioma" []>
                                 <option value="#">Nivel</option>
                                 <option value="nativo">nativo</option>
                                 <option value="Avanzado">Avanzado</option>
@@ -737,7 +760,7 @@
                         <div class="columna_1">
                             <div class="field">
                                 <div class="label" for="idioma_3">Idioma</div>
-                                <select name="idioma"[]>
+                                <select name="idioma" []>
                                     <option>Seleccione un Idioma</option>
                                     <option value="ingles">Ingles</option>
                                     <option value="frances">Frances</option>
@@ -752,7 +775,7 @@
                         <div class="columna_2">
                             <div class="field">
                                 <div class="label" for="nivel_idioma_3">Nivel</div>
-                                <select name="idioma"[]>
+                                <select name="idioma" []>
                                     <option value="#">Nivel</option>
                                     <option value="nativo">nativo</option>
                                     <option value="Avanzado">Avanzado</option>
@@ -775,7 +798,7 @@
                             <div class="columna_1">
                                 <div class="field">
                                     <div class="label" for="idioma_4">Idioma</div>
-                                    <select name="idioma"[]>
+                                    <select name="idioma" []>
                                         <option>Seleccione un Idioma</option>
                                         <option value="ingles">Ingles</option>
                                         <option value="frances">Frances</option>
@@ -790,7 +813,7 @@
                             <div class="columna_2">
                                 <div class="field">
                                     <div class="label" for="nivel_idioma_4">Nivel</div>
-                                    <select name="idioma"[]>
+                                    <select name="idioma" []>
                                         <option value="#">Nivel</option>
                                         <option value="nativo">nativo</option>
                                         <option value="Avanzado">Avanzado</option>
@@ -809,11 +832,11 @@
                         </div>
                         <details>
                             <summary class="mas">Agregar Mas Idiomas</summary>
-                            
+
                         </details>
                     </details>
                 </details>
-            </details> 
+            </details>
 
             <!-- DISPONIBILIDAD -->
             <h2 class="h2" id="dis">DISPONIBILIDAD</h2>
@@ -850,13 +873,13 @@
                     <div class="sitio_web">
                         <div class="field">
                             <div class="label" for="nom_link">Nombre del Enlace</div>
-                    <input type="text" name="nom_link">
-                </div>
-                <div class="field">
-                    <div class="label" for="dir_link">Direccion de Enlace</div>
-                    <input type="text" name="dir_link">
-                </div>
-            </div>
+                            <input type="text" name="nom_link">
+                        </div>
+                        <div class="field">
+                            <div class="label" for="dir_link">Direccion de Enlace</div>
+                            <input type="text" name="dir_link">
+                        </div>
+                    </div>
                 </details>
             </details>
 
@@ -887,29 +910,95 @@
             <details>
                 <summary class="mas">Agregar Otro Contacto de Referencia</summary>
             </details>
-        </div>
-        <div class="field buttn-send">
-            <button type="submit" class="enviar action_btn">ENVIAR</button>
-        </div>
-    </form>
-</main>
+            </div>
+            <div class="field buttn-send">
+                <input type="submit" class="enviar action_btn" id="enviar"></input>
+            </div>
+        </form>
+    </main>
 
-<!-- VENTANA MODAL PARA VISTA PREVIA  -->
-<div class="vista_previa">
-    <h2>VISTA PREVIA</h2>
-    <div class="field">
-        <input type="radio" name="modal" id="abrir_modal">
-        <label class="abrir_modal" for="abrir_modal">Abrir</label>
-        <input type="radio" name="modal" id="cerrar_modal">
-        <label for="cerrar_modal">X</label>
-        <div id="modal">
-            <img src="/img/curriculum.jpg" alt="">
-        </div>
-    </div>
+    <!-- VENTANA MODAL PARA VISTA PREVIA  -->
+    <div class="vista_previa">
+        <h2>VISTA PREVIA</h2>
+        <div class="field">
+            <input type="radio" name="modal" id="abrir_modal">
+            <label class="abrir_modal" for="abrir_modal" id="abrirModal">Abrir</label>
+            <input type="radio" name="modal" id="cerrar_modal">
+            <label for="cerrar_modal">X</label>
+            <div id="modal">
+                <div class="ventana-modal">
+                    <div id="resume">          
+                    <h1 id="nombreModal">nombre</h1>
+                    <p>Cell: 555-666-7777</p>
+                    <p>Web: moriarty.com</p>
+                    <p>Email: napoleon@crime.com</p>
+                    <p id="objective">I am a reserved but ambitious young professional seeking a career that fits my professional
+                        skills, personality, and murderous tendencies. My good birth, excellent education and phenomenal
+                        mathematical faculty have allowed me to advance the prospects of several criminal enterprises.</p>
+                    <dl>
+                        <dt>Education
+                        <dd>
+                            <h2>Oxford University</h2>
+                            <p><strong>Major:</strong> Applied Mathematics<br />
+                                <strong>Minor:</strong> Romance Languages
+                            </p>
+                    </dl>
+                    <dl>
+                        <dt>Skills
+                        <dd>
+                            <h2>Office Skills</h2>
+                            <p>Office and records management, database administration, event organization, customer support, travel
+                                coordination
+                            <h2>Computer skills</h2>
+                            <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows
+                    </dl>
+                    <dl>
+                        <dt>Experience
+                        <dd>
+                            <h2>Consulting Criminal<span>London 1892 - present</span></h2>
+                            <ul>
+                                <li>Development within the criminal underworld
+                                <li>Conducted negotiations with several rogue governments
+                            </ul>
+                            <h2>The Coldstream Guards<span>Army Coach, London 1889 - 1888</span></h2>
+                            <ul>
+                                <li>Recruiting, training and terrorizing young men.
+                            </ul>
+                            <h2>Oxford University<span>Professor of Mathematics 1885 - 1888</span></h2>
+                            <ul>
+                                <li>Published papers in binomials, asteroid dynamics and game theory
+                                <li>Intimidated students
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Hobbies
+                        <dd>World domination, Social Manipulation, Murder Most Foul
+                    </dl>
+                    <dl>
+                        <dt>References
+                        <dd>Available on request
+                    </dl>
+                    </div>
+                <button type="button" id="pdfConvertor" class="enviar">PDF</button>
+                 </div>
+             </div>
+        </div>  
         <div class="curriculum"></div>
-</div>
-
-<script src="/js/nocturno.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+            integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>        
+    <script src="./js/conversor.js"></script>
+    <script src="./js/nocturno.js"></script>
+    <script src="./ajax/jquery.js"></script>
+    <script src="./ajax/ajax.js"></script>
+    
 
 </body>
+
 </html>
