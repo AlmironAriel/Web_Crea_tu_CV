@@ -168,8 +168,8 @@
                             <select>
                                 <option name="#">Seleccione su genero</option>
                                 <option name="maculino" name>Masculino</option>
-                                <option name="en_curso">En Curso</option>
-                                <option name="otros">Otros</option>
+                                <option name="en_curso">Femenino</option>
+                                <option name="otros">Otro</option>
                             </select>
                         </div>
                         <div class="field">
@@ -898,11 +898,11 @@
 <div class="vista_previa">
     <h2>VISTA PREVIA</h2>
     <div class="field">
-        <input type="radio" name="modal" id="abrir_modal">
-        <label class="abrir_modal" for="abrir_modal">Abrir</label>
-        <input type="radio" name="modal" id="cerrar_modal">
-        <label for="cerrar_modal">X</label>
+        <input type="radio" name="modal" id="abrir_modal" id="boton">
+        <label class="abrir_modal" for="abrir_modal" id="btn">ABRIR</label>
         <div id="modal">
+            <input type="radio" name="modal" id="cerrar_modal">
+            <label for="cerrar_modal" class="caja" id="boton3" id="caja">X</label>
             <img src="/img/curriculum.jpg" alt="">
         </div>
     </div>
@@ -910,6 +910,7 @@
 </div>
 
 <script src="/js/nocturno.js"></script>
+<script src="/js/sidebar.js"></script>
 
 </body>
 </html>

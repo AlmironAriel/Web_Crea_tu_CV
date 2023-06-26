@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    width: 90%;
+    height: 1400px;
+    margin: auto;
+    display: flex;
+    border:2px solid #000;
+}
+.aside{
+    width: 30%;
+    height: 100%;
+    background-color: #013147;
+    color: #fff;
+    padding: 20px;
+}
+.aside .foto{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+    background-image: url(/img/foto_perfil.jpg);
+    background-position: top;
+    background-size: cover;
+}
+.title{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background-color: #013147;
+}
+.nombre_apellido{
+    display: flex;
+    justify-content: space-around;
+    background-color: #013147;
+    padding-bottom: 20px;
+}
+.nombre,
+.apellido{
+    color: #fff;
+    background-color: #013147;
+}
+.aside_padding{
+    width: 90%;
+    margin: auto;
+}
+.aside .info_contacto,
+.aside .habilidades,
+.aside .habilidades_it,
+.aside .idiomas{
+    display: flex;
+    flex-direction: column;
+    background-color: #013147;
+}
+.aside span{
+    background-color: #013147;
+    padding: 5px;
+}
+
+/* MAIN  */
+.main{
+    width: 70%;
+    height: 100%;
+    background-color: #fff;
+    padding: 40px;
+    color: #000;
+}
+.main .main_title{
+    padding: 10px 0 5px 0;
+}
+.exp_lab,
+.form_acad,
+.cursos{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    margin-bottom: 30px;
+}
+.info{
+    width: 40%;
+}
+.descripcion{
+    width: 60%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
