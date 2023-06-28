@@ -894,6 +894,7 @@
     </form>
 </main>
 
+<<<<<<< Updated upstream:form.html
 <!-- VENTANA MODAL PARA VISTA PREVIA  -->
 <div class="vista_previa">
     <h2>VISTA PREVIA</h2>
@@ -905,6 +906,76 @@
         <div id="modal">
             <img src="/img/curriculum.jpg" alt="">
         </div>
+=======
+    <!-- VENTANA MODAL PARA VISTA PREVIA  -->
+    <div class="vista_previa">
+        <h2>VISTA PREVIA</h2>
+        <div class="field">
+            <input type="radio" name="modal" id="abrir_modal">
+            <label class="abrir_modal" for="abrir_modal" id="abrirModal">Abrir</label>
+            <input type="radio" name="modal" id="cerrar_modal">
+            <label for="cerrar_modal">X</label>
+            <div id="modal">
+                <div class="ventana-modal">
+                    <div id="resume">          
+                    <h1 id="nombreModal">nombre</h1>
+                    <p>Cell: 555-666-7777</p>
+                    <p>Web: moriarty.com</p>
+                    <p>Email: napoleon@crime.com</p>
+                    <p id="objective">I am a reserved but ambitious young professional seeking a career that fits my professional
+                        skills, personality, and murderous tendencies. My good birth, excellent education and phenomenal
+                        mathematical faculty have allowed me to advance the prospects of several criminal enterprises.</p>
+                    <dl>
+                        <dt>Education
+                        <dd>
+                            <h2>Oxford University</h2>
+                            <p><strong>Major:</strong> Applied Mathematics<br />
+                                <strong>Minor:</strong> Romance Languages
+                            </p>
+                    </dl>
+                    <dl>
+                        <dt>Skills
+                        <dd>
+                            <h2>Office Skills</h2>
+                            <p>Office and records management, database administration, event organization, customer support, travel
+                                coordination
+                            <h2>Computer skills</h2>
+                            <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows
+                    </dl>
+                    <dl>
+                        <dt>Experience
+                        <dd>
+                            <h2>Consulting Criminal<span>London 1892 - present</span></h2>
+                            <ul>
+                                <li>Development within the criminal underworld
+                                <li>Conducted negotiations with several rogue governments
+                            </ul>
+                            <h2>The Coldstream Guards<span>Army Coach, London 1889 - 1888</span></h2>
+                            <ul>
+                                <li>Recruiting, training and terrorizing young men.
+                            </ul>
+                            <h2>Oxford University<span>Professor of Mathematics 1885 - 1888</span></h2>
+                            <ul>
+                                <li>Published papers in binomials, asteroid dynamics and game theory
+                                <li>Intimidated students
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Hobbies
+                        <dd>World domination, Social Manipulation, Murder Most Foul
+                    </dl>
+                    <dl>
+                        <dt>References
+                        <dd>Available on request
+                    </dl>
+                    </div>
+                <button type="button" id="pdfConvertor" class="enviar">PDF</button>
+                 </div>
+             </div>
+        </div>  
+        <div class="curriculum"></div>
+>>>>>>> Stashed changes:form.php
     </div>
         <div class="curriculum"></div>
 </div>
