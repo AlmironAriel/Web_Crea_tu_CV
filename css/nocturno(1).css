@@ -1,0 +1,49 @@
+#modo{
+    width: 40px;
+    font-size: 80px;
+    margin: auto;
+    cursor: pointer;
+}
+.dark{
+    background-color: rgb(4, 24, 27);
+}
+.dark #modo{
+    color: orange;
+}
+.dark .aside,
+.dark .container{
+    background-color: rgb(16, 43, 51);
+}
+.dark .aside ul li a{
+    color: #fff;
+}
+.dark .aside ul li:hover{
+    background-color: rgb(233, 154, 6);
+    color: #000;
+}
+.dark .aside ul li a:hover{
+    color: rgb(48, 47, 47);
+}
+.dark .container .title h1,
+.dark .container .title h2{
+    color: #fff;
+}
+.dark .container form h2{
+    color: #fff;
+}
+.dark form p{
+    color: #fff;
+}
+.dark form .field .label{
+    color: rgb(167, 161, 161);
+}
+.dark .vista_previa{
+    background-color: rgb(16, 43, 51);
+}
+.dark .vista_previa h2{
+    color:#fff;
+}
+.dark #abrir_modal + label{
+    background-color: orange;
+    color: #000;
+}
