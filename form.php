@@ -175,7 +175,7 @@
                                 <option value="femenino">Femenino</option>
                             </select>
                         </div>
-                        <div class="field">
+                        <div class="field">-
                             <div class="label" for="web">Sitio Web</div>
                             <input type="text" id="web" name="web">
                         </div>
