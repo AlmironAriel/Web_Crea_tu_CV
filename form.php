@@ -980,7 +980,7 @@
                         <dd>Available on request
                     </dl>
                     </div>
-                <button type="button" id="pdfConvertor" class="enviar">PDF</button>
+                <button type="button" id="pdfConvertor" class="enviar">PDF hola</button>
                  </div>
              </div>
         </div>  
