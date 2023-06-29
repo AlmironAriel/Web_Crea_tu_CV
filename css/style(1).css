@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+.contain_wrapper{
+  width: 100%;
+  /* max-width: 1200px; */
+  height:100vh;
+  background-image:linear-gradient(
+  rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url('/img/trabajo.jpg');
+  background-position: center;
+  /* backdrop-filter: blur(5px); */
+  background-size: cover;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* overflow: hidden; */
+  background-repeat: no-repeat;
+  position: fixed;
+}
+main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.__main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+/* pagina 1 Inicio */
+
+/*Header*/
+header{
+  width: 100%;
+  padding: 0 30px;
+  background:linear-gradient(
+  rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+}
+/*nav bar*/
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar .logo a{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 6px 2px 5px black;
+}
+
+.navbar .links{
+  display: flex;
+  gap: 2rem;
+  
+}
+.navbar li{
+  list-style: none;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+navbar a:hover{
+ color: orange;
+ scale: 1.25;
+  transition: .3s;
+  display: block;
+}
+/*Fin de nav bar*/
+
+main section{
+  width: 800px;
+  height: 300px;
+
+  text-align: center;
+  color: #fff;
+}
+/*Fin de Pagina 1 Inicio*/
+
+/* Pagina 2 */
+.main_txt{
+  padding-top: 40px;
+  width: 100%;
+}
+.titulo{
+  font-size: 45px;
+  color: orange;
+  text-align: center;
+  padding: 0px 0 20px 0;
+  text-shadow:black 2px 3px;
+}
+.__titulo{
+  color: #fff;
+  font-size: 30px;
+}
+
+.blur{
+  color: #fff;
+  width: 600px;
+  height: 400px;
+  margin-top: 30px;
+  border-radius: 20px;
+  display: flex;
+  box-shadow: 5px 5px 15px #0a0a0a;
+  backdrop-filter: blur(20px);
+}
+
+.blur .como_hacerlo{
+  height: 100%;
+  width: 400px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.blur .como_hacerlo .txt_negro{
+  text-shadow:black 0 2px;
+}
+
+/* boton de comenzar*/
+
+.action_btn, .cancel_btn{
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.action_btn:hover{
+  scale: 1.20;
+  transition: 1s;
+  color: #fff;
+}
+
+.cancel_btn{
+  font-size: 0.8em;
+  background-color: rgb(255, 8, 8);
+}
+
+.icono_1,
+.icono_2,
+.icono_3{
+  width: 200px;
+  height: 33%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+

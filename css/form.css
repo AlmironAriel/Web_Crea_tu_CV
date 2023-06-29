@@ -234,6 +234,14 @@ main{
     justify-content: center;
     align-items: center;
     transition: all .5s;
+    overflow: auto;
+}
+
+.ventana-modal{
+    background-color: white;
+    margin: auto;
+    border-radius: 20px;
+    padding: 20px;
 }
 #modal img{
     /* font-size: 1.4em;
