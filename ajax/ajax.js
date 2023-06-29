@@ -22,7 +22,7 @@ $(document).ready(function () {
     });
 
     $('#apellido').mouseover(function () {
-        $('#name').css({
+        $('#apellido').css({
             'border': '3px solid blue'
         });
     });
