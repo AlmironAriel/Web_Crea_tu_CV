@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/form.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/sidebar.css">
-    <link rel="stylesheet" href="/css/nocturno.css">
-    <link href="/assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/nocturno.css">
+
+    <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
     <title>Formulario</title>
 </head>
 <!-- <header>
@@ -85,7 +86,7 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form action="post" method="post">
+        <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
                 <div class="columna_1">
@@ -889,7 +890,8 @@
             </details>
         </div>
         <div class="field buttn-send">
-            <button type="submit" class="enviar action_btn">ENVIAR</button>
+
+            <input type="submit" class="enviar action_btn" id="enviar"></input>
         </div>
     </form>
 </main>
@@ -905,7 +907,7 @@
             <input type="radio" name="modal" id="cerrar_modal">
             <label for="cerrar_modal">X</label>
             <div id="modal">
-                <iframe src="cv_maqueta.html">
+                <iframe src="./cv_maqueta.html">
                     <div class="container">
                         <!-- aside  -->
                         <aside class="aside">
@@ -915,8 +917,8 @@
                           <div class="aside_padding">
                               <!-- nombre titulo  -->
                               <div class="nombre_apellido">
-                                <h2 class="nombre">NOMBRE</h2>
-                                <h2 class="apellido">APELLIDO</h2>
+                                <h2 id="nombreModal" class="nombre">NOMBRE</h2>
+                                <h2 id="apellido" class="apellido">APELLIDO</h2>
                                 </div>
                 
                                 <!-- informacion de contacto  -->
@@ -1090,7 +1092,17 @@
         <div class="curriculum"></div>
 </div>
 
-<script src="/js/nocturno.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+            integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>        
+    <script src="./js/conversor.js"></script>
+    <script src="./js/nocturno.js"></script>
+    <script src="./ajax/jquery.js"></script>
+    <script src="./ajax/ajax.js"></script>
 
 </body>
 </html>

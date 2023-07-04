@@ -95,7 +95,7 @@
                 <div class="columna_1">
                     <div class="field">
                         <label class="label" for="iname">Nombre(s)</label>
-                        <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                        <input id="name" type="text" name="name" placeholder="Juan Esteban" required>
                     </div>
                     <div class="field">
                         <label class="label" for="iapellido">Apellido</label>
@@ -928,7 +928,7 @@
             <div id="modal">
                 <div class="ventana-modal">
                     <div id="resume">          
-                    <h1 id="nombreModal">nombre</h1>
+                    <h1>nombre</h1>
                     <p>Cell: 555-666-7777</p>
                     <p>Web: moriarty.com</p>
                     <p>Email: napoleon@crime.com</p>
@@ -986,17 +986,7 @@
         </div>  
         <div class="curriculum"></div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
-            integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>        
-    <script src="./js/conversor.js"></script>
-    <script src="./js/nocturno.js"></script>
-    <script src="./ajax/jquery.js"></script>
-    <script src="./ajax/ajax.js"></script>
+    
     
 
 </body>
