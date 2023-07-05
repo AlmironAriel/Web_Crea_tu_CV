@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<!-- hola -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,21 +9,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/nocturno.css">
-    <link rel="stylesheet" href="./css/curriculum.css">
+    <link rel="stylesheet" href="./css/iframe.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
     <title>Formulario</title>
 </head>
-<!-- <header>
-    <div class="navbar">
-        <div class="logo"><a href="#">LOGO</a></div>
-        <ul class="links">
-            <li><a href="Index.html">INICIO</a></li>
-            <li><a href="informacion">INFORMACION</a></li>
-            <li><a href="nosotros">NOSOTROS</a></li>
-            <a href="Index.html" class="action_btn cancel_btn" >CANCELAR</a>
-        </ul>
-    </div>
-</header> -->
 
 <body>
     <div class="aside">
@@ -95,15 +83,18 @@
                 <div class="columna_1">
                     <div class="field">
                         <label class="label" for="iname">Nombre(s)</label>
-                        <input id="name" type="text" name="name" placeholder="Juan Esteban" required>
+                        <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                        <div id="mensaje_nombre_error" class="errores">Ingrese un nombre valido</div>
                     </div>
                     <div class="field">
                         <label class="label" for="iapellido">Apellido</label>
                         <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
+                        <div id="mensaje_apellido_error" class="errores">Ingrese un apellido valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="dni">DNI</div>
-                        <input type="numbre" name="dni" id="dni">
+                        <input type="numbre" name="dni" id="dni" placeholder="00000000">
+                        <div id="mensaje_dni_error" class="errores">Ingrese un DNI valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="estado_civil">Estado Civil</div>
@@ -118,14 +109,15 @@
                     <div class="field">
                         <div class="label" for="iemail">Direccion de Correo Electronico</div>
                         <input id="email" type="text" name="email" placeholder="Ejemplo@gmai.com">
+                        <div id="mensaje_email_error" class="errores">Ingrese un email valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="cuil">Cuil</div>
-                        <input id="cuil" type="text" name="cuil">
+                        <input id="cuil" type="number" name="cuil">
                     </div>
                     <div class="field">
                         <div class="label" for="iempleo_actual">Empleo Actual</div>
-                        <input id="empleo_actual" type="text" name="empleo_actual">
+                        <input id="empleo_actual" type="text" name="empleo_actual[]">
                     </div>
                 </div>
             </div>
@@ -169,13 +161,14 @@
                         </div>
                         <div class="field">
                             <div class="label">Genero</div>
-                            <select name="genero">
-                                <option value="#">Seleccione su genero</option>
-                                <option value="maculino">Masculino</option>
-                                <option value="femenino">Femenino</option>
+                            <select>
+                                <option name="#">Seleccione su genero</option>
+                                <option name="maculino" name>Masculino</option>
+                                <option name="en_curso">En Curso</option>
+                                <option name="otros">Otros</option>
                             </select>
                         </div>
-                        <div class="field">-
+                        <div class="field">
                             <div class="label" for="web">Sitio Web</div>
                             <input type="text" id="web" name="web">
                         </div>
@@ -627,53 +620,6 @@
                 <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows=""
                     placeholder="Describa aqui su curso"></textarea>
             </details>
-            <!-- FIN DE CURSOS  -->
-            <!-- <H2 class="h2" id="cert">CERTIFICADOS</H2>
-            <div class="field">
-                <div class="label" for="nom_cert">Nombre del Certificado</div>
-                <input type="text" id="nomb_cert" name="nomb_cert">
-            </div>
-            <div class="field">
-                <div class="label" for="ano_cert">Año del Certificado</div>
-                <input type="text" id="ano_cert" name="ano_cert">
-            </div>
-            <div class="field">
-                <div class="label" for="estado_cert">¿Completado?</div>
-                <select name="estadocertificado">
-                    <option>Estado del Certificado</option>
-                    <option value="si">Si</option>
-                    <option value="no">No</option>
-                    <option value="en_proceso">En Proceso</option>
-                    <option value="no_aplica">No Aplica</option>
-                </select>
-            </div>
-            <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_cert" id="desc_cert" cols="" rows="" placeholder="Describa el Certificado"></textarea>
-
-            <details>
-                <summary class="mas">Agregar Otro Certificado</summary>
-                <div class="field">
-                    <div class="label" for="nom_cert_2">Nombre del Certificado</div>
-                    <input type="text" id="nomb_cert_2" name="nomb_cert_2">
-                </div>
-                <div class="field">
-                    <div class="label" for="ano_cert_2">Año del Certificado</div>
-                    <input type="text" id="ano_cert_2" name="ano_cert_2">
-                </div>
-                <div class="field">
-                    <div class="label" for="estado_cert_2">¿Completado?</div>
-                    <select>
-                        <option>Estado del Certificado</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                        <option value="en_poceso">En Proceso</option>
-                        <option value="no_aplica">No Aplica</option>
-                    </select>
-                </div>
-                <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_cert_2" id="desc_cert_2" cols="" rows="" placeholder="Describa el Certificado"></textarea>
-            </details>
-            FIN DE CERTIFICADO -->
 
             <!-- IDIOMAS -->
             <h2 class="h2" id="id">IDIOMAS</h2>
@@ -916,8 +862,10 @@
             </div>
         </form>
     </main>
-
-    <!-- VENTANA MODAL PARA VISTA PREVIA  -->
+    <!-- 
+========================================================================================================
+                                 VENTANA MODAL PARA VISTA PREVIA
+======================================================================================================== -->
     <div class="vista_previa">
         <h2>VISTA PREVIA</h2>
         <div class="field">
@@ -926,70 +874,232 @@
             <input type="radio" name="modal" id="cerrar_modal">
             <label for="cerrar_modal">X</label>
             <div id="modal">
-                <div class="ventana-modal">
-                    <div id="resume">          
-                    <h1>nombre</h1>
-                    <p>Cell: 555-666-7777</p>
-                    <p>Web: moriarty.com</p>
-                    <p>Email: napoleon@crime.com</p>
-                    <p id="objective">I am a reserved but ambitious young professional seeking a career that fits my professional
-                        skills, personality, and murderous tendencies. My good birth, excellent education and phenomenal
-                        mathematical faculty have allowed me to advance the prospects of several criminal enterprises.</p>
-                    <dl>
-                        <dt>Education
-                        <dd>
-                            <h2>Oxford University</h2>
-                            <p><strong>Major:</strong> Applied Mathematics<br />
-                                <strong>Minor:</strong> Romance Languages
-                            </p>
-                    </dl>
-                    <dl>
-                        <dt>Skills
-                        <dd>
-                            <h2>Office Skills</h2>
-                            <p>Office and records management, database administration, event organization, customer support, travel
-                                coordination
-                            <h2>Computer skills</h2>
-                            <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows
-                    </dl>
-                    <dl>
-                        <dt>Experience
-                        <dd>
-                            <h2>Consulting Criminal<span>London 1892 - present</span></h2>
-                            <ul>
-                                <li>Development within the criminal underworld
-                                <li>Conducted negotiations with several rogue governments
-                            </ul>
-                            <h2>The Coldstream Guards<span>Army Coach, London 1889 - 1888</span></h2>
-                            <ul>
-                                <li>Recruiting, training and terrorizing young men.
-                            </ul>
-                            <h2>Oxford University<span>Professor of Mathematics 1885 - 1888</span></h2>
-                            <ul>
-                                <li>Published papers in binomials, asteroid dynamics and game theory
-                                <li>Intimidated students
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>Hobbies
-                        <dd>World domination, Social Manipulation, Murder Most Foul
-                    </dl>
-                    <dl>
-                        <dt>References
-                        <dd>Available on request
-                    </dl>
-                    </div>
-                <button type="button" id="pdfConvertor" class="enviar">PDF hola</button>
-                 </div>
-             </div>
-        </div>  
-        <div class="curriculum"></div>
-        
-    </div>
-    
-    
+                <!-- <iframe src="cv_maqueta.html"> -->
+                <div class="iframe">
+                    <div class="contain">
+                        <!-- aside  -->
+                        <aside class="side">
+                            <!-- foto  -->
+                            <div class="foto"></div>
 
+                            <div class="aside_padding">
+                                <!-- nombre titulo  -->
+                                <div class="nombre_apellido">
+                                    <h1 id="nombreModal">NOMBRE</h1>
+                                    <h1 id="apellidoModal">APELLIDO</h1>
+                                </div>
+
+                                <!-- informacion de contacto  -->
+                                <div class="info_contacto">
+                                    <h4 class="title">INFO CONTACTO</h4>
+                                    <ul>
+                                        <li>Fecha de nacimiento: <span id="nacimiento">20/06/2002</span></li>
+                                        <li>Genero: <span id="genero">Masculino</span></li>
+                                        <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
+                                        <li>DNI: <span id="dniModal">94485324</span></li>
+                                        <li>Direccion: <span id="direccion">Lincoln</span></li>
+                                        <li>Altura: <span id="altura">2787</span></li>
+                                        <li>Piso: <span id="piso">piso</span><span> - </span><span
+                                                id="deopartamento"></span><span> - </span><span id="lote"></span></li>
+                                        <li>Localidad: <span id="localidad">moreno</span></li>
+                                        <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
+                                        <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
+                                        <li>Telefono: <span id="telefono">11892374837</span></li>
+                                        <li>Telefono alternativo: <span id="telefono_alternativo">0 8000 javascrip</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- habilidades  -->
+                                <div class="habilidades">
+                                    <h4 class="title">HABILIDADES</h4>
+                                    <ul>
+                                        <li><span id="habilidad_1">Habilidad 1</span></li>
+                                        <li><span id="habilidad_2">Habilidad 2</span></li>
+                                        <li><span id="habilidad_3">Habilidad 4</span></li>
+                                        <li><span id="habilidad_4">Habilidad 5</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- habilidades it -->
+                                <div class="habilidades_it">
+                                    <h4 class="title">HABILIDADES IT</h4>
+                                    <ul>
+                                        <li><span id="habilidad_it_1">Habilidad IT 1</span></li>
+                                        <li><span id="habilidad_it_2">Habilidad IT 2</span></li>
+                                        <li><span id="habilidad_it_3">Habilidad IT 2</span></li>
+                                        <li><span id="habilidad_it_4">Habilidad IT 2</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- IDIOMAS  -->
+                                <div class="idiom">
+                                    <h4 class="title">IDIOMAS</h4>
+                                    <ul>
+                                        <li><span id="idioma">Frances</span><span> : </span><span
+                                                id="nivel">Intermedio</span></li>
+                                        <li><span id="idioma">Aleman</span><span> : </span><span
+                                                id="nivel">Basico</span></li>
+                                        <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
+                                        <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </aside>
+                        <!-- seccion  -->
+                        <section class="maine">
+                            <!-- perfil  -->
+                            <div class="cv_perfil">
+                                <h4 class="main_title">PERFIL</h4>
+                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
+                                    necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
+                                    delectus inventore? Officia!</p>
+                            </div>
+
+                            <!-- experiencia laboral  -->
+                            <h4 class="main_title">EXPERIENCIA LABORAL</h4>
+                            <div class="expe_laboral">
+                                <div class="exp_lab">
+                                    <div class="info">
+                                        <span id="fech_ini">20/07/2003</span><span> - </span><span
+                                            id="fech_fin">30/06/2009</span> <br>
+                                        <span id="empresa">LA SERENISIMA</span> <br>
+                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <span> </span> <br>
+                                        <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title titulo_empleo">TITULO DEL EMPLEO</h4>
+                                        <div id="p_descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                            elit. Perferendis fugit, eius amet hic maxime tempore quae nemo, distinctio
+                                            necessitatibus aut adipisci similique, ducimus pariatur porro ea repellat
+                                            obcaecati. Deserunt, molestiae.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- experiencia laboral extra  -->
+                                <div class="exp_lab">
+                                    <div class="info">
+                                        <span id="fech_ini">20/07/2003</span><span> - </span><span
+                                            id="fech_fin">30/06/2009</span> <br>
+                                        <span id="empresa">LA SERENISIMA</span>
+                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <span> </span> <br>
+                                        <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title titulo_empleo">TITULO DEL EMPLEO</h4>
+                                        <div id="p_descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                            elit. Perferendis fugit, eius amet hic maxime tempore quae nemo, distinctio
+                                            necessitatibus aut adipisci similique, ducimus pariatur porro ea repellat
+                                            obcaecati. Deserunt, molestiae.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--fin de experiencia laboral-->
+                            </div>
+                            <!-- FORMACION ACADEMICA  -->
+
+                            <h4 class="main_title">FORMACION ACADEMICA</h4>
+                            <div class="formacion_academica">
+                                <div class="form_acad">
+                                    <div class="info">
+                                        <strong>MAXIMO NIVEL ANCANZADO: </strong>
+                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
+                                                id="fech_fin">20/08/2039</span></span> <br>
+                                        <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
+                                        <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
+                                        <span id="estado">INCOMPLETO</span>
+                                        <span id="direccion">MARTIN FIERRO 4897</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title">DESCRIPCION</h4>
+                                        <div id="p_descripcion">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                            elit. A, voluptas laborum ipsum dolorem provident quisquam sit labore libero
+                                            pariatur, placeat perferendis sint distinctio nesciunt dolore voluptatem
+                                            quaerat eum laudantium facere?</div>
+                                    </div>
+                                </div>
+
+                                <div class="form_acad">
+                                    <div class="info">
+                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
+                                                id="fech_fin">20/08/2039</span></span> <br>
+                                        <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
+                                        <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
+                                        <span id="grado">2 do</span> <br>
+                                        <span id="estado">INCOMPLETO</span>
+                                        <span id="direccion">MARTIN FIERRO 4897</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title">DESCRIPCION</h4>
+                                        <div id="p_descripcion">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                            elit. A, voluptas laborum ipsum dolorem provident quisquam sit labore libero
+                                            pariatur, placeat perferendis sint distinctio nesciunt dolore voluptatem
+                                            quaerat eum laudantium facere?</div>
+                                    </div>
+                                </div>
+                            </div> <!--Fin de informacion academica-->
+
+
+                            <!-- CURSOS  -->
+                            <h4 class="main_title">CURSOS</h4>
+                            <div class="cursos">
+
+                                <div class="info">
+                                    <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
+                                            id="fech_fin">20/08/2039</span></span> <br>
+                                    <span id="curso_insituto">INSTITUTO PEPITO</span>
+                                </div>
+                                <div class="descripcion">
+                                    <h4 class="exp_title">DESCRIPCION</h4>
+                                    <div id="p_descripcion">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati cupiditate
+                                        culpa consectetur, possimus ipsam vitae doloribus recusandae quibusdam
+                                        blanditiis, aperiam voluptatum tempore dolore hic dolores numquam laudantium
+                                        quia eum! Rem.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- REFERENCIAS  -->
+                            <h4 class="main_title">REFERENCIAS</h4>
+                            <div class="referencias">
+
+                                <div class="info">
+                                    <span class="contacto">NOMBRE DEL CONTACTO</span> <br>
+                                    <span class="empresa_contacto">EMPRESA CONTACTO</span>
+                                </div>
+                                <div class="descripcion">
+                                    <span id="emailModal">CORREOELECTROICO@GMAIL.COM</span>
+                                    <span id="tel-contacto">11039385575848</span>
+                                </div>
+                            </div>
+
+
+
+                        </section>
+                    </div> <!--FIN DEL CONTENEDOR-->
+                </div> <!--fin de div iframe-->
+                <!-- </iframe> -->
+                <button type="button" id="pdfConvertor" class="enviar">PDF</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/nocturno.js"></script>
+    <script src="./ajax/jquery.js"></script>
+    <script src="./ajax/ajax.js"></script>
+    
 </body>
 
 </html>
