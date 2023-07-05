@@ -77,21 +77,24 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form action="post" method="post">
+        <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
                 <div class="columna_1">
                     <div class="field">
                         <label class="label" for="iname">Nombre(s)</label>
                         <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                        <div id="mensaje_nombre_error" class="errores">Ingrese un nombre valido</div>
                     </div>
                     <div class="field">
                         <label class="label" for="iapellido">Apellido</label>
                         <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
+                        <div id="mensaje_apellido_error" class="errores">Ingrese un apellido valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="dni">DNI</div>
-                        <input type="numbre" name="dni" id="dni">
+                        <input type="numbre" name="dni" id="dni" placeholder="00000000">
+                        <div id="mensaje_dni_error" class="errores">Ingrese un DNI valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="estado_civil">Estado Civil</div>
@@ -106,6 +109,7 @@
                     <div class="field">
                         <div class="label" for="iemail">Direccion de Correo Electronico</div>
                         <input id="email" type="text" name="email" placeholder="Ejemplo@gmai.com">
+                        <div id="mensaje_email_error" class="errores">Ingrese un email valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="cuil">Cuil</div>
@@ -854,7 +858,7 @@
             </details>
             </div>
             <div class="field buttn-send">
-                <button type="submit" class="enviar action_btn">ENVIAR</button>
+                <input type="submit" class="enviar action_btn" id="enviar"></input>
             </div>
         </form>
     </main>
@@ -881,27 +885,27 @@
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
                                 <div class="nombre_apellido">
-                                    <h2 id="nombre">NOMBRE</h2>
-                                    <h2 id="apellido">APELLIDO</h2>
+                                    <h1 id="nombreModal">NOMBRE</h1>
+                                    <h1 id="apellidoModal">APELLIDO</h1>
                                 </div>
 
                                 <!-- informacion de contacto  -->
                                 <div class="info_contacto">
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
-                                        <li><span id="nacimiento">20/06/2002</span></li>
-                                        <li><span id="genero">Masculino</span></li>
-                                        <li><span id="estado_civil">Soltero</span></li>
-                                        <li><span id="cuil">23-282262-9</span></li>
-                                        <li><span id="direccion">Lincoln</span></li>
-                                        <li><span id="altura">2787</span></li>
-                                        <li><span id="piso">piso</span><span> - </span><span
+                                        <li>Fecha de nacimiento: <span id="nacimiento">20/06/2002</span></li>
+                                        <li>Genero: <span id="genero">Masculino</span></li>
+                                        <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
+                                        <li>DNI: <span id="dniModal">94485324</span></li>
+                                        <li>Direccion: <span id="direccion">Lincoln</span></li>
+                                        <li>Altura: <span id="altura">2787</span></li>
+                                        <li>Piso: <span id="piso">piso</span><span> - </span><span
                                                 id="deopartamento"></span><span> - </span><span id="lote"></span></li>
-                                        <li><span id="localidad">moreno</span></li>
-                                        <li><span id="ciudad">Buenos Aires</span></li>
-                                        <li><span id="nacionalidad">Argentino</span></li>
-                                        <li><span id="telefono">11892374837</span></li>
-                                        <li><span id="telefono_alternativo">0 8000 javascrip</span></li>
+                                        <li>Localidad: <span id="localidad">moreno</span></li>
+                                        <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
+                                        <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
+                                        <li>Telefono: <span id="telefono">11892374837</span></li>
+                                        <li>Telefono alternativo: <span id="telefono_alternativo">0 8000 javascrip</span></li>
                                     </ul>
                                 </div>
 
@@ -1069,7 +1073,7 @@
                                     <span class="empresa_contacto">EMPRESA CONTACTO</span>
                                 </div>
                                 <div class="descripcion">
-                                    <span id="exp_title">CORREOELECTROICO@GMAIL.COM</span>
+                                    <span id="emailModal">CORREOELECTROICO@GMAIL.COM</span>
                                     <span id="tel-contacto">11039385575848</span>
                                 </div>
                             </div>
@@ -1091,9 +1095,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
             integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./js/nocturno.js"></script>
-    <script src="./ajax/ajax.js"></script>
     <script src="./ajax/jquery.js"></script>
+    <script src="./ajax/ajax.js"></script>
+    
 </body>
 
 </html>
