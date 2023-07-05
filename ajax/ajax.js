@@ -82,6 +82,7 @@ $(document).ready(function () {
                 'border': '3px solid red'
             });
         }else{
+            $('#mensaje_email_error').fadeOut();
             $('#email').css({
                 'border': '3px solid green'
             });
