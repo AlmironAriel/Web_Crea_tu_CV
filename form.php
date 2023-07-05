@@ -894,7 +894,7 @@
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
                                         <li>Fecha de nacimiento: <span id="nacimiento">20/06/2002</span></li>
-                                        <li>Genero: <span id="genero">Masculino</span></li>
+                                        <li>Genero: <span id="genero"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="direccion">Lincoln</span></li>
@@ -904,6 +904,8 @@
                                         <li>Localidad: <span id="localidad">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
                                         <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
+                                        <li>Email: <span id="emailModal"></span>
+                                        </li>
                                         <li>Telefono: <span id="telefono">11892374837</span></li>
                                         <li>Telefono alternativo: <span id="telefono_alternativo">0 8000 javascrip</span></li>
                                     </ul>
@@ -1073,7 +1075,7 @@
                                     <span class="empresa_contacto">EMPRESA CONTACTO</span>
                                 </div>
                                 <div class="descripcion">
-                                    <span id="emailModal">CORREOELECTROICO@GMAIL.COM</span>
+                                    <span id="">CORREOELECTROICO@GMAIL.COM</span>
                                     <span id="tel-contacto">11039385575848</span>
                                 </div>
                             </div>
