@@ -84,16 +84,19 @@
                     <div class="field">
                         <label class="label" for="iname">Nombre(s)</label>
                         <input id="name" type="text" name="name" placeholder="Juan Esteban">
+                        <div id="check_nombre" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_nombre_error" class="errores">Ingrese un nombre valido</div>
                     </div>
                     <div class="field">
                         <label class="label" for="iapellido">Apellido</label>
                         <input id="apellido" type="text" name="apellido" placeholder="Gonzales">
+                        <div id="check_apellido" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_apellido_error" class="errores">Ingrese un apellido valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="dni">DNI</div>
                         <input type="numbre" name="dni" id="dni" placeholder="00000000">
+                        <div id="check_dni" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_dni_error" class="errores">Ingrese un DNI valido</div>
                     </div>
                     <div class="field">
@@ -109,15 +112,18 @@
                     <div class="field">
                         <div class="label" for="iemail">Direccion de Correo Electronico</div>
                         <input id="email" type="text" name="email" placeholder="Ejemplo@gmai.com">
+                        <div id="check_email" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_email_error" class="errores">Ingrese un email valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="cuil">Cuil</div>
-                        <input id="cuil" type="number" name="cuil">
+                        <input id="cuil" type="text" name="cuil">
+                        <div id="check_cuil" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                        <div id="mensaje_cuil_error" class="errores">Ingrese un cuil valido</div>
                     </div>
                     <div class="field">
                         <div class="label" for="iempleo_actual">Empleo Actual</div>
-                        <input id="empleo_actual" type="text" name="empleo_actual[]">
+                        <input id="empleo_actual" type="text" name="empleo_actual">
                     </div>
                 </div>
             </div>
@@ -131,6 +137,8 @@
                         <div class="field">
                             <div class="label" for="tel">Numero de Telefono</div>
                             <input type="tel" id="tel" name="tel">
+                            <div id="check_tel" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_tel_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <div class="field">
                             <div class="label" for="cod_postal">Codigo Postal</div>
@@ -182,8 +190,7 @@
                 <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un
                     curriculum. <br>
                     Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
-                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5"
-                    placeholder="Describa aqui su perfil laboral"></textarea>
+                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
             </div>
 
             <!-- EXPERIENCIA LABORAL -->
@@ -441,8 +448,7 @@
                 </div>
             </div>
             <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
-                placeholder="Describa qui su educacion"></textarea>
+            <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
             <!-- educacion 2 -->
             <details>
                 <summary class="mas">Agregar Educacion</summary>
@@ -473,8 +479,7 @@
                     </div>
                 </div>
                 <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_educacion_2[]" id="desc_educacion_2" cols="" rows=""
-                    placeholder="Describa qui su educacion"></textarea>
+                <textarea class="text_area" name="desc_educacion_2[]" id="desc_educacion_2" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
                 <details>
                     <summary class="mas">Agregar Educacion</summary>
                     <div class="educacion">
@@ -506,8 +511,7 @@
                     </div>
                     </div>
                     <label for="">Descripcion</label>
-                    <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
-                        placeholder="Describa qui su educacion"></textarea>
+                    <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
                     <details>
                         <summary class="mas">Agregar Educacion</summary>
                         <div class="educacion">
@@ -539,8 +543,7 @@
                         </div>
                         </div>
                         <label for="">Descripcion</label>
-                        <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows=""
-                            placeholder="Describa qui su educacion"></textarea>
+                        <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
                         <details>
                             <summary class="mas">Agregar Educacion</summary>
 
@@ -584,8 +587,7 @@
             </div>
             </div>
             <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_curso[]" id="desc_curso" cols="" rows=""
-                placeholder="Describa aqui su curso"></textarea>
+            <textarea class="text_area" name="desc_curso[]" id="desc_curso" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
             <!-- educacion 2 -->
             <details>
                 <summary class="mas">Agregar Curso</summary>
@@ -617,8 +619,7 @@
                 </div>
                 </div>
                 <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows=""
-                    placeholder="Describa aqui su curso"></textarea>
+                <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
             </details>
 
             <!-- IDIOMAS -->
@@ -899,8 +900,7 @@
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="direccion">Lincoln</span></li>
                                         <li>Altura: <span id="altura">2787</span></li>
-                                        <li>Piso: <span id="piso">piso</span><span> - </span><span
-                                                id="deopartamento"></span><span> - </span><span id="lote"></span></li>
+                                        <li>Piso: <span id="piso">piso</span><span> - </span><span id="deopartamento"></span><span> - </span><span id="lote"></span></li>
                                         <li>Localidad: <span id="localidad">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
                                         <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
@@ -937,10 +937,8 @@
                                 <div class="idiom">
                                     <h4 class="title">IDIOMAS</h4>
                                     <ul>
-                                        <li><span id="idioma">Frances</span><span> : </span><span
-                                                id="nivel">Intermedio</span></li>
-                                        <li><span id="idioma">Aleman</span><span> : </span><span
-                                                id="nivel">Basico</span></li>
+                                        <li><span id="idioma">Frances</span><span> : </span><span id="nivel">Intermedio</span></li>
+                                        <li><span id="idioma">Aleman</span><span> : </span><span id="nivel">Basico</span></li>
                                         <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
                                         <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
                                     </ul>
@@ -965,8 +963,7 @@
                             <div class="expe_laboral">
                                 <div class="exp_lab">
                                     <div class="info">
-                                        <span id="fech_ini">20/07/2003</span><span> - </span><span
-                                            id="fech_fin">30/06/2009</span> <br>
+                                        <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span> <br>
                                         <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
@@ -984,8 +981,7 @@
                                 <!-- experiencia laboral extra  -->
                                 <div class="exp_lab">
                                     <div class="info">
-                                        <span id="fech_ini">20/07/2003</span><span> - </span><span
-                                            id="fech_fin">30/06/2009</span> <br>
+                                        <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span>
                                         <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
@@ -1009,8 +1005,7 @@
                                 <div class="form_acad">
                                     <div class="info">
                                         <strong>MAXIMO NIVEL ANCANZADO: </strong>
-                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
-                                                id="fech_fin">20/08/2039</span></span> <br>
+                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
                                         <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
                                         <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
                                         <span id="estado">INCOMPLETO</span>
@@ -1027,8 +1022,7 @@
 
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
-                                                id="fech_fin">20/08/2039</span></span> <br>
+                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
                                         <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
                                         <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
                                         <span id="grado">2 do</span> <br>
@@ -1051,8 +1045,7 @@
                             <div class="cursos">
 
                                 <div class="info">
-                                    <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span
-                                            id="fech_fin">20/08/2039</span></span> <br>
+                                    <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
                                     <span id="curso_insituto">INSTITUTO PEPITO</span>
                                 </div>
                                 <div class="descripcion">
@@ -1091,17 +1084,13 @@
         </div>
     </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./js/nocturno.js"></script>
     <script src="./ajax/jquery.js"></script>
     <script src="./ajax/ajax.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </body>
 
 </html>

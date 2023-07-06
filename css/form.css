@@ -296,6 +296,19 @@ main{
     }
 }
 
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:5px;
+    display: none;
+}
+
+.field >div i{
+    color: green;
+    font-size: 20px;
+}
+
 .errores{
     -webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);
     -moz-box-shadow:0 0 10px rgba(0,0,0,0.3);
