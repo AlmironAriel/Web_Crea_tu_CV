@@ -4,8 +4,6 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-
 .iframe{
     /* border: 1px solid greenyellow; */
     width:60%;
@@ -23,10 +21,25 @@
 .side{
     width: 30%;
     height: 1120px;
-    background-color: #111B21;
+    background-color: #274658;
     color: #fff;
     padding: 30px;
-
+}
+.side p{
+    font-size: 12px;
+}
+.side h1{
+    font-size: 25px;
+    text-align: center;
+}
+.side .title{
+    font-size: 16px;
+}
+.side #apellidoModal{
+    margin-bottom: 20px
+}
+.side ul li{
+    font-size: 12px;
 }
 /* .side .foto{
     width: 240px;
@@ -40,9 +53,7 @@
     margin-bottom: 20px;
 } */
 .side .nombre_apellido{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .side .info_contacto{
     /* height: 400px; */
@@ -59,7 +70,7 @@
 }
 .title{
     margin-bottom: 20px;
-    font-size: 10px;
+    font-size: 20px;
 }
 .side .habilidades,
 .side .habilidades_it{
@@ -72,15 +83,27 @@
 /* =================================
               MAIN
 ================================= */
+.maine p,
+.maine span,
+.maine #p_descripcion{
+    font-size: 12px;
+}
+.maine .exp_title{
+    font-size: 14px;
+}
 .maine{
     width: 70%;
     height: 1120px;
-    padding: 20PX;
+    padding: 10px;
     background-color: #fff;
     color: #000;
 }
 .maine .main_title{
-    margin: 20px 0;
+    margin: 10px 0;
+    font-size: 16px;
+}
+.expe_laboral strong{
+    font-size: 14px;
 }
 .exp_lab,
 .form_acad,

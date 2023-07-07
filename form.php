@@ -890,10 +890,8 @@
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
-                                <div class="nombre_apellido">
-                                    <h1 id="nombreModal">NOMBRE</h1>
+                                    <h1 id="nombreModal">NOMBRE</h1> <br>
                                     <h1 id="apellidoModal">APELLIDO</h1>
-                                </div>
 
                                 <!-- informacion de contacto  -->
                                 <div class="info_contacto">
@@ -987,7 +985,7 @@
                                 <div class="exp_lab">
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
-                                        <span id="empresa">LA SERENISIMA</span>
+                                        <span id="empresa">LA SERENISIMA</span> <br>
                                         <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
                                         <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
@@ -1009,7 +1007,6 @@
                             <div class="formacion_academica">
                                 <div class="form_acad">
                                     <div class="info">
-                                        <strong>MAXIMO NIVEL ANCANZADO: </strong>
                                         <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
                                         <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
                                         <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
