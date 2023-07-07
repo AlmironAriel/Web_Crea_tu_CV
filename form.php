@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/sidebar.css">
+
     <link rel="stylesheet" href="./css/nocturno.css">
     <link rel="stylesheet" href="./css/iframe.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
@@ -876,12 +876,13 @@
             <label for="cerrar_modal">X</label>
             <div id="modal">
                 <!-- <iframe src="cv_maqueta.html"> -->
-                <div class="iframe">
+
+                <div id="resume" class="iframe">
                     <div class="contain">
                         <!-- aside  -->
                         <aside class="side">
                             <!-- foto  -->
-                            <div class="foto"></div>
+
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
@@ -1078,18 +1079,22 @@
                         </section>
                     </div> <!--FIN DEL CONTENEDOR-->
                 </div> <!--fin de div iframe-->
+
                 <!-- </iframe> -->
-                <button type="button" id="pdfConvertor" class="enviar">PDF</button>
+                <input type="button" id="pdfConversor" class="enviar" value="PDF"></input>
             </div>
         </div>
     </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script src="./js/nocturno.js"></script>
     <script src="./ajax/jquery.js"></script>
     <script src="./ajax/ajax.js"></script>
+    <script src="./js/conversor.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </body>
 
