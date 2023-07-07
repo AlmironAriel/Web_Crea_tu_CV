@@ -35,7 +35,7 @@ $(document).ready(function () {
     document.getElementById("name").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarName, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarName, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
 
@@ -67,7 +67,7 @@ $(document).ready(function () {
     document.getElementById("apellido").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarApellido, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarApellido, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
 
@@ -100,7 +100,7 @@ $(document).ready(function () {
     document.getElementById("dni").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarDni, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarDni, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
 
@@ -133,7 +133,7 @@ $(document).ready(function () {
     document.getElementById("email").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarEmail, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarEmail, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
     function validarCuil() {
@@ -164,7 +164,7 @@ $(document).ready(function () {
     document.getElementById("cuil").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarCuil, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarCuil, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
 
@@ -196,7 +196,7 @@ $(document).ready(function () {
     document.getElementById("tel").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarTel, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarTel, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
 
@@ -227,7 +227,7 @@ $(document).ready(function () {
     document.getElementById("dir").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarDir, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarDir, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
     function validarCp() {
@@ -257,7 +257,7 @@ $(document).ready(function () {
     document.getElementById("cod_postal").addEventListener("input", function (e) {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarCp, 500); // Validar después de 1 segundo (1000 ms)
+        timeoutId = setTimeout(validarCp, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
     const curriculumElement = document.getElementById('resume');
