@@ -162,6 +162,8 @@
                         <div class="field">
                             <div class="label" for="dir">Direccion</div>
                             <input type="text" id="dir" name="dir">
+                            <div id="check_dir" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_dir_error" class="errores">Ingrese una direccion valida</div>
                         </div>
                         <div class="field">
                             <div class="label" for="ciudad">Ciudad/Region</div>
