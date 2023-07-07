@@ -195,8 +195,8 @@ main{
 
 /* ASIDE VISTA PREVIA  */
 .vista_previa{
-    width: 200px;
-    height: 500px;
+    width: 260px;
+    height: 550px;
     background-color: #fff;
     border-radius: 10px;
     position: relative;
@@ -218,6 +218,11 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     border: 2px solid #000;
+}
+
+.preview{
+    width: 100%;
+    height: 71%;
 }
 
 /* VENTANA MODAL */

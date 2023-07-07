@@ -3,7 +3,7 @@ $(document).ready(function () {
     const expr_cuil = /^\d{2}-\d{8}-\d{1}$/;
     const expr_tel = /^\d{10}$/;
     const expr_dir = /^[a-zA-Z0-9\s]+$/;
-    const expr_cp = /^\d{5}$/;
+    const expr_cp = /^\d{4}$/;
     var datos = [];
     var timeoutId; // Variable para almacenar el ID del timeout
 
@@ -16,6 +16,13 @@ $(document).ready(function () {
             $('#check_nombre').fadeIn();
             $('#name').css({
                 'border': '3px solid green'
+            });
+            $('#nombreModal').html(nombre);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
             });
         } else {
             $('#mensaje_nombre_error').fadeIn();
@@ -40,6 +47,13 @@ $(document).ready(function () {
             $('#check_apellido').fadeIn();
             $('#apellido').css({
                 'border': '3px solid green'
+            });
+            $('#apellidoModal').html(apellido);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
             });
         } else {
             $('#mensaje_apellido_error').fadeIn();
@@ -67,6 +81,13 @@ $(document).ready(function () {
             $('#dni').css({
                 'border': '3px solid green'
             });
+            $('#dniModal').html(dni);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
         } else {
             $('#mensaje_dni_error').fadeIn();
             $('#check_dni').fadeOut();
@@ -92,6 +113,13 @@ $(document).ready(function () {
             $('#email').css({
                 'border': '3px solid red'
             });
+            $('#emailModal').html(email);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
         } else {
             $('#mensaje_email_error').fadeOut();
             $('#check_email').fadeIn();
@@ -116,11 +144,19 @@ $(document).ready(function () {
             $('#cuil').css({
                 'border': '3px solid red'
             });
+            
         } else {
             $('#mensaje_cuil_error').fadeOut();
             $('#check_cuil').fadeIn();
             $('#cuil').css({
                 'border': '3px solid green'
+            });
+            $('#cuilModal').html(cuil);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
             });
         }
     }
@@ -140,6 +176,13 @@ $(document).ready(function () {
             $('#check_tel').fadeIn();
             $('#tel').css({
                 'border': '3px solid green'
+            });
+            $('#telModal').html(tel);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
             });
         } else {
             $('#mensaje_tel_error').fadeIn();
@@ -165,6 +208,13 @@ $(document).ready(function () {
             $('#dir').css({
                 'border': '3px solid green'
             });
+            $('#dirModal').html(dir);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
         } else {
             $('#mensaje_dir_error').fadeIn();
             $('#check_dir').fadeOut();
@@ -188,6 +238,13 @@ $(document).ready(function () {
             $('#cod_postal').css({
                 'border': '3px solid green'
             });
+            $('#cpModal').html(cp);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
         } else {
             $('#mensaje_cp_error').fadeIn();
             $('#check_cp').fadeOut();
@@ -203,6 +260,25 @@ $(document).ready(function () {
         timeoutId = setTimeout(validarCp, 500); // Validar después de 1 segundo (1000 ms)
     });
 
+    const curriculumElement = document.getElementById('resume');
+
+    const opt = {
+        margin: 0,
+        filename: 'curriculum.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+            scale: 2,
+        },
+        jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+        // Muestra la vista previa en un iframe
+        const previewFrame = document.getElementById('preview');
+        previewFrame.src = pdf.output('datauristring');
+        previewFrame.style.display = 'block';
+    });
+
     $('#dataForm').submit(function (e) {
         e.preventDefault();
         $.ajax({
@@ -216,6 +292,7 @@ $(document).ready(function () {
                     icon: "success",
                     button: "Aceptar",
                 });
+
                 var jsonData = JSON.parse(response);
 
                 console.log(jsonData);

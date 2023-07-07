@@ -143,6 +143,8 @@
                         <div class="field">
                             <div class="label" for="cod_postal">Codigo Postal</div>
                             <input type="number" id="cod_postal" name="cod_postal">
+                            <div id="check_cp" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_cp_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <!-- <div class="field">
                             <div class="label" for="lic_cond">Licencia de Conducir</div>
@@ -901,7 +903,7 @@
                                         <li>Genero: <span id="genero"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
-                                        <li>Direccion: <span id="direccion">Lincoln</span></li>
+                                        <li>Direccion: <span id="dirModal">Lincoln</span></li>
                                         <li>Altura: <span id="altura">2787</span></li>
                                         <li>Piso: <span id="piso">piso</span><span> - </span><span id="deopartamento"></span><span> - </span><span id="lote"></span></li>
                                         <li>Localidad: <span id="localidad">moreno</span></li>
@@ -909,7 +911,7 @@
                                         <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
-                                        <li>Telefono: <span id="telefono">11892374837</span></li>
+                                        <li>Telefono: <span id="telModal">11892374837</span></li>
                                         <li>Telefono alternativo: <span id="telefono_alternativo">0 8000 javascrip</span></li>
                                     </ul>
                                 </div>
@@ -1086,6 +1088,7 @@
                 <input type="button" id="pdfConversor" class="enviar" value="PDF"></input>
             </div>
         </div>
+        <iframe id="preview" class="preview" style="display: none;"></iframe>
     </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
