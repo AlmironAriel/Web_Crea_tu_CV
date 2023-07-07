@@ -117,7 +117,7 @@
                     </div>
                     <div class="field">
                         <div class="label" for="cuil">Cuil</div>
-                        <input id="cuil" type="text" name="cuil">
+                        <input id="cuil" type="text" name="cuil" placeholder="00-00000000-0">
                         <div id="check_cuil" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_cuil_error" class="errores">Ingrese un cuil valido</div>
                     </div>
