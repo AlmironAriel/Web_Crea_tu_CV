@@ -877,8 +877,8 @@
             <div id="modal">
                 <!-- <iframe src="cv_maqueta.html"> -->
 
-                <div id="resume" class="iframe">
-                    <div class="contain">
+                <div class="iframe">
+                    <div id="resume" class="contain">
                         <!-- aside  -->
                         <aside class="side">
                             <!-- foto  -->

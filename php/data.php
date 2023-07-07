@@ -12,5 +12,5 @@ $data = array("nombre" => $nombre, 'apellido' => $apellido, "dni"=>$dni, "estado
 
 echo json_encode($data, JSON_PRETTY_PRINT);
 
-$file_handle = fopen('/home/tutsplus/files/tmp.txt', 'w');
+
 ?>
