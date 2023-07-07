@@ -28,15 +28,17 @@ $('#pdfConversor').click(function () {
     margin: 0,
     filename: 'curriculum.pdf',
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas:{
+    html2canvas:(curriculumElement,{
       canvas: lienzo,
       scale: 2,
-    },
-    jsPDF: { format: 'a4', orientation: 'portrait' }
+    }),
+    jsPDF: { unit:'pt', format: 'a4', orientation: 'portrait' }
   };
 
   html2pdf().set(opt).from(curriculumElement).save();
 });
+
+
 
 
 
