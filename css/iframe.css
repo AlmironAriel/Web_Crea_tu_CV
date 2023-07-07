@@ -16,19 +16,19 @@
 }
 .contain{
     width: 100%;
-    height: 100%;
+    height: 1120px;
     margin: auto;
     display: flex;
 }
 .side{
     width: 30%;
-    height: 1400px;
+    height: 1120px;
     background-color: #111B21;
     color: #fff;
     padding: 30px;
 
 }
-.side .foto{
+/* .side .foto{
     width: 240px;
     height: 240px;
     border: 5px solid #fff;
@@ -38,18 +38,18 @@
     background-size: cover;
     margin: auto;
     margin-bottom: 20px;
-}
+} */
 .side .nombre_apellido{
     display: flex;
     justify-content: space-around;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .side .info_contacto{
     /* height: 400px; */
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid lightgray;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 }
 .side ul li{
@@ -59,7 +59,7 @@
 }
 .title{
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 10px;
 }
 .side .habilidades,
 .side .habilidades_it{
@@ -74,7 +74,7 @@
 ================================= */
 .maine{
     width: 70%;
-    height: 1400px;
+    height: 1120px;
     padding: 20PX;
     background-color: #fff;
     color: #000;
