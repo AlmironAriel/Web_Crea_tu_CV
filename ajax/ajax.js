@@ -144,7 +144,7 @@ $(document).ready(function () {
             $('#cuil').css({
                 'border': '3px solid red'
             });
-            
+
         } else {
             $('#mensaje_cuil_error').fadeOut();
             $('#check_cuil').fadeIn();
@@ -259,6 +259,76 @@ $(document).ready(function () {
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
         timeoutId = setTimeout(validarCp, 1000); // Validar después de 1 segundo (1000 ms)
     });
+
+    function validarDate() {
+        var fecha_n = $('#fech_nac').val();
+        var fechaNacimiento = new Date(fecha_n);
+        var fechaCorregida = new Date(
+            fechaNacimiento.getUTCFullYear(),
+            fechaNacimiento.getUTCMonth(),
+            fechaNacimiento.getUTCDate()
+        );
+        var opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+        var fechaFormateada = fechaCorregida.toLocaleDateString("es-AR", opcionesFecha);
+        if (fechaFormateada) {
+            $('#mensaje_nacimiento_error').fadeOut();
+            $('#check_nacimiento').fadeIn();
+            $('#fech_nac').css({
+                'border': '3px solid green'
+            });
+            $('#nacimientoModal').html(fechaFormateada);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_nacimiento_error').fadeIn();
+            $('#check_nacimiento').fadeOut();
+            $('#fech_nac').css({
+                'border': '3px solid red'
+            });
+        }
+
+    }
+
+    document.getElementById("fech_nac").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarDate, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+    function validarGenero() {
+        var genero = $('#genero').val();
+        if (genero && genero == 'Masculino' || genero == 'Femenino') {
+            $('#mensaje_genero_error').fadeOut();
+            $('#check_genero').fadeIn();
+            $('#genero').css({
+                'border': '3px solid green'
+            });
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_genero_error').fadeIn();
+            $('#check_genero').fadeOut();
+            $('#genero').css({
+                'border': '3px solid red'
+            });
+        }
+    }
+
+    document.getElementById("genero").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarGenero, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+
 
     const curriculumElement = document.getElementById('resume');
 

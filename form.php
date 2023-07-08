@@ -152,7 +152,9 @@
                         </div> -->
                         <div class="field">
                             <div class="label" for="fech_nac">Fecha de Nacimiento</div>
-                            <input type="date" id="fech_nac" name="fech_nac">
+                            <input type="date" id="fech_nac" name="fech_nac" required format="DD-MM-YYYY">
+                            <div id="check_nacimiento" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_nacimiento_error" class="errores">Ingrese una fecha valida</div>
                         </div>
                         <div class="field">
                             <div class="label" for="nacionalidad">Nacionalidad</div>
@@ -173,11 +175,11 @@
                         </div>
                         <div class="field">
                             <div class="label">Genero</div>
-                            <select>
+                            <select id="genero" name="genero">
                                 <option name="#">Seleccione su genero</option>
-                                <option name="maculino" name>Masculino</option>
-                                <option name="en_curso">En Curso</option>
-                                <option name="otros">Otros</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                         <div class="field">
@@ -890,14 +892,14 @@
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
-                                    <h1 id="nombreModal">NOMBRE</h1> <br>
-                                    <h1 id="apellidoModal">APELLIDO</h1>
+                                <h1 id="nombreModal">NOMBRE</h1> <br>
+                                <h1 id="apellidoModal">APELLIDO</h1>
 
                                 <!-- informacion de contacto  -->
                                 <div class="info_contacto">
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
-                                        <li>Fecha de nacimiento: <span id="nacimiento">20/06/2002</span></li>
+                                        <li>Fecha de nacimiento: <span id="nacimientoModal">20/06/2002</span></li>
                                         <li>Genero: <span id="genero"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
