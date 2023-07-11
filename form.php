@@ -159,6 +159,8 @@
                         <div class="field">
                             <div class="label" for="nacionalidad">Nacionalidad</div>
                             <input type="text" id="nac" name="nac">
+                            <div id="check_nac" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_nac_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                     </div> <!-- termina la columna 1-->
 
@@ -172,6 +174,8 @@
                         <div class="field">
                             <div class="label" for="ciudad">Ciudad/Region</div>
                             <input type="text" id="ciudad" name="ciudad">
+                            <div id="check_ciudad" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_ciudad_error" class="errores">Ingrese una ciudad valida</div>
                         </div>
                         <div class="field">
                             <div class="label">Genero</div>
@@ -181,6 +185,8 @@
                                 <option value="Femenino">Femenino</option>
                                 <option value="Otro">Otro</option>
                             </select>
+                            <div id="check_genero" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_genero_error" class="errores">Ingrese un genero valido</div>
                         </div>
                         <div class="field">
                             <div class="label" for="web">Sitio Web</div>
@@ -196,7 +202,7 @@
                 <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un
                     curriculum. <br>
                     Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
-                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                <textarea  class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
             </div>
 
             <!-- EXPERIENCIA LABORAL -->
@@ -208,7 +214,7 @@
                 <div class="columna_1">
                     <div class="field">
                         <div class="label" for="empleo_1">Titulo del Empleo</div>
-                        <input type="text" id="empleo_1" name="empleo_1[]">
+                        <input type="text" id="empleo" name="empleo[]">
                     </div>
                     <div class="field">
                         <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
@@ -236,7 +242,7 @@
                     <div class="columna_1">
                         <div class="field">
                             <div class="label" for="empleo_2">Titulo del Empleo</div>
-                            <input type="text" id="empleo_2" name="empleo_2[]">
+                            <input type="text" id="empleo" name="empleo[]">
                         </div>
                         <div class="field">
                             <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
@@ -900,15 +906,15 @@
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
                                         <li>Fecha de nacimiento: <span id="nacimientoModal">20/06/2002</span></li>
-                                        <li>Genero: <span id="genero"></span></li>
+                                        <li>Genero: <span id="generoModal"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="dirModal">Lincoln</span></li>
                                         <li>Altura: <span id="altura">2787</span></li>
                                         <li>Piso: <span id="piso">piso</span><span> - </span><span id="deopartamento"></span><span> - </span><span id="lote"></span></li>
-                                        <li>Localidad: <span id="localidad">moreno</span></li>
+                                        <li>Localidad: <span id="localidadModal">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
-                                        <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
+                                        <li>Nacionalidad: <span id="nacionalidadModal">Argentino</span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
                                         <li>Telefono: <span id="telModal">11892374837</span></li>
@@ -957,7 +963,7 @@
                             <!-- perfil  -->
                             <div class="cv_perfil">
                                 <h4 class="main_title">PERFIL</h4>
-                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                <p id="perfilModal">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
                                     necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
                                     delectus inventore? Officia!</p>
@@ -970,7 +976,7 @@
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span> <br>
-                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <strong>RUBRO:</strong><span id="empleoModal">SISTEMAS</span>
                                         <span> </span> <br>
                                         <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
                                     </div>
