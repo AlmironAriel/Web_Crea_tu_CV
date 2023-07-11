@@ -307,6 +307,7 @@ $(document).ready(function () {
             $('#genero').css({
                 'border': '3px solid green'
             });
+            $('#generoModal').html(genero);
             html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
                 // Muestra la vista previa en un iframe
                 const previewFrame = document.getElementById('preview');
@@ -326,6 +327,133 @@ $(document).ready(function () {
         e.preventDefault();
         clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
         timeoutId = setTimeout(validarGenero, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+    function validarNac(){
+        var nac = $('#nac').val();
+        if (nac ) {
+            $('#mensaje_nac_error').fadeOut();
+            $('#check_nac').fadeIn();
+            $('#nac').css({
+                'border': '3px solid green'
+            });
+            $('#nacionalidadModal').html(nac);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_nac_error').fadeIn();
+            $('#check_nac').fadeOut();
+            $('#nac').css({
+                'border': '3px solid red'
+            });
+        }
+    }
+    
+
+    document.getElementById("nac").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarNac, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+
+    function validarCiudad(){
+        var ciudad = $('#ciudad').val();
+        if (ciudad) {
+            $('#mensaje_ciudad_error').fadeOut();
+            $('#check_ciudad').fadeIn();
+            $('#ciudad').css({
+                'border': '3px solid green'
+            });
+            $('#localidadModal').html(ciudad);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_ciudad_error').fadeIn();
+            $('#check_ciudad').fadeOut();
+            $('#ciudad').css({
+                'border': '3px solid red'
+            });
+        }
+    }
+
+    document.getElementById("ciudad").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarCiudad, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+    function validarPerfil(){
+        var perfil = $('#info_perfil').val();
+        if (perfil) {
+            $('#mensaje_ciudad_error').fadeOut();
+            $('#check_ciudad').fadeIn();
+            $('#info_perfil').css({
+                'border': '3px solid green'
+            });
+            $('#perfilModal').html(perfil);
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_ciudad_error').fadeIn();
+            $('#check_ciudad').fadeOut();
+            $('#info_perfil').css({
+                'border': '3px solid red'
+            });
+        }
+    }
+
+    document.getElementById("info_perfil").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarPerfil, 1000); // Validar después de 1 segundo (1000 ms)
+    });
+
+    function validarEmpleo(){
+        var empleo = [];
+        empleo = document.querySelectorAll("#empleo");
+        if (empleo) {
+            $('#mensaje_empleo_error').fadeOut();
+            $('#check_empleo').fadeIn();
+            $('#empleo').css({
+                'border': '3px solid green'
+            });
+            for (let i = 1; i < empleo.length; i++) {
+                $('#empleoModal').html(empleo[i].value);
+                
+            }
+            
+            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
+                // Muestra la vista previa en un iframe
+                const previewFrame = document.getElementById('preview');
+                previewFrame.src = pdf.output('datauristring');
+                previewFrame.style.display = 'block';
+            });
+        } else {
+            $('#mensaje_empleo_error').fadeIn();
+            $('#check_empleo').fadeOut();
+            $('#empleo').css({
+                'border': '3px solid red'
+            });
+        }
+    }
+
+    document.getElementById("empleo").addEventListener("input", function (e) {
+        e.preventDefault();
+        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
+        timeoutId = setTimeout(validarEmpleo, 5000); // Validar después de 1 segundo (1000 ms)
     });
 
 
