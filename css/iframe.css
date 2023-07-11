@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
+    border: none;
 }
 .contain{
     width: 100%;
@@ -41,22 +42,10 @@
 .side ul li{
     font-size: 12px;
 }
-/* .side .foto{
-    width: 240px;
-    height: 240px;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    background-image: url(./img/foto_perfil.jpg);
-    background-position: top;
-    background-size: cover;
-    margin: auto;
-    margin-bottom: 20px;
-} */
 .side .nombre_apellido{
     margin-bottom: 10px;
 }
 .side .info_contacto{
-    /* height: 400px; */
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid lightgray;

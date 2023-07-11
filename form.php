@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
-
     <link rel="stylesheet" href="./css/nocturno.css">
     <link rel="stylesheet" href="./css/iframe.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
@@ -44,9 +43,6 @@
             <li>
                 <span><a href="#cu">Cursos</a></span>
             </li>
-            <!-- <li>
-                <span><a href="#cert">Certificados</a></span>
-            </li> -->
             <li>
                 <a href="#id">IDIOMAS</a>
             </li>
@@ -120,10 +116,6 @@
                         <input id="cuil" type="text" name="cuil" placeholder="00-00000000-0">
                         <div id="check_cuil" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_cuil_error" class="errores">Ingrese un cuil valido</div>
-                    </div>
-                    <div class="field">
-                        <div class="label" for="iempleo_actual">Empleo Actual</div>
-                        <input id="empleo_actual" type="text" name="empleo_actual">
                     </div>
                 </div>
             </div>
@@ -892,7 +884,7 @@
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
-                                <h1 id="nombreModal">MORENO</h1> <br>
+                                <h1 id="nombreModal">JORGE</h1> <br>
                                 <h1 id="apellidoModal">ALVAREZ RODRIGUEZ</h1>
 
                                 <!-- informacion de contacto  -->
@@ -904,8 +896,6 @@
                                         <li>E. civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="dirModal">Lincoln</span></li>
-                                        <li>Altura: <span id="altura">2787</span></li>
-                                        <li>Piso: <span id="piso">piso</span><span> - </span><span id="deopartamento"></span><span> - </span><span id="lote"></span></li>
                                         <li>Localidad: <span id="localidad">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
                                         <li>Nac: <span id="nacionalidad">Argentino</span></li>
