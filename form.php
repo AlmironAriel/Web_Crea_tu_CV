@@ -898,15 +898,15 @@
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
-                                <h1 id="nombreModal">NOMBRE</h1> <br>
-                                <h1 id="apellidoModal">APELLIDO</h1>
+                                <h1 id="nombreModal">MORENO</h1> <br>
+                                <h1 id="apellidoModal">ALVAREZ RODRIGUEZ</h1>
 
                                 <!-- informacion de contacto  -->
                                 <div class="info_contacto">
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
                                         <li>Fecha de nacimiento: <span id="nacimientoModal">20/06/2002</span></li>
-                                        <li>Genero: <span id="generoModal"></span></li>
+                                        <li>Genero: <span id="genero"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="dirModal">Lincoln</span></li>
@@ -914,11 +914,11 @@
                                         <li>Piso: <span id="piso">piso</span><span> - </span><span id="deopartamento"></span><span> - </span><span id="lote"></span></li>
                                         <li>Localidad: <span id="localidadModal">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
-                                        <li>Nacionalidad: <span id="nacionalidadModal">Argentino</span></li>
+                                        <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
-                                        <li>Telefono: <span id="telModal">11892374837</span></li>
-                                        <li>Telefono alternativo: <span id="telefono_alternativo">0 8000 javascrip</span></li>
+                                        <li>Tel: <span id="telModal">1189237483</span></li>
+                                        <li>Tel alt: <span id="telefono_alternativo">1137387464</span></li>
                                     </ul>
                                 </div>
 
@@ -926,10 +926,12 @@
                                 <div class="habilidades">
                                     <h4 class="title">HABILIDADES</h4>
                                     <ul>
-                                        <li><span id="habilidad_1">Habilidad 1</span></li>
-                                        <li><span id="habilidad_2">Habilidad 2</span></li>
-                                        <li><span id="habilidad_3">Habilidad 4</span></li>
-                                        <li><span id="habilidad_4">Habilidad 5</span></li>
+                                        <li><span id="habilidad_1">Resolucion de problemas</span></li>
+                                        <li><span id="habilidad_2">Capacidad de análisis</span></li>
+                                        <li><span id="habilidad_3">Trabajo en equipo</span></li>
+                                        <li><span id="habilidad_4">Flexibilidad y adaptabilidad</span></li>
+                                        <li><span id="habilidad_5"></span></li>
+                                        <li><span id="habilidad_6"></span></li>
                                     </ul>
                                 </div>
 
@@ -937,10 +939,12 @@
                                 <div class="habilidades_it">
                                     <h4 class="title">HABILIDADES IT</h4>
                                     <ul>
-                                        <li><span id="habilidad_it_1">Habilidad IT 1</span></li>
-                                        <li><span id="habilidad_it_2">Habilidad IT 2</span></li>
-                                        <li><span id="habilidad_it_3">Habilidad IT 2</span></li>
-                                        <li><span id="habilidad_it_4">Habilidad IT 2</span></li>
+                                        <li><span id="habilidad_it_1">HTML 5</span></li>
+                                        <li><span id="habilidad_it_2">CSS</span></li>
+                                        <li><span id="habilidad_it_3">JavaScript</span></li>
+                                        <li><span id="habilidad_it_4">PHP</span></li>
+                                        <li><span id="habilidad_it_5"></span></li>
+                                        <li><span id="habilidad_it_6"></span></li>
                                     </ul>
                                 </div>
 
@@ -948,10 +952,10 @@
                                 <div class="idiom">
                                     <h4 class="title">IDIOMAS</h4>
                                     <ul>
-                                        <li><span id="idioma">Frances</span><span> : </span><span id="nivel">Intermedio</span></li>
-                                        <li><span id="idioma">Aleman</span><span> : </span><span id="nivel">Basico</span></li>
-                                        <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
-                                        <li><span id="idioma"></span><span> </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold">Frances</span><span> : </span><span id="nivel">Intermedio</span></li>
+                                        <li><span id="idioma" class="bold">Aleman</span><span> : </span><span id="nivel">Basico</span></li>
+                                        <li><span id="idioma" class="bold"></span><span> </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold"></span><span> </span><span id="nivel"></span></li>
                                     </ul>
 
                                 </div>
@@ -963,7 +967,7 @@
                             <!-- perfil  -->
                             <div class="cv_perfil">
                                 <h4 class="main_title">PERFIL</h4>
-                                <p id="perfilModal">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
                                     necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
                                     delectus inventore? Officia!</p>
@@ -976,34 +980,40 @@
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span> <br>
-                                        <strong>RUBRO:</strong><span id="empleoModal">SISTEMAS</span>
+                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
-                                        <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
+                                        <!-- <strong>PUESTO:</strong><span id="rubro">Desarrollador Web</span> -->
                                     </div>
                                     <div class="descripcion">
-                                        <h4 class="exp_title titulo_empleo">TITULO DEL EMPLEO</h4>
-                                        <div id="p_descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                            elit. Perferendis fugit, eius amet hic maxime tempore quae nemo, distinctio
-                                            necessitatibus aut adipisci similique, ducimus pariatur porro ea repellat
-                                            obcaecati. Deserunt, molestiae.
+                                        <h4 class="exp_title titulo_empleo">DESARROLLADOR WEB</h4>
+                                        <div id="p_descripcion">
+                                            * Desarrollador de páginas y sitios funcionales <br>
+                                                e intuitivos para el usuario. <br>
+                                            * Trabajo con distintas bases de datos y contextos <br>
+                                                back-end y front-end <br>
+                                            * Uso de diferentes lenguajes de programacion y de herramientas de desarrollo apropiadas a cada proyecto.
                                         </div>
                                     </div>
                                 </div>
                                 <!-- experiencia laboral extra  -->
                                 <div class="exp_lab">
                                     <div class="info">
-                                        <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
-                                        <span id="empresa">LA SERENISIMA</span> <br>
+                                        <span id="fech_ini">02/2015</span><span> - </span><span id="fech_fin">07/2021</span> <br>
+                                        <span id="empresa" class="bold">SOFTWARE INC.</span> <br>
                                         <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
-                                        <strong>PUESTO:</strong><span id="rubro">PANADERO</span>
+                                        <!-- <strong>PUESTO:</strong><span id="rubro">TESTER DE SOFTWARE</span> -->
                                     </div>
                                     <div class="descripcion">
-                                        <h4 class="exp_title titulo_empleo">TITULO DEL EMPLEO</h4>
-                                        <div id="p_descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                            elit. Perferendis fugit, eius amet hic maxime tempore quae nemo, distinctio
-                                            necessitatibus aut adipisci similique, ducimus pariatur porro ea repellat
-                                            obcaecati. Deserunt, molestiae.
+                                        <h4 class="exp_title titulo_empleo">TESTER DE SOFTWARE</h4>
+                                        <div id="p_descripcion">
+                                            * Redaccion de informes sobre los problemas y mejoras del producto final.
+                                            <br>
+                                            * Ejecucion de pruebas manuales para pruebas funcionales y no funcionales.
+                                            <br>
+                                            * Control y seguimiento de la calidad deñl producto.
+                                            <br>
+                                            * Desarrollo y ejecucion de planes de prueba y procedimientos de garantia de calidad del software.
                                         </div>
                                     </div>
                                 </div>
@@ -1015,36 +1025,43 @@
                             <div class="formacion_academica">
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
-                                        <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
-                                        <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
-                                        <span id="estado">INCOMPLETO</span>
-                                        <span id="direccion">MARTIN FIERRO 4897</span>
+                                        <span id="periodo"><span id="fech_ini">02/2023</span><span> - </span><span id="fech_fin">04/2039</span></span> <br>
+                                        <span id="instituto" class="bold">UTN-Argentina Programa</span> <br>
+                                        <span id="carrera">ANALISTA DE TESTING QA: Testing de Software</span> <br>
+                                        <!-- <span id="estado">INCOMPLETO</span> no se si es relevante -->
+                                        <span id="ciudad">Moreno</span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
-                                        <div id="p_descripcion">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. A, voluptas laborum ipsum dolorem provident quisquam sit labore libero
-                                            pariatur, placeat perferendis sint distinctio nesciunt dolore voluptatem
-                                            quaerat eum laudantium facere?</div>
+                                        <div id="p_descripcion">Tecnicatura especializada en analisis de sistemas computacionales y tester de calidad de productos de software</div>
                                     </div>
                                 </div>
 
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
-                                        <span id="instituto">ISFT CARLOS PELLEGRINI 179</span> <br>
+                                        <span id="periodo"><span id="fech_ini">03/2022</span><span> - </span><span id="fech_fin">07/2023</span></span> <br>
+                                        <span id="instituto" class="bold">I.S.F.T 179 Dr. Carlos Pellegrini</span> <br>
                                         <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
-                                        <span id="grado">2 do</span> <br>
-                                        <span id="estado">INCOMPLETO</span>
-                                        <span id="direccion">MARTIN FIERRO 4897</span>
+                                        <span id="estado">En Curso</span>
+                                        <span id="ciudad">Moreno</span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
-                                        <div id="p_descripcion">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. A, voluptas laborum ipsum dolorem provident quisquam sit labore libero
-                                            pariatur, placeat perferendis sint distinctio nesciunt dolore voluptatem
-                                            quaerat eum laudantium facere?</div>
+                                        <div id="p_descripcion">Tecnicatura Superior en Analisis de Sistemas y programacion básica. Formacion en lenguajes de programacion como Python y lenguajes de servidor como PHP.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form_acad">
+                                    <div class="info">
+                                        <span id="periodo"><span id="fech_ini">02/2012</span><span> - </span><span id="fech_fin">12/2018</span></span> <br>
+                                        <span id="instituto" class="bold">Instituto Juan XXIII.</span> <br>
+                                        <span id="carrera">Bachillerato en Ciencias naturales</span> <br>
+                                        <span id="estado">Secunadario Completo</span>
+                                        <span id="ciudad">Moreno</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title">DESCRIPCION</h4>
+                                        <div id="p_descripcion">Tecnicatura Superior en Analisis de Sistemas y programacion básica. Formacion en lenguajes de programacion como Python y lenguajes de servidor como PHP.</div>
                                     </div>
                                 </div>
                             </div> <!--Fin de informacion academica-->
@@ -1055,16 +1072,14 @@
                             <div class="cursos">
 
                                 <div class="info">
-                                    <span id="periodo"><span id="fech_ini">20/07/2009</span><span> - </span><span id="fech_fin">20/08/2039</span></span> <br>
-                                    <span id="curso_insituto">INSTITUTO PEPITO</span>
+                                    <span id="periodo"><span id="fech_ini">07/2009</span><span> - </span><span id="fech_fin">05/2010</span></span> <br>
+                                    <span id="curso_insituto" class="bold">Educacion IT</span>
                                 </div>
                                 <div class="descripcion">
                                     <h4 class="exp_title">DESCRIPCION</h4>
                                     <div id="p_descripcion">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati cupiditate
-                                        culpa consectetur, possimus ipsam vitae doloribus recusandae quibusdam
-                                        blanditiis, aperiam voluptatum tempore dolore hic dolores numquam laudantium
-                                        quia eum! Rem.
+                                        Curso presencial con certificado en Maquetacion Web y Diseño de interfaces UI. CSS avanzado
+                                        y programacion orientada a web con Javascript.
                                     </div>
                                 </div>
                             </div>
@@ -1074,12 +1089,12 @@
                             <div class="referencias">
 
                                 <div class="info">
-                                    <span class="contacto">NOMBRE DEL CONTACTO</span> <br>
-                                    <span class="empresa_contacto">EMPRESA CONTACTO</span>
+                                    <span class="contacto bold">Esteban Reyes</span> <br>
+                                    <span class="empresa_contacto">Software Inc.</span>
                                 </div>
                                 <div class="descripcion">
-                                    <span id="">CORREOELECTROICO@GMAIL.COM</span>
-                                    <span id="tel-contacto">11039385575848</span>
+                                    <span id="">StebanReyes@GMAIL.COM</span>
+                                    <span id="tel-contacto">1165748292</span>
                                 </div>
                             </div>
 
