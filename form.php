@@ -967,10 +967,7 @@
                             <!-- perfil  -->
                             <div class="cv_perfil">
                                 <h4 class="main_title">PERFIL</h4>
-                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
-                                    necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
-                                    delectus inventore? Officia!</p>
+                                <p id="perfil_descripcion">Soy un tipo de trabajador que está acostumbrado al trabajo bajo presión, tengo varios años de experiencia en Analistra de sistemas informaticos y como Tester de calidad de software. me considero una persona resolutiva y analítica, con buen ánimo y capaz de resolver problemas complejos fácilmente.</p>
                             </div>
 
                             <!-- experiencia laboral  -->
@@ -979,7 +976,7 @@
                                 <div class="exp_lab">
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
-                                        <span id="empresa">LA SERENISIMA</span> <br>
+                                        <span id="empresa">TRABAJADOR INDEPENDIENTE</span> <br>
                                         <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">Desarrollador Web</span> -->
