@@ -249,7 +249,7 @@
                         </div>
                         <div class="field">
                             <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
-                            <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2[]">
+                            <input type="text" id="ciudad_empleo_2" name="ciudad_empleo[]">
                         </div>
                     </div>
                     <div class="columna_2">
@@ -277,7 +277,7 @@
                             </div>
                             <div class="field">
                                 <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
-                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3[]">
+                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo[]">
                             </div>
                         </div>
                         <div class="columna_2">
@@ -305,7 +305,7 @@
                                 </div>
                                 <div class="field">
                                     <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
-                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4[]">
+                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo[]">
                                 </div>
                             </div>
                             <div class="columna_2">
@@ -914,12 +914,12 @@
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="dirModal">Lincoln</span></li>
                                         <li>Localidad: <span id="localidadModal">moreno</span></li>
-                                        <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
-                                        <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
+                                        <li>Ciudad: <span id="ciudadModal">Buenos Aires</span></li>
+                                        <li>Nacionalidad: <span id="nacionalidadModal">Argentino</span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
                                         <li>Tel: <span id="telModal">1189237483</span></li>
-                                        <li>Tel alt: <span id="telefono_alternativo">1137387464</span></li>
+                                        <li>Tel alt: <span id="telefono_alternativoModal">1137387464</span></li>
                                         <li>Sitio: <span id="sitio_web">JorgeAlvarezportafolio.com.ar</span></li>
                                     </ul>
                                 </div>
