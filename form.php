@@ -236,9 +236,15 @@
                             <input type="date" id="hasta_empleo" name="hasta_empleo[]">
                         </div>
                     </div>
-                </div>
-                <!-- PAGINA LABORAL EXTRA 2 -->
             </div>
+            </div>
+            <div class="field">
+                <div class="label" for="descripcion_lab_1">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
+                    Describa sus logros y el enfoque de sus desempeños anteriores</P>
+            </div>
+                <textarea  class="text_area" name="descripcion_lab_1" id="descripcion_lab_1" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+            <!-- Experiencia laboral extra 1 -->
             <details>
                 <summary class="mas" id="ele">Agregar Mas Experiencia Laboral</summary>
                 <div class="experiencia_laboral">
@@ -265,8 +271,14 @@
                             </div>
                         </div>
                     </div>
-                    <!-- EXPEIENCIA LABORAL EXTRA 3 -->
                 </div>
+                <div class="field">
+                <div class="label" for="descripcion_lab_2">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
+                    Describa sus logros y el enfoque de sus desempeños anteriores</P>
+            </div>
+                <textarea  class="text_area" name="descripcion_lab_2" id="descripcion_lab_2" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                <!-- EXPEIENCIA LABORAL EXTRA 3 -->
                 <details>
                     <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                     <div class="experiencia_laboral">
@@ -293,8 +305,14 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- EXPERIENCIA LABORAL EXTRA 4 -->
                     </div>
+                    <div class="field">
+                <div class="label" for="descripcion_lab_3">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
+                    Describa sus logros y el enfoque de sus desempeños anteriores</P>
+                </div>
+                <textarea  class="text_area" name="descripcion_lab_3" id="descripcion_lab_3" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                    <!-- EXPERIENCIA LABORAL EXTRA 4 -->
                     <details>
                         <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                         <div class="experiencia_laboral">
@@ -323,6 +341,12 @@
                             </div>
 
                         </div>
+                        <div class="field">
+                            <div class="label" for="descripcion_lab_1">DESCRIPCION</div>
+                            <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
+                            Describa sus logros y el enfoque de sus desempeños anteriores</P>
+                        </div>
+                         <textarea  class="text_area" name="descripcion_lab_1" id="descripcion_lab_1" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
                     </details>
                 </details>
             </details>
@@ -462,8 +486,12 @@
                     </div>
                 </div>
             </div>
-            <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+            <div class="field">
+                <div class="label" for="desc_educacion_1">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su eduacion y las caracteristicas y/o especializaciones de su carrera</P>
+            </div>
+            <textarea  class="text_area" name="descripcion_lab_1[]" id="descripcion_lab_1" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
+
             <!-- educacion 2 -->
             <details>
                 <summary class="mas">Agregar Educacion</summary>
@@ -493,8 +521,11 @@
                         </div>
                     </div>
                 </div>
-                <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_educacion_2[]" id="desc_educacion_2" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                <div class="field">
+                <div class="label" for="desc_educacion_2">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su eduacion y las caracteristicas y/o especializaciones de su carrera</P>
+                </div>
+                <textarea  class="text_area" name="descripcion_lab_2[]" id="descripcion_lab_2" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
                 <details>
                     <summary class="mas">Agregar Educacion</summary>
                     <div class="educacion">
@@ -525,8 +556,11 @@
                         </div>
                     </div>
                     </div>
-                    <label for="">Descripcion</label>
-                    <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                    <div class="field">
+                    <div class="label" for="desc_educacion_3">DESCRIPCION</div>
+                    <P class="txt_info">Describa aquí su eduacion y las caracteristicas y/o especializaciones de su carrera</P>
+                    </div>
+                    <textarea  class="text_area" name="descripcion_lab_3[]" id="descripcion_lab_3" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
                     <details>
                         <summary class="mas">Agregar Educacion</summary>
                         <div class="educacion">
@@ -557,8 +591,11 @@
                             </div>
                         </div>
                         </div>
-                        <label for="">Descripcion</label>
-                        <textarea class="text_area" name="desc_educacion[]" id="desc_educacion" cols="" rows="" placeholder="Describa qui su educacion"></textarea>
+                        <div class="field">
+                        <div class="label" for="desc_educacion_4">DESCRIPCION</div>
+                        <P class="txt_info">Describa aquí su eduacion y las caracteristicas y/o especializaciones de su carrera</P>
+                        </div>
+                        <textarea  class="text_area" name="descripcion_lab_4[]" id="descripcion_lab_4" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
                         <details>
                             <summary class="mas">Agregar Educacion</summary>
 
@@ -601,8 +638,11 @@
                 </div>
             </div>
             </div>
-            <label for="">Descripcion</label>
-            <textarea class="text_area" name="desc_curso[]" id="desc_curso" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
+            <div class="field">
+                <div class="label" for="desc_curso_1">DESCRIPCION</div>
+                <P class="txt_info">Describa aquí su curso</P>
+            </div>
+                <textarea  class="text_area" name="desc_curso_1[]" id="desc_curso_1" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
             <!-- educacion 2 -->
             <details>
                 <summary class="mas">Agregar Curso</summary>
@@ -633,8 +673,11 @@
                     </div>
                 </div>
                 </div>
-                <label for="">Descripcion</label>
-                <textarea class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="" rows="" placeholder="Describa aqui su curso"></textarea>
+                <div class="field">
+                    <div class="label" for="desc_curso_2">DESCRIPCION</div>
+                    <P class="txt_info">Describa aquí su curso</P>
+                </div>
+                <textarea  class="text_area" name="desc_curso_2[]" id="desc_curso_2" cols="20" rows="5" placeholder="Describa aqui su educacion"></textarea>
             </details>
 
             <!-- IDIOMAS -->
