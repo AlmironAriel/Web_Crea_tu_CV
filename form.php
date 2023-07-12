@@ -134,26 +134,22 @@
                             <div id="mensaje_tel_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <div class="field">
+                            <div class="label" for="tel">Telefono Alternativo</div>
+                            <input type="tel_alt" id="tel_alt" name="tel_alt">
+                            <div id="check_tel" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_tel_error" class="errores">Ingrese un telefono valido</div>
+                        </div>
+                        <div class="field">
                             <div class="label" for="cod_postal">Codigo Postal</div>
                             <input type="number" id="cod_postal" name="cod_postal">
                             <div id="check_cp" class="check"><i class="fa-regular fa-circle-check"></i></div>
                             <div id="mensaje_cp_error" class="errores">Ingrese un telefono valido</div>
                         </div>
-                        <!-- <div class="field">
-                            <div class="label" for="lic_cond">Licencia de Conducir</div>
-                            <input type="text" id="lic_con" name="lic_con" placeholder="A, B, C">
-                        </div> -->
                         <div class="field">
                             <div class="label" for="fech_nac">Fecha de Nacimiento</div>
                             <input type="date" id="fech_nac" name="fech_nac" required format="DD-MM-YYYY">
                             <div id="check_nacimiento" class="check"><i class="fa-regular fa-circle-check"></i></div>
                             <div id="mensaje_nacimiento_error" class="errores">Ingrese una fecha valida</div>
-                        </div>
-                        <div class="field">
-                            <div class="label" for="nacionalidad">Nacionalidad</div>
-                            <input type="text" id="nac" name="nac">
-                            <div id="check_nac" class="check"><i class="fa-regular fa-circle-check"></i></div>
-                            <div id="mensaje_nac_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                     </div> <!-- termina la columna 1-->
 
@@ -165,10 +161,22 @@
                             <div id="mensaje_dir_error" class="errores">Ingrese una direccion valida</div>
                         </div>
                         <div class="field">
-                            <div class="label" for="ciudad">Ciudad/Region</div>
+                            <div class="label" for="nacionalidad">Nacionalidad</div>
+                            <input type="text" id="nac" name="nac">
+                            <div id="check_nac" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_nac_error" class="errores">Ingrese un telefono valido</div>
+                        </div>
+                        <div class="field">
+                            <div class="label" for="ciudad">Ciudad</div>
                             <input type="text" id="ciudad" name="ciudad">
                             <div id="check_ciudad" class="check"><i class="fa-regular fa-circle-check"></i></div>
                             <div id="mensaje_ciudad_error" class="errores">Ingrese una ciudad valida</div>
+                        </div>
+                         <div class="field">
+                            <div class="label" for="localidad">Localidad</div>
+                            <input type="text" id="localidad" name="localidad">
+                            <div id="check_localidad" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_ciudad_error" class="errores">Ingrese una localidad valida</div>
                         </div>
                         <div class="field">
                             <div class="label">Genero</div>
@@ -210,8 +218,8 @@
                         <input type="text" id="empleo" name="empleo[]">
                     </div>
                     <div class="field">
-                        <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
-                        <input type="text" id="ciudad_empleo_1" name="ciudad_empleo_1[]">
+                        <div class="label" for="localidad_empleo_1">Localidad</div>
+                        <input type="text" id="localidad_empleo_1" name="localidad_empleo_1[]">
                     </div>
                 </div>
                 <div class="columna_2">
@@ -238,8 +246,8 @@
                             <input type="text" id="empleo" name="empleo[]">
                         </div>
                         <div class="field">
-                            <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
-                            <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2[]">
+                            <div class="label" for="loalidad_empleo_2">Localidad</div>
+                            <input type="text" id="loalidad_empleo_2" name="loalidad_empleo_2[]">
                         </div>
                     </div>
                     <div class="columna_2">
@@ -266,8 +274,8 @@
                                 <input type="text" id="empleo_3" name="empleo_3[]">
                             </div>
                             <div class="field">
-                                <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
-                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3[]">
+                                <div class="label" for="localidad_empleo_3">Localidad</div>
+                                <input type="text" id="localidad_empleo_3" name="localidad_empleo_3[]">
                             </div>
                         </div>
                         <div class="columna_2">
@@ -294,8 +302,8 @@
                                     <input type="text" id="empleo_4" name="empleo_4[]">
                                 </div>
                                 <div class="field">
-                                    <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
-                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4[]">
+                                    <div class="label" for="localidad_empleo_4">Localidad</div>
+                                    <input type="text" id="localidad_empleo_4" name="localidad_empleo_4[]">
                                 </div>
                             </div>
                             <div class="columna_2">
@@ -419,8 +427,8 @@
                         <input type="text" id="carrera" name="carrera">
                     </div>
                     <div class="field">
-                        <div class="label" for="ciudad_insti">Ciudad/region</div>
-                        <input type="text" id="ciudad_insti" name="ciudad_insti[]">
+                        <div class="label" for="localidad_insti">Localidad</div>
+                        <input type="text" id="localidad_insti" name="localidad_insti[]">
                     </div>
                 </div>
                 <!-- columna 2 -->
@@ -464,8 +472,8 @@
                             <input type="text" id="instituto_2" name="instituto_2[]">
                         </div>
                         <div class="field">
-                            <div class="label" for="ciudad_insti_2">Ciudad/region</div>
-                            <input type="text" id="ciudad_insti_2" name="ciudad_insti_2[]">
+                            <div class="label" for="localidad_insti_2">Localidad</div>
+                            <input type="text" id="localidad_insti_2" name="localidad_insti_2[]">
                         </div>
                     </div>
                     <!-- columna 2 -->
@@ -495,8 +503,8 @@
                                 <input type="text" id="instituto_3" name="instituto_3[]">
                             </div>
                             <div class="field">
-                                <div class="label" for="ciudad_insti_3">Ciudad/region</div>
-                                <input type="text" id="ciudad_insti_3" name="ciudad_insti_3[]">
+                                <div class="label" for="localidad_insti_3">Localidad</div>
+                                <input type="text" id="localidad_insti_3" name="localidad_insti_3[]">
                             </div>
                         </div>
                         <!-- columna 2 -->
@@ -527,8 +535,8 @@
                                     <input type="text" id="instituto_4" name="instituto_4[]">
                                 </div>
                                 <div class="field">
-                                    <div class="label" for="ciudad_insti_4">Ciudad/region</div>
-                                    <input type="text" id="ciudad_insti_4" name="ciudad_insti_4[]">
+                                    <div class="label" for="localidad_insti_4">Localidad</div>
+                                    <input type="text" id="localidad_insti_4" name="localidad_insti_4[]">
                                 </div>
                             </div>
                             <!-- columna 2 -->
@@ -910,6 +918,7 @@
                                         </li>
                                         <li>Tel: <span id="telModal">1189237483</span></li>
                                         <li>Tel alt: <span id="telefono_alternativo">1137387464</span></li>
+                                        <li>Sitio: <span id="sitio_web">JorgeAlvarezportafolio.com.ar</span></li>
                                     </ul>
                                 </div>
 
