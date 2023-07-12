@@ -7,38 +7,35 @@ $(document).ready(function () {
     var datos = [];
     var timeoutId; // Variable para almacenar el ID del timeout
 
+    $('#dataForm').on('input', function () {
+        var formData = $('#dataForm').serialize();
 
-    function validarName() {
-
-        var nombre = $('#name').val();
-        if (nombre && nombre.trim().length > 2 && /^[A-Z].*/g.test(nombre) && nombre[0] === nombre[0].toUpperCase()) {
-            $('#mensaje_nombre_error').fadeOut();
-            $('#check_nombre').fadeIn();
-            $('#name').css({
-                'border': '3px solid green'
-            });
-            $('#nombreModal').html(nombre);
-            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
-                // Muestra la vista previa en un iframe
-                const previewFrame = document.getElementById('preview');
-                previewFrame.src = pdf.output('datauristring');
-                previewFrame.style.display = 'block';
-            });
-        } else {
-            $('#mensaje_nombre_error').fadeIn();
-            $('#check_nombre').fadeOut();
-            $('#name').css({
-                'border': '3px solid red'
-            });
-        }
-    }
-    document.getElementById("name").addEventListener("input", function (e) {
-        e.preventDefault();
-        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarName, 1000); // Validar después de 1 segundo (1000 ms)
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var experiencias = JSON.parse(response);
+                function validarName(nombre) {
+                    if (nombre && nombre.trim().length > 2 && /^[A-Z].*/g.test(nombre) && nombre[0] === nombre[0].toUpperCase()) {
+                        $('#mensaje_nombre_error').fadeOut();
+                        $('#check_nombre').fadeIn();
+                        $('#name').css({
+                            'border': '3px solid green'
+                        });
+                        $('#nombreModal').html(nombre);
+                    } else {
+                        $('#mensaje_nombre_error').fadeIn();
+                        $('#check_nombre').fadeOut();
+                        $('#name').css({
+                            'border': '3px solid red'
+                        });
+                    }
+                }
+                validarName(experiencias.nombre);
+            }
+        });
     });
-
-
 
     function validarApellido() {
         var apellido = $('#apellido').val();
@@ -113,18 +110,19 @@ $(document).ready(function () {
             $('#email').css({
                 'border': '3px solid red'
             });
+
+        } else {
+            $('#mensaje_email_error').fadeOut();
+            $('#check_email').fadeIn();
+            $('#email').css({
+                'border': '3px solid green'
+            });
             $('#emailModal').html(email);
             html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
                 // Muestra la vista previa en un iframe
                 const previewFrame = document.getElementById('preview');
                 previewFrame.src = pdf.output('datauristring');
                 previewFrame.style.display = 'block';
-            });
-        } else {
-            $('#mensaje_email_error').fadeOut();
-            $('#check_email').fadeIn();
-            $('#email').css({
-                'border': '3px solid green'
             });
         }
 
@@ -329,9 +327,9 @@ $(document).ready(function () {
         timeoutId = setTimeout(validarGenero, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
-    function validarNac(){
+    function validarNac() {
         var nac = $('#nac').val();
-        if (nac ) {
+        if (nac) {
             $('#mensaje_nac_error').fadeOut();
             $('#check_nac').fadeIn();
             $('#nac').css({
@@ -352,7 +350,7 @@ $(document).ready(function () {
             });
         }
     }
-    
+
 
     document.getElementById("nac").addEventListener("input", function (e) {
         e.preventDefault();
@@ -361,7 +359,7 @@ $(document).ready(function () {
     });
 
 
-    function validarCiudad(){
+    function validarCiudad() {
         var ciudad = $('#ciudad').val();
         if (ciudad) {
             $('#mensaje_ciudad_error').fadeOut();
@@ -391,7 +389,7 @@ $(document).ready(function () {
         timeoutId = setTimeout(validarCiudad, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
-    function validarPerfil(){
+    function validarPerfil() {
         var perfil = $('#info_perfil').val();
         if (perfil) {
             $('#mensaje_ciudad_error').fadeOut();
@@ -421,41 +419,42 @@ $(document).ready(function () {
         timeoutId = setTimeout(validarPerfil, 1000); // Validar después de 1 segundo (1000 ms)
     });
 
-    function validarEmpleo(){
-        var empleo = [];
-        empleo = document.querySelectorAll("#empleo");
-        if (empleo) {
-            $('#mensaje_empleo_error').fadeOut();
-            $('#check_empleo').fadeIn();
-            $('#empleo').css({
-                'border': '3px solid green'
-            });
-            for (let i = 1; i < empleo.length; i++) {
-                $('#empleoModal').html(empleo[i].value);
-                
+
+    $('#dataForm').on('input', 'input[name^="empleo"], input[name^="ciudad_empleo"], input[name^="empresa_empleo"], input[name^="desde_empleo"], input[name^="hasta_empleo"]', function () {
+        var formData = $('#dataForm').serialize();
+        console.log(formData);
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var experiencias = JSON.parse(response);
+                console.log(experiencias);
+                // Mostrar datos en secciones diferentes
+                $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
+
+                for (var i = 0; i < experiencias.experiencias.length; i++) {
+                    var experiencia = experiencias.experiencias[i];
+                    var experienciaHTML = '<div class="exp_lab">' +
+                        '<div class="info">' +
+                        '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
+                        '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
+                        '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
+                        '<div class="descripcion">' +
+                        '<h4 class="exp_title titulo_empleo">' + experiencia.titulo_empleo + '</h4>' +
+                        '<div id="p_descripcion">' +
+                        '<p>' + experiencia.descripcion + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+
+                    $('#expe_laboral').append(experienciaHTML);
+                }
             }
-            
-            html2pdf().set(opt).from(curriculumElement).toPdf().get('pdf').then(function (pdf) {
-                // Muestra la vista previa en un iframe
-                const previewFrame = document.getElementById('preview');
-                previewFrame.src = pdf.output('datauristring');
-                previewFrame.style.display = 'block';
-            });
-        } else {
-            $('#mensaje_empleo_error').fadeIn();
-            $('#check_empleo').fadeOut();
-            $('#empleo').css({
-                'border': '3px solid red'
-            });
-        }
-    }
-
-    document.getElementById("empleo").addEventListener("input", function (e) {
-        e.preventDefault();
-        clearTimeout(timeoutId); // Limpiar el timeout existente (si lo hay)
-        timeoutId = setTimeout(validarEmpleo, 5000); // Validar después de 1 segundo (1000 ms)
+        });
     });
-
 
 
     const curriculumElement = document.getElementById('resume');
@@ -477,31 +476,6 @@ $(document).ready(function () {
         previewFrame.style.display = 'block';
     });
 
-    $('#dataForm').submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: './php/data.php',
-            data: $(this).serialize(),
-            success: function (response) {
-                swal({
-                    title: "Datos agregados correctamente",
-                    text: "Acceda a la vista previa del curriculum",
-                    icon: "success",
-                    button: "Aceptar",
-                });
 
-                var jsonData = JSON.parse(response);
-
-                console.log(jsonData);
-
-                $('#nombreModal').html(jsonData.nombre);
-                $('#apellidoModal').html(jsonData.apellido);
-                $('#dniModal').html(jsonData.dni);
-                $('#estado_civilModal').html(jsonData.estadoCivil);
-                $('#emailModal').html(jsonData.email);
-            }
-        })
-    });
 
 });

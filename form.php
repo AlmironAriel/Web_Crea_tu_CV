@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/nocturno.css">
-    <!-- <link rel="stylesheet" href="./css/iframe.css"> -->
+    <link rel="stylesheet" href="./css/iframe.css">
     <link rel="stylesheet" href="http://localhost/web%20crea%20tu%20cv/Web_Crea_tu_CV/css/iframe.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
     <title>Formulario</title>
@@ -74,7 +74,7 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form id="dataForm" method="post">
+        <form id="dataForm">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
                 <div class="columna_1">
@@ -195,7 +195,7 @@
                 <P class="txt_info">Los reclutadores y gerentes de RRHH pasan un promedio de 6 segundos mirando un
                     curriculum. <br>
                     Mantenelo corto pero conciso. Escribi sobre vos y tu experiencia en tres o cuatro oraciones.</P>
-                <textarea  class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                <textarea class="text_area" name="info_perfil" id="info_perfil" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
             </div>
 
             <!-- EXPERIENCIA LABORAL -->
@@ -206,24 +206,26 @@
             <div class="experiencia_laboral">
                 <div class="columna_1">
                     <div class="field">
-                        <div class="label" for="empleo_1">Titulo del Empleo</div>
+                        <div class="label" for="empleo">Titulo del Empleo</div>
                         <input type="text" id="empleo" name="empleo[]">
+                        <div id="check_empleo" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                        <div id="mensaje_empleo_error" class="errores">Ingrese un empleo valido</div>
                     </div>
                     <div class="field">
-                        <div class="label" for="ciudad_empleo_1">Ciudad/Region</div>
-                        <input type="text" id="ciudad_empleo_1" name="ciudad_empleo_1[]">
+                        <div class="label" for="ciudad_empleo">Ciudad/Region</div>
+                        <input type="text" id="ciudad_empleo" name="ciudad_empleo[]">
                     </div>
                 </div>
                 <div class="columna_2">
                     <div class="field">
-                        <div class="label" for="empresa_empleo_1">Empresa</div>
-                        <input type="text" id="empresa_empleo_1" name="empresa_empleo_1[]">
+                        <div class="label" for="empresa_empleo">Empresa</div>
+                        <input type="text" id="empresa_empleo" name="empresa_empleo[]">
                     </div>
                     <div class="periodo_empleo">
                         <div class="field">
-                            <div class="label" for="desde_empleo_1">Periodo</div>
-                            <input type="date" id="desde_empleo_1" name="desde_empleo_[]">
-                            <input type="date" id="hasta_empleo_1" name="hasta_empleo_[]">
+                            <div class="label" for="desde_empleo">Periodo</div>
+                            <input type="date" id="desde_empleo" name="desde_empleo[]">
+                            <input type="date" id="hasta_empleo" name="hasta_empleo[]">
                         </div>
                     </div>
                 </div>
@@ -234,24 +236,24 @@
                 <div class="experiencia_laboral">
                     <div class="columna_1">
                         <div class="field">
-                            <div class="label" for="empleo_2">Titulo del Empleo</div>
+                            <div class="label" for="empleo">Titulo del Empleo</div>
                             <input type="text" id="empleo" name="empleo[]">
                         </div>
                         <div class="field">
-                            <div class="label" for="ciudad_empleo_2">Ciudad/Region</div>
-                            <input type="text" id="ciudad_empleo_2" name="ciudad_empleo_2[]">
+                            <div class="label" for="ciudad_empleo">Ciudad/Region</div>
+                            <input type="text" id="ciudad_empleo" name="ciudad_empleo[]">
                         </div>
                     </div>
                     <div class="columna_2">
                         <div class="field">
-                            <div class="label" for="empresa_empleo_2">Empresa</div>
-                            <input type="text" id="empresa_empleo_2" name="empresa_empleo_2[]">
+                            <div class="label" for="empresa_empleo">Empresa</div>
+                            <input type="text" id="empresa_empleo" name="empresa_empleo[]">
                         </div>
                         <div class="periodo_empleo">
                             <div class="field">
                                 <div class="label" for="desde_empleo_2">Periodo</div>
-                                <input type="date" id="desde_empleo_2" name="desde_empleo_2[]">
-                                <input type="date" id="hasta_empleo_2" name="hasta_empleo_2[]">
+                                <input type="date" id="desde_empleo_2" name="desde_empleo[]">
+                                <input type="date" id="hasta_empleo_2" name="hasta_empleo[]">
                             </div>
                         </div>
                     </div>
@@ -262,24 +264,24 @@
                     <div class="experiencia_laboral">
                         <div class="columna_1">
                             <div class="field">
-                                <div class="label" for="empleo_3">Titulo del Empleo</div>
-                                <input type="text" id="empleo_3" name="empleo_3[]">
+                                <div class="label" for="empleo">Titulo del Empleo</div>
+                                <input type="text" id="empleo_3" name="empleo[]">
                             </div>
                             <div class="field">
                                 <div class="label" for="ciudad_empleo_3">Ciudad/Region</div>
-                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo_3[]">
+                                <input type="text" id="ciudad_empleo_3" name="ciudad_empleo[]">
                             </div>
                         </div>
                         <div class="columna_2">
                             <div class="field">
                                 <div class="label" for="empresa_empleo_3">Empresa</div>
-                                <input type="text" id="empresa_empleo_3" name="empresa_empleo_3[]">
+                                <input type="text" id="empresa_empleo_3" name="empresa_empleo[]">
                             </div>
                             <div class="periodo_empleo">
                                 <div class="field">
                                     <div class="label" for="desde_empleo_3">Periodo</div>
-                                    <input type="date" id="desde_empleo_3" name="desde_empleo3[]">
-                                    <input type="date" id="hasta_empleo_3" name="hasta_empleo3[]">
+                                    <input type="date" id="desde_empleo_3" name="desde_empleo[]">
+                                    <input type="date" id="hasta_empleo_3" name="hasta_empleo[]">
                                 </div>
                             </div>
                         </div>
@@ -291,23 +293,23 @@
                             <div class="columna_1">
                                 <div class="field">
                                     <div class="label" for="empleo_4">Titulo del Empleo</div>
-                                    <input type="text" id="empleo_4" name="empleo_4[]">
+                                    <input type="text" id="empleo_4" name="empleo[]">
                                 </div>
                                 <div class="field">
                                     <div class="label" for="ciudad_empleo_4">Ciudad/Region</div>
-                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo_4[]">
+                                    <input type="text" id="ciudad_empleo_4" name="ciudad_empleo[]">
                                 </div>
                             </div>
                             <div class="columna_2">
                                 <div class="field">
                                     <div class="label" for="empresa_empleo_4">Empresa</div>
-                                    <input type="text" id="empresa_empleo_4" name="empresa_empleo_4[]">
+                                    <input type="text" id="empresa_empleo_4" name="empresa_empleo[]">
                                 </div>
                                 <div class="periodo_empleo">
                                     <div class="field">
                                         <div class="label" for="desde_empleo_4">Periodo</div>
-                                        <input type="date" id="desde_empleo_4" name="desde_empleo_4[]">
-                                        <input type="date" id="hasta_empleo_4" name="hasta_empleo_4[]">
+                                        <input type="date" id="desde_empleo_4" name="desde_empleo[]">
+                                        <input type="date" id="hasta_empleo_4" name="hasta_empleo[]">
                                     </div>
                                 </div>
                             </div>
@@ -899,11 +901,11 @@
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
                                         <li>Fecha de nacimiento: <span id="nacimientoModal">20/06/2002</span></li>
-                                        <li>Genero: <span id="genero"></span></li>
+                                        <li>Genero: <span id="generoModal"></span></li>
                                         <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
                                         <li>DNI: <span id="dniModal">94485324</span></li>
                                         <li>Direccion: <span id="dirModal">Lincoln</span></li>
-                                        <li>Localidad: <span id="localidad">moreno</span></li>
+                                        <li>Localidad: <span id="localidadModal">moreno</span></li>
                                         <li>Ciudad: <span id="ciudad">Buenos Aires</span></li>
                                         <li>Nacionalidad: <span id="nacionalidad">Argentino</span></li>
                                         <li>Email: <span id="emailModal"></span>
@@ -958,7 +960,7 @@
                             <!-- perfil  -->
                             <div class="cv_perfil">
                                 <h4 class="main_title">PERFIL</h4>
-                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                <p id="perfilModal">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                     Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
                                     necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
                                     delectus inventore? Officia!</p>
@@ -966,12 +968,12 @@
 
                             <!-- experiencia laboral  -->
                             <h4 class="main_title">EXPERIENCIA LABORAL</h4>
-                            <div class="expe_laboral">
+                            <div id="expe_laboral" class="expe_laboral">
                                 <div class="exp_lab">
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span> <br>
-                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <strong>RUBRO:</strong><span id="empleoModal-1">SISTEMAS</span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">Desarrollador Web</span> -->
                                     </div>
@@ -979,9 +981,9 @@
                                         <h4 class="exp_title titulo_empleo">DESARROLLADOR WEB</h4>
                                         <div id="p_descripcion">
                                             * Desarrollador de páginas y sitios funcionales <br>
-                                                e intuitivos para el usuario. <br>
+                                            e intuitivos para el usuario. <br>
                                             * Trabajo con distintas bases de datos y contextos <br>
-                                                back-end y front-end <br>
+                                            back-end y front-end <br>
                                             * Uso de diferentes lenguajes de programacion y de herramientas de desarrollo apropiadas a cada proyecto.
                                         </div>
                                     </div>
@@ -991,7 +993,7 @@
                                     <div class="info">
                                         <span id="fech_ini">02/2015</span><span> - </span><span id="fech_fin">07/2021</span> <br>
                                         <span id="empresa" class="bold">SOFTWARE INC.</span> <br>
-                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <strong>RUBRO:</strong><span id="empleoModal-2">SISTEMAS</span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">TESTER DE SOFTWARE</span> -->
                                     </div>
