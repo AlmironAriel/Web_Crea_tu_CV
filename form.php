@@ -1092,7 +1092,7 @@
                                     <div class="info">
                                         <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
                                         <span id="empresa">LA SERENISIMA</span> <br>
-                                        <strong>RUBRO:</strong><span id="rubro">SISTEMAS</span>
+                                        <strong>PUESTO:</strong><span id="rubro">SISTEMAS</span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">Desarrollador Web</span> -->
                                     </div>
@@ -1112,7 +1112,7 @@
                                     <div class="info">
                                         <span id="fech_ini">02/2015</span><span> - </span><span id="fech_fin">07/2021</span> <br>
                                         <span id="empresa" class="bold">SOFTWARE INC.</span> <br>
-                                        <strong>RUBRO:</strong><span id="empleoModal-2">SISTEMAS</span>
+                                        <strong>PUESTO:</strong><span id="empleoModal-2">SISTEMAS</span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">TESTER DE SOFTWARE</span> -->
                                     </div>
