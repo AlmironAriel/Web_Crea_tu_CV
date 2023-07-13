@@ -471,7 +471,7 @@
                     <div class="field">
                         <div class="label" for="grado">Grado</div>
                         <select name="grado_instituto[]" id="grado_instituto">
-                            <option value="#">Grado</option>
+                            <option value="">Grado</option>
                             <option value="secundario">Secunadario</option>
                             <option value="terciario">Terciario</option>
                             <option value="universitario">Universitario</option>
@@ -480,7 +480,7 @@
                     <div class="field">
                         <div class="label" for="">Estado</div>
                         <select name="estado_carrera[]" id="estado_carrera">
-                            <option value="#">Estado</option>
+                            <option value="">Estado</option>
                             <option value="en_curso">En Curso</option>
                             <option value="terminado">Terminado</option>
                             <option value="incompleto">Incompleto</option>
@@ -1181,6 +1181,7 @@
 
                             <!-- CURSOS  -->
                             <h4 class="main_title">CURSOS</h4>
+                            <div id="cursos_contenedor">
                             <div class="cursos">
 
                                 <div class="info">
@@ -1195,6 +1196,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                             <!-- REFERENCIAS  -->
                             <h4 class="main_title">REFERENCIAS</h4>
