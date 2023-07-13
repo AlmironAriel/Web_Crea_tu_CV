@@ -469,7 +469,6 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var educacion = JSON.parse(response);
-                console.log(educacion);
 
                 $('#formacion_academica').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
                 if (educacion.educacion.instituto !== "" || educacion.educacion.carrera !== ""  || educacion.educacion.localidad !== "" || educacion.educacion.grado !== "" || educacion.educacion.estado !== "" || educacion.educacion.desde !== "" || educacion.educacion.hasta !== "") {
@@ -519,6 +518,45 @@ $(document).ready(function () {
 
         });
 
+    });
+
+    $('#dataForm').on('input', 'input[name^="nomb_curso"], input[name^="perdiodo_curso_desde"], input[name^="instituto_curso"], input[name^="perdiodo_curso_hasta"], textarea[name^="desc_curso"]', function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var cursos = JSON.parse(response);
+                console.log(cursos);
+
+                $('#cursos_contenedor').empty();
+
+                if (cursos.cursos.curso !== "" || cursos.cursos.desde !== "" || cursos.cursos.instituto !== "" || cursos.cursos.hasta !== "" || cursos.cursos.descripcion !== "") {
+                    for (var i = 0; i < cursos.cursos.length; i++) {
+                        var curso = cursos.cursos[i];
+                        var cursoHTML = '<div class="cursos">'+
+                                            '<div class="info">'+
+                                                '<span id="periodo">'+'<span id="fech_ini">'+curso.desde+'</span>'+'<span>'+ ' - '+ '</span>'+'<span id="fech_fin">'+curso.hasta+'</span>'+'</span>'+ '<br>'+
+                                                '<span id="nombre_curso" class="bold">' + curso.curso + '</span>' +
+                                                '<span id="curso_insituto" class="bold">'+curso.instituto+'</span>'+
+                                            '</div>'+
+                                            '<div class="descripcion">'+
+                                                '<h4 class="exp_title">'+'DESCRIPCION'+'</h4>'+
+                                                '<div id="p_descripcion">'+
+                                                    curso.descripcion
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>';
+
+                        $('#cursos_contenedor').append(cursoHTML);
+                    }
+                }
+
+
+            }
+        });
     });
 
 

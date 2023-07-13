@@ -715,23 +715,23 @@
                     <div class="columna_1">
                         <div class="field">
                             <div class="label" for="nom_curso_2">Nombre del Curso</div>
-                            <input type="text" id="nomb_curso_2" name="nomb_curso_2[]">
+                            <input type="text" id="nomb_curso_2" name="nomb_curso[]">
                         </div>
                         <div class="field">
                             <div class="label" for="perdiodo_curso_2">Periodo (desde)</div>
-                            <input type="date" id="perdiodo_curso_desde_2" name="perdiodo_curso_desde_2[]">
+                            <input type="date" id="perdiodo_curso_desde_2" name="perdiodo_curso_desde[]">
                         </div>
                     </div>
                     <!-- columna 2 -->
                     <div class="columna_2">
                         <div class="field">
                             <div class="label" for="intituto_curso_2">Instituto</div>
-                            <input type="text" id="instituto_curso_2" name="instituto_curso_2[]">
+                            <input type="text" id="instituto_curso_2" name="instituto_curso[]">
                         </div>
                         <div class="periodo_empleo">
                             <div class="field">
                                 <div class="label" for="periodo_curso_2">(Hasta)</div>
-                                <input type="date" id="perdiodo_curso_hasta_2" name="perdiodo_curso_hasta_2[]">
+                                <input type="date" id="perdiodo_curso_hasta_2" name="perdiodo_curso_hasta[]">
                             </div>
                         </div>
                     </div>
@@ -754,7 +754,7 @@
                 <div class="columna_1">
                     <div class="field">
                         <div class="label" for="idioma">Idioma</div>
-                        <select name="idioma" []>
+                        <select name="idioma[]" >
                             <option>Seleccione un Idioma</option>
                             <option value="ingles">Ingles</option>
                             <option value="frances">Frances</option>
@@ -769,7 +769,7 @@
                 <div class="columna_2">
                     <div class="field">
                         <div class="label" for="nivel_idioma">Nivel</div>
-                        <select name="idioma" []>
+                        <select name="idioma_nivel[]" >
                             <option value="#">Nivel</option>
                             <option value="nativo">Nativo</option>
                             <option value="basico">Basico</option>
@@ -791,7 +791,7 @@
                     <div class="columna_1">
                         <div class="field">
                             <div class="label" for="idioma_2">Idioma</div>
-                            <select name="idioma" []>
+                            <select name="idioma[]">
                                 <option>Seleccione un Idioma</option>
                                 <option value="ingles">Ingles</option>
                                 <option value="frances">Frances</option>
@@ -806,7 +806,7 @@
                     <div class="columna_2">
                         <div class="field">
                             <div class="label" for="nivel_idioma_2">Nivel</div>
-                            <select name="idioma" []>
+                            <select name="idioma_nivel[]" >
                                 <option value="#">Nivel</option>
                                 <option value="nativo">nativo</option>
                                 <option value="Avanzado">Avanzado</option>
@@ -829,7 +829,7 @@
                         <div class="columna_1">
                             <div class="field">
                                 <div class="label" for="idioma_3">Idioma</div>
-                                <select name="idioma" []>
+                                <select name="idioma[]">
                                     <option>Seleccione un Idioma</option>
                                     <option value="ingles">Ingles</option>
                                     <option value="frances">Frances</option>
@@ -844,7 +844,7 @@
                         <div class="columna_2">
                             <div class="field">
                                 <div class="label" for="nivel_idioma_3">Nivel</div>
-                                <select name="idioma" []>
+                                <select name="idioma_nivel[]">
                                     <option value="#">Nivel</option>
                                     <option value="nativo">nativo</option>
                                     <option value="Avanzado">Avanzado</option>
@@ -867,7 +867,7 @@
                             <div class="columna_1">
                                 <div class="field">
                                     <div class="label" for="idioma_4">Idioma</div>
-                                    <select name="idioma" []>
+                                    <select name="idioma[]" >
                                         <option>Seleccione un Idioma</option>
                                         <option value="ingles">Ingles</option>
                                         <option value="frances">Frances</option>
@@ -882,7 +882,7 @@
                             <div class="columna_2">
                                 <div class="field">
                                     <div class="label" for="nivel_idioma_4">Nivel</div>
-                                    <select name="idioma" []>
+                                    <select name="idioma_nivel[]">
                                         <option value="#">Nivel</option>
                                         <option value="nativo">nativo</option>
                                         <option value="Avanzado">Avanzado</option>
