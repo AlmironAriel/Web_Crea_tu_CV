@@ -132,7 +132,7 @@ $(document).ready(function () {
                 }
 
                 function validarTel(tel) {
-                    const tel_limpio = tel.replace(/\s+/g, '').replace(/-/g, '');
+                     const tel_limpio = tel.replace(/\s+/g, '').replace(/-/g, '');
                     if (tel_limpio && tel_limpio.trim().length > 2 && /^[0-9].*/g.test(tel_limpio) && expr_tel.test(tel_limpio)) {
                         $('#mensaje_tel_error').fadeOut();
                         $('#check_tel').fadeIn();
