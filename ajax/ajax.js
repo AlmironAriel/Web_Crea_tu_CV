@@ -546,8 +546,7 @@ $(document).ready(function () {
                                                 '<h4 class="exp_title">'+'DESCRIPCION'+'</h4>'+
                                                 '<div id="p_descripcion">'+
                                                     curso.descripcion
-                                                '</div>'+
-                                            '</div>'+
+                                             '</div>'+
                                         '</div>';
 
                         $('#cursos_contenedor').append(cursoHTML);

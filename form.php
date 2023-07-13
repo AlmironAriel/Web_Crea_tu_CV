@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/nocturno.css">
     <link rel="stylesheet" href="./css/iframe.css">
-    <link rel="stylesheet" href="http://localhost/web%20crea%20tu%20cv/Web_Crea_tu_CV/css/iframe.css">
+    <link rel="stylesheet" href="/http://localhost/web%20crea%20tu%20cv/Web_Crea_tu_CV/css/iframe.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/all.css" rel="stylesheet">
     <title>Formulario</title>
 </head>
