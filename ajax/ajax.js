@@ -6,7 +6,7 @@ $(document).ready(function () {
     const expr_cp = /^\d{4}$/;
     var timeoutId; // Variable para almacenar el ID del timeout
 
-    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "info_perfil"], select[name^="estado_civil"]', function () {
+    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
         var formData = $('#dataForm').serialize();
 
         $.ajax({
@@ -33,8 +33,8 @@ $(document).ready(function () {
                         });
                     }
                 }
-                
-                if(datos.datos.nombre){
+
+                if (datos.datos.nombre) {
                     validarName(datos.datos.nombre);
 
                 }
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
                 }
 
-                if (datos.datos.email ) {
+                if (datos.datos.email) {
                     validarEmail(datos.datos.email);
 
                 }
@@ -132,7 +132,7 @@ $(document).ready(function () {
                 }
 
                 function validarTel(tel) {
-                     const tel_limpio = tel.replace(/\s+/g, '').replace(/-/g, '');
+                    const tel_limpio = tel.replace(/\s+/g, '').replace(/-/g, '');
                     if (tel_limpio && tel_limpio.trim().length > 2 && /^[0-9].*/g.test(tel_limpio) && expr_tel.test(tel_limpio)) {
                         $('#mensaje_tel_error').fadeOut();
                         $('#check_tel').fadeIn();
@@ -149,15 +149,15 @@ $(document).ready(function () {
                     }
                 }
 
-                if(datos.datos.tel){
+                if (datos.datos.tel) {
                     validarTel(datos.datos.tel);
 
                 }
 
 
-                
 
-                function validarDir() {
+
+                function validarDir(dir) {
                     if (dir && expr_dir.test(dir)) {
                         $('#mensaje_dir_error').fadeOut();
                         $('#check_dir').fadeIn();
@@ -174,7 +174,7 @@ $(document).ready(function () {
                     }
                 }
 
-                if (datos.datos.dir ) {
+                if (datos.datos.dir) {
 
                     validarDir(datos.datos.dir);
                 }
@@ -197,7 +197,7 @@ $(document).ready(function () {
                     }
                 }
 
-                if (datos.datos.cod_postal ) {
+                if (datos.datos.cod_postal) {
                     validarCp(datos.datos.cod_postal);
 
                 }
@@ -286,7 +286,7 @@ $(document).ready(function () {
                         $('#ciudad').css({
                             'border': '3px solid green'
                         });
-                        $('#localidadModal').html(ciudad);
+                        $('#ciudadModal').html(ciudad);
                     } else {
                         $('#mensaje_ciudad_error').fadeIn();
                         $('#check_ciudad').fadeOut();
@@ -301,17 +301,39 @@ $(document).ready(function () {
 
                 }
 
+                function validarCiudad(localidad) {
+                    if (localidad) {
+                        $('#mensaje_localidad_error').fadeOut();
+                        $('#check_localidad').fadeIn();
+                        $('#localidad').css({
+                            'border': '3px solid green'
+                        });
+                        $('#localidadModal').html(localidad);
+                    } else {
+                        $('#mensaje_localidad_error').fadeIn();
+                        $('#check_localidad').fadeOut();
+                        $('#localidad').css({
+                            'border': '3px solid red'
+                        });
+                    }
+                }
+
+                if (datos.datos.localidad) {
+                    validarCiudad(datos.datos.localidad);
+
+                }
+
                 function validarPerfil(perfil) {
                     if (perfil) {
-                        $('#mensaje_ciudad_error').fadeOut();
-                        $('#check_ciudad').fadeIn();
+                        $('#mensaje_perfil_error').fadeOut();
+                        $('#check_perfil').fadeIn();
                         $('#info_perfil').css({
                             'border': '3px solid green'
                         });
-                        $('#perfilModal').html(perfil);
+                        $('#perfil_descripcion').html(perfil);
                     } else {
-                        $('#mensaje_ciudad_error').fadeIn();
-                        $('#check_ciudad').fadeOut();
+                        $('#mensaje_perfil_error').fadeIn();
+                        $('#check_perfil').fadeOut();
                         $('#info_perfil').css({
                             'border': '3px solid red'
                         });
@@ -322,6 +344,29 @@ $(document).ready(function () {
                     validarPerfil(datos.datos.info_perfil);
 
                 }
+
+              function validarEstadoCivil(estado_civil){
+                    if (estado_civil) {
+                        $('#mensaje_estado_civil_error').fadeOut();
+                        $('#check_estado_civil').fadeIn();
+                        $('#estado_civil').css({
+                            'border': '3px solid green'
+                        });
+                        $('#estado_civilModal').html(estado_civil);
+                    } else {
+                        $('#mensaje_estado_civil_error').fadeIn();
+                        $('#check_estado_civil').fadeOut();
+                        $('#estado_civil').css({
+                            'border': '3px solid red'
+                        });
+                    }
+                }
+
+
+                if(datos.datos.estado_civil){
+                    validarEstadoCivil(datos.datos.estado_civil);
+                }
+                
 
             }
         });
@@ -338,29 +383,89 @@ $(document).ready(function () {
             success: function (response) {
                 var experiencias = JSON.parse(response);
                 console.log(experiencias);
+
+
                 // Mostrar datos en secciones diferentes
                 $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
 
-                for (var i = 0; i < experiencias.experiencias.length; i++) {
-                    var experiencia = experiencias.experiencias[i];
-                    var experienciaHTML = '<div class="exp_lab">' +
-                        '<div class="info">' +
-                        '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
-                        '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
-                        '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
-                        '<div class="descripcion">' +
-                        '<h4 class="exp_title titulo_empleo">' + experiencia.titulo_empleo + '</h4>' +
-                        '<div id="p_descripcion">' +
-                        '<p>' + experiencia.descripcion + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
+                if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "") {
 
-                    $('#expe_laboral').append(experienciaHTML);
+
+
+                    for (var i = 0; i < experiencias.experiencias.length; i++) {
+                        var experiencia = experiencias.experiencias[i];
+
+
+                        var experienciaHTML = '<div class="exp_lab">' +
+                            '<div class="info">' +
+                            '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
+                            '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
+                            '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
+                            '<div class="descripcion">' +
+                            '<h4 class="exp_title titulo_empleo">' + experiencia.titulo_empleo + '</h4>' +
+                            '<div id="p_descripcion">' +
+                            '<p>' + experiencia.descripcion + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+                        $('#expe_laboral').append(experienciaHTML);
+                    }
                 }
+
             }
         });
+    });
+
+    $('#dataForm').on('input','input[name^="habilidad"]' ,function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var habilidades = JSON.parse(response);
+                console.log(habilidades);
+
+                $('#container_habilidades').empty();
+                
+                for (let i = 0; i < habilidades.habilidades.length; i++) {
+                    var habilidad = habilidades.habilidades[i];
+                    var habilidadHTML = '<li type="disc">'+'<span id="habilidad_1">'+habilidad.habilidad+'</span>'+'</li>';
+                    
+                    $('#container_habilidades').append(habilidadHTML);
+                }
+            }
+
+        });
+
+    });
+
+    $('#dataForm').on('input', 'input[name^="hab_it"]', function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var habilidadesIt = JSON.parse(response);
+                console.log(habilidadesIt);
+
+                $('#container_habilidadesIT').empty();
+
+                for (let i = 0; i < habilidadesIt.habilidadesit.length; i++) {
+                    var habilidadit = habilidadesIt.habilidadesit[i];
+                    var habilidaditHTML = '<li type="square">' + '<span id="habilidad_it">' + habilidadit.habilidadit + '</span>' + '</li>';
+
+                    $('#container_habilidadesIT').append(habilidaditHTML);
+                }
+            }
+
+        });
+
     });
 
 
