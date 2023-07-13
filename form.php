@@ -74,12 +74,12 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
-        <form id="dataForm">
+        <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
                 <div class="columna_1">
                     <div class="field">
-                        <label class="label" for="iname">Nombre(s)</label>
+                        <label class="label" for="name">Nombre(s)</label>
                         <input id="name" type="text" name="name" placeholder="Juan Esteban">
                         <div id="check_nombre" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_nombre_error" class="errores">Ingrese un nombre valido</div>
@@ -981,11 +981,14 @@
             </details>
             </div>
             <div class="field buttn-send">
-                <input type="submit" class="enviar action_btn" id="enviar"></input>
+                <input type="submit" class="enviar action_btn" id="enviar" name="register"></input>
             </div>
         </form>
+        <?php
+         include("registrar.php");
+         ?>
     </main>
-    <!-- 
+<!--
 ========================================================================================================
                                  VENTANA MODAL PARA VISTA PREVIA
 ======================================================================================================== -->
