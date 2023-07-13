@@ -28,6 +28,8 @@ if(isset($_POST['ciudad_empleo']) && !empty($_POST['ciudad_empleo'])){$ciudadEmp
 if(isset($_POST['empresa_empleo']) && !empty($_POST['empresa_empleo'])){$empresaEmpleos = $_POST['empresa_empleo'];}
 if(isset($_POST['desde_empleo']) && !empty($_POST['desde_empleo'])){$desdeEmpleos = $_POST['desde_empleo'];}
 if(isset($_POST['hasta_empleo']) && !empty($_POST['hasta_empleo'])){$hastaEmpleos = $_POST['hasta_empleo'];}
+if(isset($_POST['descripcion_lab']) && !empty($_POST['descripcion_lab'])){$descripcion_lab = $_POST['descripcion_lab'];}
+
 
 //datos educacion
 if(isset($_POST['instituto']) && !empty($_POST['instituto'])){$institutos = $_POST['instituto'];}
@@ -143,6 +145,7 @@ for ($i = 0; $i < count($empleos); $i++) {
   $empresaEmpleo = trim($empresaEmpleos[$i]);
   $desdeEmpleo = trim($desdeEmpleos[$i]);
   $hastaEmpleo = trim($hastaEmpleos[$i]);
+  $descripcion = trim($descripcion_lab[$i]);
 
     if (!empty($empleo) || !empty($ciudadEmpleo) || !empty($empresaEmpleo) || !empty($desdeEmpleo) || !empty($hastaEmpleo)) {
 
@@ -153,8 +156,8 @@ for ($i = 0; $i < count($empleos); $i++) {
     'ciudadEmpleo' => $ciudadEmpleo,
     'empresaEmpleo' => $empresaEmpleo,
     'desdeEmpleo' => $desdeEmpleo,
-    'hastaEmpleo' => $hastaEmpleo
-    
+    'hastaEmpleo' => $hastaEmpleo,
+    'descripcion' => $descripcion
   );
 }
 }

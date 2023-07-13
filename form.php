@@ -754,7 +754,7 @@
                 <div class="columna_1">
                     <div class="field">
                         <div class="label" for="idioma">Idioma</div>
-                        <select name="idioma[]" >
+                        <select name="idioma[]">
                             <option>Seleccione un Idioma</option>
                             <option value="ingles">Ingles</option>
                             <option value="frances">Frances</option>
@@ -769,7 +769,7 @@
                 <div class="columna_2">
                     <div class="field">
                         <div class="label" for="nivel_idioma">Nivel</div>
-                        <select name="idioma_nivel[]" >
+                        <select name="idioma_nivel[]">
                             <option value="#">Nivel</option>
                             <option value="nativo">Nativo</option>
                             <option value="basico">Basico</option>
@@ -806,7 +806,7 @@
                     <div class="columna_2">
                         <div class="field">
                             <div class="label" for="nivel_idioma_2">Nivel</div>
-                            <select name="idioma_nivel[]" >
+                            <select name="idioma_nivel[]">
                                 <option value="#">Nivel</option>
                                 <option value="nativo">nativo</option>
                                 <option value="Avanzado">Avanzado</option>
@@ -867,7 +867,7 @@
                             <div class="columna_1">
                                 <div class="field">
                                     <div class="label" for="idioma_4">Idioma</div>
-                                    <select name="idioma[]" >
+                                    <select name="idioma[]">
                                         <option>Seleccione un Idioma</option>
                                         <option value="ingles">Ingles</option>
                                         <option value="frances">Frances</option>
@@ -985,10 +985,10 @@
             </div>
         </form>
         <?php
-         include("registrar.php");
-         ?>
+        include("registrar.php");
+        ?>
     </main>
-<!--
+    <!--
 ========================================================================================================
                                  VENTANA MODAL PARA VISTA PREVIA
 ======================================================================================================== -->
@@ -1042,8 +1042,6 @@
                                         <li><span id="habilidad_2">Capacidad de análisis</span></li>
                                         <li><span id="habilidad_3">Trabajo en equipo</span></li>
                                         <li><span id="habilidad_4">Flexibilidad y adaptabilidad</span></li>
-                                        <li><span id="habilidad_5"></span></li>
-                                        <li><span id="habilidad_6"></span></li>
                                     </ul>
                                 </div>
 
@@ -1055,8 +1053,6 @@
                                         <li><span id="habilidad_it_2">CSS</span></li>
                                         <li><span id="habilidad_it_3">JavaScript</span></li>
                                         <li><span id="habilidad_it_4">PHP</span></li>
-                                        <li><span id="habilidad_it_5"></span></li>
-                                        <li><span id="habilidad_it_6"></span></li>
                                     </ul>
                                 </div>
 
@@ -1182,21 +1178,21 @@
                             <!-- CURSOS  -->
                             <h4 class="main_title">CURSOS</h4>
                             <div id="cursos_contenedor">
-                            <div class="cursos">
+                                <div class="cursos">
 
-                                <div class="info">
-                                    <span id="periodo"><span id="fech_ini">07/2009</span><span> - </span><span id="fech_fin">05/2010</span></span> <br>
-                                    <span id="curso_insituto" class="bold">Educacion IT</span>
-                                </div>
-                                <div class="descripcion">
-                                    <h4 class="exp_title">DESCRIPCION</h4>
-                                    <div id="p_descripcion">
-                                        Curso presencial con certificado en Maquetacion Web y Diseño de interfaces UI. CSS avanzado
-                                        y programacion orientada a web con Javascript.
+                                    <div class="info">
+                                        <span id="periodo"><span id="fech_ini">07/2009</span><span> - </span><span id="fech_fin">05/2010</span></span> <br>
+                                        <span id="curso_insituto" class="bold">Educacion IT</span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <h4 class="exp_title">DESCRIPCION</h4>
+                                        <div id="p_descripcion">
+                                            Curso presencial con certificado en Maquetacion Web y Diseño de interfaces UI. CSS avanzado
+                                            y programacion orientada a web con Javascript.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                             <!-- REFERENCIAS  -->
                             <h4 class="main_title">REFERENCIAS</h4>

@@ -6,7 +6,7 @@ $(document).ready(function () {
     const expr_cp = /^\d{4}$/;
     var timeoutId; // Variable para almacenar el ID del timeout
 
-    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
+    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "localidad"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
         var formData = $('#dataForm').serialize();
 
         $.ajax({
@@ -301,7 +301,7 @@ $(document).ready(function () {
 
                 }
 
-                function validarCiudad(localidad) {
+                function validarLocalidad(localidad) {
                     if (localidad) {
                         $('#mensaje_localidad_error').fadeOut();
                         $('#check_localidad').fadeIn();
@@ -319,7 +319,7 @@ $(document).ready(function () {
                 }
 
                 if (datos.datos.localidad) {
-                    validarCiudad(datos.datos.localidad);
+                    validarLocalidad(datos.datos.localidad);
 
                 }
 
@@ -372,7 +372,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#dataForm').on('input', 'input[name^="empleo"], input[name^="ciudad_empleo"], input[name^="empresa_empleo"], input[name^="desde_empleo"], input[name^="hasta_empleo"]', function () {
+    $('#dataForm').on('input', 'input[name^="empleo"], input[name^="ciudad_empleo"], input[name^="empresa_empleo"], input[name^="desde_empleo"], input[name^="hasta_empleo"],textarea[name^="descripcion_lab"]', function () {
         var formData = $('#dataForm').serialize();
 
         $.ajax({
@@ -385,24 +385,23 @@ $(document).ready(function () {
                 // Mostrar datos en secciones diferentes
                 $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
 
-                if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "") {
+                if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "" || experiencias.experiencias.descripcion !== "") {
                     for (var i = 0; i < experiencias.experiencias.length; i++) {
                         var experiencia = experiencias.experiencias[i];
 
 
                         var experienciaHTML = '<div class="exp_lab">' +
-                            '<div class="info">' +
-                            '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
-                            '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
-                            '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
-                            '<div class="descripcion">' +
-                            '<h4 class="exp_title titulo_empleo">' + experiencia.titulo_empleo + '</h4>' +
-                            '<div id="p_descripcion">' +
-                            '<p>' + experiencia.descripcion + '</p>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
+                                                '<div class="info">' +
+                                                    '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
+                                                    '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
+                                                    '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
+                                                '</div>' +   
+                                                    '<div class="descripcion">' +
+                                                        '<h4 class="exp_title titulo_empleo">' + 'DESCRIPCION' + '</h4>' +
+                                                        '<div id="p_descripcion">' +
+                                                    '<p>' + experiencia.descripcion + '</p>' +
+                                                    '</div>' +
+                                                '</div>';
 
                         $('#expe_laboral').append(experienciaHTML);
                     }
@@ -539,7 +538,7 @@ $(document).ready(function () {
                         var cursoHTML = '<div class="cursos">'+
                                             '<div class="info">'+
                                                 '<span id="periodo">'+'<span id="fech_ini">'+curso.desde+'</span>'+'<span>'+ ' - '+ '</span>'+'<span id="fech_fin">'+curso.hasta+'</span>'+'</span>'+ '<br>'+
-                                                '<span id="nombre_curso" class="bold">' + curso.curso + '</span>' +
+                            '<span id="nombre_curso" class="bold">' + curso.curso + '</span>' + '<br>'+
                                                 '<span id="curso_insituto" class="bold">'+curso.instituto+'</span>'+
                                             '</div>'+
                                             '<div class="descripcion">'+
