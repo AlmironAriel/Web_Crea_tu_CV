@@ -29,6 +29,19 @@ if(isset($_POST['empresa_empleo']) && !empty($_POST['empresa_empleo'])){$empresa
 if(isset($_POST['desde_empleo']) && !empty($_POST['desde_empleo'])){$desdeEmpleos = $_POST['desde_empleo'];}
 if(isset($_POST['hasta_empleo']) && !empty($_POST['hasta_empleo'])){$hastaEmpleos = $_POST['hasta_empleo'];}
 
+//datos educacion
+if(isset($_POST['instituto']) && !empty($_POST['instituto'])){$institutos = $_POST['instituto'];}
+if(isset($_POST['carreras']) && !empty($_POST['carreras'])){$carreras = $_POST['carreras'];}
+if(isset($_POST['localidad_insti']) && !empty($_POST['localidad_insti'])){$localidad_instis = $_POST['localidad_insti'];}
+if(isset($_POST['grado_instituto']) && !empty($_POST['grado_instituto'])){$grado_institutos = $_POST['grado_instituto'];}
+if(isset($_POST['estado_carrera']) && !empty($_POST['estado_carrera'])){$estado_carreras = $_POST['estado_carrera'];}
+if(isset($_POST['cursado_desde']) && !empty($_POST['cursado_desde'])){$cursado_desde = $_POST['cursado_desde'];}
+if(isset($_POST['cursado_hasta']) && !empty($_POST['cursado_hasta'])){$cursado_hasta = $_POST['cursado_hasta'];}
+if(isset($_POST['desc_educacion']) && !empty($_POST['desc_educacion'])){$desc_educacion = $_POST['desc_educacion'];}
+
+
+
+
 //datos habilidades
 if(isset($_POST['habilidad']) && !empty($_POST['habilidad'])){$habilidades = $_POST['habilidad'];}
 //datos habilidades IT
@@ -39,6 +52,7 @@ $datos = array();
 $experiencias = array();
 $arr_habilidades = array();
 $arr_habilidadesIT = array();
+$arr_educacion = array();
 
 //=========================================================
 //VALIDACION DE DATOS PERSONALES
@@ -127,7 +141,7 @@ for ($i = 0; $i < count($empleos); $i++) {
 
     if (!empty($empleo) || !empty($ciudadEmpleo) || !empty($empresaEmpleo) || !empty($desdeEmpleo) || !empty($hastaEmpleo)) {
 
-  // Aquí puedes realizar las operaciones necesarias con los datos de cada experiencia laboral, como almacenarlos en una base de datos
+  // Aca se realizan las operaciones necesarias con los datos de cada experiencia laboral, como almacenarlos en una base de datos
 
   $experiencias[] = array(
     'empleo' => $empleo,
@@ -169,10 +183,44 @@ for ($i = 0; $i < count($habilidadesIT); $i++) {
     }
 }
 
+//=========================================================
+//VALIDACION DE DATOS EDUCATIVOS
+//=========================================================
+
+
+
+for ($i = 0; $i < count($institutos); $i++) {
+    $instituto = trim($institutos[$i]);
+    $carrera = trim($carreras[$i]);
+    $localidad_insti= trim($localidad_instis[$i]);
+    $grado_instituto= trim($grado_institutos[$i]);
+    $estado_carrera = trim($estado_carreras[$i]);
+    $desde = trim($cursado_desde[$i]);
+    $hasta= trim($cursado_hasta[$i]);
+    $desc = trim($desc_educacion[$i]);
+
+    if ( !empty($instituto) || !empty($carrera)  || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera)|| !empty($desde)
+        || !empty($hasta) || !empty($desc)){
+     
+
+        // aca se realizan las operaciones necesarias con los datos academicos, como almacenarlos en una base de datos
+
+        $arr_educacion[] = array(
+            'instituto' => $instituto,
+            'carrera' => $carrera,
+            'localidad' => $localidad_insti,
+            'grado' => $grado_instituto,
+            'estado' => $estado_carrera,
+            'desde' => $desde,
+            'hasta' => $hasta,
+            'descripcion' => $desc
+        );
+    }
+}
 
 
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' =>'Experiencias laborales agregadas con éxito','habilidadesit'=>$arr_habilidadesIT,'habilidades' =>$arr_habilidades,'datos'=>$datos, 'experiencias' => $experiencias);
+$response = array('status' => 'success', 'message' =>'Experiencias laborales agregadas con éxito','educacion'=>$arr_educacion,'habilidadesit'=>$arr_habilidadesIT,'habilidades' =>$arr_habilidades,'datos'=>$datos, 'experiencias' => $experiencias);
 
 
 echo json_encode($response);

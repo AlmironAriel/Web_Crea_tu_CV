@@ -505,27 +505,46 @@
             <details>
                 <summary class="mas">Agregar Educacion</summary>
                 <div class="educacion">
+                    <!-- columna 1 -->
                     <div class="columna_1">
                         <div class="field">
-                            <div class="label" for="instituto_2">Instituto</div>
-                            <input type="text" id="instituto_2" name="instituto_2[]">
+                            <div class="label" for="instituto2">Instituto</div>
+                            <input type="text" id="instituto2" name="instituto[]">
                         </div>
                         <div class="field">
-                            <div class="label" for="localidad_insti_2">Localidad</div>
-                            <input type="text" id="localidad_insti_2" name="localidad_insti_2[]">
+                            <div class="label" for="carrera2">carrera</div>
+                            <input type="text" id="carrera2" name="carreras[]">
+                        </div>
+                        <div class="field">
+                            <div class="label" for="localidad_insti">Localidad</div>
+                            <input type="text" id="localidad_insti" name="localidad_insti[]">
                         </div>
                     </div>
                     <!-- columna 2 -->
                     <div class="columna_2">
                         <div class="field">
-                            <div class="label" for="grado_2">Grado</div>
-                            <input type="text" id="grado_2" name="grado_2[]">
+                            <div class="label" for="grado">Grado</div>
+                            <select name="grado_instituto[]" id="grado_instituto">
+                                <option value="">Grado</option>
+                                <option value="secundario">Secunadario</option>
+                                <option value="terciario">Terciario</option>
+                                <option value="universitario">Universitario</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <div class="label" for="">Estado</div>
+                            <select name="estado_carrera[]" id="estado_carrera">
+                                <option value="">Estado</option>
+                                <option value="en_curso">En Curso</option>
+                                <option value="terminado">Terminado</option>
+                                <option value="incompleto">Incompleto</option>
+                            </select>
                         </div>
                         <div class="periodo_empleo">
                             <div class="field">
-                                <div class="label" for="periodo_cursado_2">Periodo</div>
-                                <input type="date" id="cursado_desde_2" name="cursado_desde_2[]">
-                                <input type="date" id="cursado_hasta_2" name="cursado_hasta_2[]">
+                                <div class="label" for="periodo_cursado">Periodo</div>
+                                <input type="date" id="cursado_desde" name="cursado_desde[]">
+                                <input type="date" id="cursado_hasta" name="cursado_hasta[]">
                             </div>
                         </div>
                     </div>
@@ -541,25 +560,43 @@
                         <!-- columna 1 -->
                         <div class="columna_1">
                             <div class="field">
-                                <div class="label" for="instituto_3">Instituto</div>
-                                <input type="text" id="instituto_3" name="instituto_3[]">
+                                <div class="label" for="instituto">Instituto</div>
+                                <input type="text" id="instituto" name="instituto[]">
                             </div>
                             <div class="field">
-                                <div class="label" for="localidad_insti_3">Localidad</div>
-                                <input type="text" id="localidad_insti_3" name="localidad_insti_3[]">
+                                <div class="label" for="carrera">carrera</div>
+                                <input type="text" id="carrera" name="carreras[]">
+                            </div>
+                            <div class="field">
+                                <div class="label" for="localidad_insti">Localidad</div>
+                                <input type="text" id="localidad_insti" name="localidad_insti[]">
                             </div>
                         </div>
                         <!-- columna 2 -->
                         <div class="columna_2">
                             <div class="field">
-                                <div class="label" for="grado_3">Grado</div>
-                                <input type="text" id="grado_3" name="grado_3[]">
+                                <div class="label" for="grado">Grado</div>
+                                <select name="grado_instituto[]" id="grado_instituto">
+                                    <option value="">Grado</option>
+                                    <option value="secundario">Secunadario</option>
+                                    <option value="terciario">Terciario</option>
+                                    <option value="universitario">Universitario</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <div class="label" for="">Estado</div>
+                                <select name="estado_carrera[]" id="estado_carrera">
+                                    <option value="">Estado</option>
+                                    <option value="en_curso">En Curso</option>
+                                    <option value="terminado">Terminado</option>
+                                    <option value="incompleto">Incompleto</option>
+                                </select>
                             </div>
                             <div class="periodo_empleo">
                                 <div class="field">
-                                    <div class="label" for="periodo_cursado_3">Periodo</div>
-                                    <input type="date" id="cursado_desde_3" name="cursado_desde_3[]">
-                                    <input type="date" id="cursado_hasta_3" name="cursado_hasta_3[]">
+                                    <div class="label" for="periodo_cursado">Periodo</div>
+                                    <input type="date" id="cursado_desde" name="cursado_desde[]">
+                                    <input type="date" id="cursado_hasta" name="cursado_hasta[]">
                                 </div>
                             </div>
                         </div>
@@ -576,25 +613,43 @@
                             <!-- columna 1 -->
                             <div class="columna_1">
                                 <div class="field">
-                                    <div class="label" for="instituto_4">Instituto</div>
-                                    <input type="text" id="instituto_4" name="instituto_4[]">
+                                    <div class="label" for="instituto">Instituto</div>
+                                    <input type="text" id="instituto" name="instituto[]">
                                 </div>
                                 <div class="field">
-                                    <div class="label" for="localidad_insti_4">Localidad</div>
-                                    <input type="text" id="localidad_insti_4" name="localidad_insti_4[]">
+                                    <div class="label" for="carrera">carrera</div>
+                                    <input type="text" id="carrera" name="carreras[]">
+                                </div>
+                                <div class="field">
+                                    <div class="label" for="localidad_insti">Localidad</div>
+                                    <input type="text" id="localidad_insti" name="localidad_insti[]">
                                 </div>
                             </div>
                             <!-- columna 2 -->
                             <div class="columna_2">
                                 <div class="field">
-                                    <div class="label" for="grado_4">Grado</div>
-                                    <input type="text" id="grado_4" name="grado_4[]">
+                                    <div class="label" for="grado">Grado</div>
+                                    <select name="grado_instituto[]" id="grado_instituto">
+                                        <option value="">Grado</option>
+                                        <option value="secundario">Secunadario</option>
+                                        <option value="terciario">Terciario</option>
+                                        <option value="universitario">Universitario</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <div class="label" for="">Estado</div>
+                                    <select name="estado_carrera[]" id="estado_carrera">
+                                        <option value="">Estado</option>
+                                        <option value="en_curso">En Curso</option>
+                                        <option value="terminado">Terminado</option>
+                                        <option value="incompleto">Incompleto</option>
+                                    </select>
                                 </div>
                                 <div class="periodo_empleo">
                                     <div class="field">
-                                        <div class="label" for="periodo_cursado_4">Periodo</div>
-                                        <input type="date" id="cursado_desde_4" name="cursado_desde_4[]">
-                                        <input type="date" id="cursado_hasta_4" name="cursado_hasta_4[]">
+                                        <div class="label" for="periodo_cursado">Periodo</div>
+                                        <input type="date" id="cursado_desde" name="cursado_desde[]">
+                                        <input type="date" id="cursado_hasta" name="cursado_hasta[]">
                                     </div>
                                 </div>
                             </div>
@@ -1076,7 +1131,7 @@
                             <!-- FORMACION ACADEMICA  -->
 
                             <h4 class="main_title">FORMACION ACADEMICA</h4>
-                            <div class="formacion_academica">
+                            <div id="formacion_academica" class="formacion_academica">
                                 <div class="form_acad">
                                     <div class="info">
                                         <span id="periodo"><span id="fech_ini">02/2023</span><span> - </span><span id="fech_fin">04/2039</span></span> <br>

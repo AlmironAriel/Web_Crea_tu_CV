@@ -345,7 +345,7 @@ $(document).ready(function () {
 
                 }
 
-              function validarEstadoCivil(estado_civil){
+                function validarEstadoCivil(estado_civil) {
                     if (estado_civil) {
                         $('#mensaje_estado_civil_error').fadeOut();
                         $('#check_estado_civil').fadeIn();
@@ -363,10 +363,10 @@ $(document).ready(function () {
                 }
 
 
-                if(datos.datos.estado_civil){
+                if (datos.datos.estado_civil) {
                     validarEstadoCivil(datos.datos.estado_civil);
                 }
-                
+
 
             }
         });
@@ -374,7 +374,6 @@ $(document).ready(function () {
 
     $('#dataForm').on('input', 'input[name^="empleo"], input[name^="ciudad_empleo"], input[name^="empresa_empleo"], input[name^="desde_empleo"], input[name^="hasta_empleo"]', function () {
         var formData = $('#dataForm').serialize();
-        console.log(formData);
 
         $.ajax({
             type: 'POST',
@@ -382,16 +381,11 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var experiencias = JSON.parse(response);
-                console.log(experiencias);
-
 
                 // Mostrar datos en secciones diferentes
                 $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
 
                 if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "") {
-
-
-
                     for (var i = 0; i < experiencias.experiencias.length; i++) {
                         var experiencia = experiencias.experiencias[i];
 
@@ -418,7 +412,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#dataForm').on('input','input[name^="habilidad"]' ,function () {
+    $('#dataForm').on('input', 'input[name^="habilidad"]', function () {
         var formData = $('#dataForm').serialize();
 
         $.ajax({
@@ -427,14 +421,13 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var habilidades = JSON.parse(response);
-                console.log(habilidades);
 
                 $('#container_habilidades').empty();
-                
+
                 for (let i = 0; i < habilidades.habilidades.length; i++) {
                     var habilidad = habilidades.habilidades[i];
-                    var habilidadHTML = '<li type="disc">'+'<span id="habilidad_1">'+habilidad.habilidad+'</span>'+'</li>';
-                    
+                    var habilidadHTML = '<li type="disc">' + '<span id="habilidad_1">' + habilidad.habilidad + '</span>' + '</li>';
+
                     $('#container_habilidades').append(habilidadHTML);
                 }
             }
@@ -452,7 +445,6 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var habilidadesIt = JSON.parse(response);
-                console.log(habilidadesIt);
 
                 $('#container_habilidadesIT').empty();
 
@@ -462,6 +454,67 @@ $(document).ready(function () {
 
                     $('#container_habilidadesIT').append(habilidaditHTML);
                 }
+            }
+
+        });
+
+    });
+
+    $('#dataForm').on('input', 'input[name^="instituto"], input[name^="carreras"], input[name^="localidad_insti"],select[name^="grado_instituto"],select[name^="estado_carrera"],input[name^="cursado_desde"],input[name^="cursado_hasta"],textarea[name^="desc_educacion"]', function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var educacion = JSON.parse(response);
+                console.log(educacion);
+
+                $('#formacion_academica').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
+                if (educacion.educacion.instituto !== "" || educacion.educacion.carrera !== ""  || educacion.educacion.localidad !== "" || educacion.educacion.grado !== "" || educacion.educacion.estado !== "" || educacion.educacion.desde !== "" || educacion.educacion.hasta !== "") {
+
+                    for (var i = 0; i < educacion.educacion.length; i++) {
+                        var edu = educacion.educacion[i];
+
+                        if (edu.estado == "en_curso") {
+                            var educacionHTML = '<div class="form_acad">' +
+                                '<div class="info">' +
+                                '<span id="periodo">' + '<span id="fech_ini">' + edu.desde + '</span>' + '<span>' + '-' + '</span>' + '<span id="fech_fin">' + 'En Curso' + '</span>' + '</span>' + '<br>' +
+                                '<span id="instituto" class="bold">' + edu.instituto + '</span>' + '<br>' +
+                                '<span id="carrera">' + edu.carrera + '</span>' + '<br>' +
+                                '<span id="ciudad">' + edu.localidad + '</span>' +
+                                '</div>' +
+                                '<div class="descripcion">' +
+                                '<h4 class="exp_title">' + 'DESCRIPCION' + '</h4>' +
+                                '<div id="p_descripcion">' + edu.descripcion + '</div>' +
+                                '</div>' +
+                                '</div>';
+                            $('#formacion_academica').append(educacionHTML);
+                            continue;
+                        }
+                        
+                        var educacionHTML = '<div class="form_acad">' +
+                            '<div class="info">' +
+                            '<span id="periodo">' + '<span id="fech_ini">' + edu.desde + '</span>' + '<span>' + '-' + '</span>' + '<span id="fech_fin">' + edu.hasta + '</span>' + '</span>' + '<br>' +
+                            '<span id="instituto" class="bold">' + edu.instituto + '</span>' + '<br>' +
+                            '<span id="carrera">' + edu.carrera + '</span>' + '<br>' +
+                            '<span id="estado">' + edu.estado + '</span>' + '<br>' +
+                            '<span id="ciudad">' + edu.localidad + '</span>' +
+                            '</div>' +
+                            '<div class="descripcion">' +
+                            '<h4 class="exp_title">' + 'DESCRIPCION' + '</h4>' +
+                            '<div id="p_descripcion">' + edu.descripcion + '</div>' +
+                            '</div>' +
+                            '</div>';
+                        $('#formacion_academica').append(educacionHTML);
+
+                        
+
+
+                    }
+                }
+
             }
 
         });
