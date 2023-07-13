@@ -2,6 +2,8 @@
 
 
 // Obtén los datos del formulario
+
+//datos personales
 if(isset($_POST['name']) && !empty($_POST['name'])){$nombre = $_POST['name'];}
 if(isset($_POST['apellido']) && !empty($_POST['apellido'])){$apellido = $_POST['apellido'];}
 if(isset($_POST['dni']) && !empty($_POST['dni'])){$dni = $_POST['dni'];}
@@ -20,15 +22,27 @@ if(isset($_POST['localidad']) && !empty($_POST['localidad'])){$localidad = $_POS
 if(isset($_POST['web']) && !empty($_POST['web'])){$web = $_POST['web'];}
 if(isset($_POST['info_perfil']) && !empty($_POST['info_perfil'])){$info_perfil = $_POST['info_perfil'];}
 
-
+//datos laborales
 if(isset($_POST['empleo']) && !empty($_POST['empleo'])){$empleos = $_POST['empleo'];}
 if(isset($_POST['ciudad_empleo']) && !empty($_POST['ciudad_empleo'])){$ciudadEmpleos = $_POST['ciudad_empleo'];}
 if(isset($_POST['empresa_empleo']) && !empty($_POST['empresa_empleo'])){$empresaEmpleos = $_POST['empresa_empleo'];}
 if(isset($_POST['desde_empleo']) && !empty($_POST['desde_empleo'])){$desdeEmpleos = $_POST['desde_empleo'];}
 if(isset($_POST['hasta_empleo']) && !empty($_POST['hasta_empleo'])){$hastaEmpleos = $_POST['hasta_empleo'];}
 
-$experiencias = array();
+//datos habilidades
+if(isset($_POST['habilidad']) && !empty($_POST['habilidad'])){$habilidades = $_POST['habilidad'];}
+//datos habilidades IT
+if(isset($_POST['hab_it']) && !empty($_POST['hab_it'])){$habilidadesIT = $_POST['hab_it'];}
+
+
 $datos = array();
+$experiencias = array();
+$arr_habilidades = array();
+$arr_habilidadesIT = array();
+
+//=========================================================
+//VALIDACION DE DATOS PERSONALES
+//=========================================================
 
 if(!empty($nombre)){
     $datos["nombre"] = $nombre;
@@ -97,7 +111,12 @@ if (!empty($info_perfil)) {
     $datos["info_perfil"] = $info_perfil;
 }
 
-if (!empty($empleos) && !empty($ciudadEmpleos) && !empty($empresaEmpleos) && !empty($desdeEmpleos) && !empty($hastaEmpleos)) {
+//=========================================================
+//VALIDACION DE DATOS LABORALES
+//=========================================================
+
+
+
 // Itera sobre los datos ingresados y crea un array de experiencias laborales
 for ($i = 0; $i < count($empleos); $i++) {
   $empleo = trim($empleos[$i]);
@@ -106,7 +125,7 @@ for ($i = 0; $i < count($empleos); $i++) {
   $desdeEmpleo = trim($desdeEmpleos[$i]);
   $hastaEmpleo = trim($hastaEmpleos[$i]);
 
-    if (!empty($empleo) && !empty($ciudadEmpleo) && !empty($empresaEmpleo) && !empty($desdeEmpleo) && !empty($hastaEmpleo)) {
+    if (!empty($empleo) || !empty($ciudadEmpleo) || !empty($empresaEmpleo) || !empty($desdeEmpleo) || !empty($hastaEmpleo)) {
 
   // Aquí puedes realizar las operaciones necesarias con los datos de cada experiencia laboral, como almacenarlos en una base de datos
 
@@ -120,10 +139,40 @@ for ($i = 0; $i < count($empleos); $i++) {
   );
 }
 }
+
+//=========================================================
+//VALIDACION DE HABILIDADES
+//=========================================================
+
+for($i = 0; $i < count($habilidades); $i++){
+    $habilidad = trim($habilidades[$i]);
+
+    if(!empty($habilidad)){
+        $arr_habilidades[]= array(
+            'habilidad' => $habilidad,
+        );
+    }
 }
 
+//=========================================================
+//VALIDACION DE HABILIDADES IT
+//=========================================================
+
+
+for ($i = 0; $i < count($habilidadesIT); $i++) {
+    $habilidadIT = trim($habilidadesIT[$i]);
+
+    if (!empty($habilidadIT)) {
+        $arr_habilidadesIT[] = array(
+            'habilidadit' => $habilidadIT,
+        );
+    }
+}
+
+
+
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' =>'Experiencias laborales agregadas con éxito','datos'=>$datos, 'experiencias' => $experiencias);
+$response = array('status' => 'success', 'message' =>'Experiencias laborales agregadas con éxito','habilidadesit'=>$arr_habilidadesIT,'habilidades' =>$arr_habilidades,'datos'=>$datos, 'experiencias' => $experiencias);
 
 
 echo json_encode($response);

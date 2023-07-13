@@ -151,10 +151,12 @@ main{
     margin-left: 35px;
     padding: 20px;
 }
+
 .aside ul li{
     list-style: none;
     padding: 5px;
 }
+
 .aside ul li a{
     color: #000;
     font-weight: bold;

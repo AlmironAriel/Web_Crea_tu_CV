@@ -52,6 +52,14 @@
     margin-bottom: 20px;
 
 }
+
+#container_habilidades li{
+    list-style: disc;
+}
+
+#container_habilidadesIT li {
+    list-style: square;
+}
 .side ul li{
     padding: 3px;
     margin-bottom: 6px;
