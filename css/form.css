@@ -330,3 +330,11 @@ main{
     padding: 10px;
     position: absolute;
 }
+
+.tinymce-container {
+    position: relative;
+}
+
+.tinymce-container .tox-tinymce {
+    z-index: 0;
+}

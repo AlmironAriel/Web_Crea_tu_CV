@@ -99,9 +99,9 @@
                     <div class="field">
                         <div class="label" for="estado_civil">Estado Civil</div>
                         <select name="estado_civil" id="estado_civil">
-                            <option value="#">Estado Civil</option>
-                            <option value="soltero">Soltero</option>
-                            <option value="casado">Casado</option>
+                            <option value="">Estado Civil</option>
+                            <option value="Soltero">Soltero</option>
+                            <option value="Casado">Casado</option>
                         </select>
                         <div id="check_estado_civil" class="check"><i class="fa-regular fa-circle-check"></i></div>
                         <div id="mensaje_estado_civil_error" class="errores">Ingrese un estado civil valido</div>
@@ -183,7 +183,7 @@
                         <div class="field">
                             <div class="label">Genero</div>
                             <select id="genero" name="genero">
-                                <option name="#">Seleccione su genero</option>
+                                <option value="">Seleccione su genero</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Otro">Otro</option>
@@ -247,7 +247,9 @@
                 <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
                     Describa sus logros y el enfoque de sus desempeños anteriores</P>
             </div>
-            <textarea class="text_area" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+            <div class="tinymce-container">
+                <textarea class="text_area tinymce" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+            </div>
             <!-- Experiencia laboral extra 1 -->
             <details>
                 <summary class="mas" id="ele">Agregar Mas Experiencia Laboral</summary>
@@ -281,8 +283,9 @@
                     <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
                         Describa sus logros y el enfoque de sus desempeños anteriores</P>
                 </div>
-                <textarea class="text_area" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
-                <!-- EXPEIENCIA LABORAL EXTRA 3 -->
+                <div class="tinymce-container">
+                    <textarea class="text_area tinymce" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                </div> <!-- EXPEIENCIA LABORAL EXTRA 3 -->
                 <details>
                     <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                     <div class="experiencia_laboral">
@@ -315,8 +318,9 @@
                         <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
                             Describa sus logros y el enfoque de sus desempeños anteriores</P>
                     </div>
-                    <textarea class="text_area" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
-                    <!-- EXPERIENCIA LABORAL EXTRA 4 -->
+                    <div class="tinymce-container">
+                        <textarea class="text_area tinymce" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                    </div> <!-- EXPERIENCIA LABORAL EXTRA 4 -->
                     <details>
                         <summary class="mas">Agregar Mas Experiencia Laboral</summary>
                         <div class="experiencia_laboral">
@@ -350,7 +354,9 @@
                             <P class="txt_info">Describa aquí su experiencia laboral. Haga énfasis en puestos y tareas desempeñadas.
                                 Describa sus logros y el enfoque de sus desempeños anteriores</P>
                         </div>
-                        <textarea class="text_area" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                        <div class="tinymce-container">
+                            <textarea class="text_area tinymce" name="descripcion_lab[]" id="descripcion_lab" cols="20" rows="5" placeholder="Describa aqui su perfil laboral"></textarea>
+                        </div>
                     </details>
                 </details>
             </details>
@@ -1049,10 +1055,10 @@
                                 <div class="habilidades_it">
                                     <h4 class="title">HABILIDADES IT</h4>
                                     <ul id="container_habilidadesIT">
-                                        <li><span id="habilidad_it_1">HTML 5</span></li>
-                                        <li><span id="habilidad_it_2">CSS</span></li>
-                                        <li><span id="habilidad_it_3">JavaScript</span></li>
-                                        <li><span id="habilidad_it_4">PHP</span></li>
+                                        <li><span id="habilidad_it_1">NO POSEE HABILIDADES IT</span></li>
+                                        <li><span id="habilidad_it_2"></span></li>
+                                        <li><span id="habilidad_it_3"></span></li>
+                                        <li><span id="habilidad_it_4"></span></li>
                                     </ul>
                                 </div>
 
@@ -1227,9 +1233,11 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script src="./js/nocturno.js"></script>
+    <script src="./js/conversor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.6.0/tinymce.min.js" integrity="sha512-hMjDyb/4G3SapFEM71rK+Gea0+ZEr9vDlhBTyjSmRjuEgza0Ytsb67GE0aSpRMYW++z6kZPPcnddwlUG6VKm9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./ajax/jquery.js"></script>
     <script src="./ajax/ajax.js"></script>
-    <script src="./js/conversor.js"></script>
+    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </body>
 

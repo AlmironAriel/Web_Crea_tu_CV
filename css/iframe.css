@@ -54,11 +54,11 @@
 }
 
 #container_habilidades li{
-    list-style: disc;
+    list-style: none;
 }
 
 #container_habilidadesIT li {
-    list-style: square;
+    list-style: none;
 }
 .side ul li{
     padding: 3px;
