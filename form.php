@@ -74,6 +74,12 @@
             <h2 class="subtitle_1">En Pocos y Simples Pasos!</h2>
         </div>
 
+        <!-- Div para mostrar el mensaje de éxito (oculto inicialmente) -->
+        <div id="mensajeExito" style="display: none; background-color: #4CAF50; color: white; padding: 10px;">
+            <h2>Datos ingresados correctamente</h2>
+            <p>Los datos se guardaron correctamente en el sistema.</p>
+        </div>
+
         <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
@@ -1227,15 +1233,14 @@
         <iframe id="preview" class="preview" style="display: none;"></iframe>
     </div>
     </div>
+    <script src="./ajax/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./js/nocturno.js"></script>
     <script src="./js/conversor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.6.0/tinymce.min.js" integrity="sha512-hMjDyb/4G3SapFEM71rK+Gea0+ZEr9vDlhBTyjSmRjuEgza0Ytsb67GE0aSpRMYW++z6kZPPcnddwlUG6VKm9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./ajax/jquery.js"></script>
     <script src="./ajax/ajax.js"></script>
     <script src="./js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />

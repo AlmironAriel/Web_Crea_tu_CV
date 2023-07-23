@@ -1,6 +1,5 @@
 <?php
 
-
 // Obtén los datos del formulario
 
 //datos personales
@@ -43,11 +42,11 @@ if (isset($_POST['dir']) && !empty($_POST['dir'])) {
 if (isset($_POST['ciudad']) && !empty($_POST['ciudad'])) {
     $ciudad = $_POST['ciudad'];
 }
-if (isset($_POST['genero']) && !empty($_POST['genero'])) {
-    $genero = $_POST['genero'];
-}
 if (isset($_POST['localidad']) && !empty($_POST['localidad'])) {
     $localidad = $_POST['localidad'];
+}
+if (isset($_POST['genero']) && !empty($_POST['genero'])) {
+    $genero = $_POST['genero'];
 }
 if (isset($_POST['web']) && !empty($_POST['web'])) {
     $web = $_POST['web'];
@@ -141,67 +140,28 @@ $arr_cursos = array();
 //VALIDACION DE DATOS PERSONALES
 //=========================================================
 
-if (!empty($nombre)) {
-    function validarNombre($nombre)
-    {
-        $longitudMinima = 3;
-        if (strlen($nombre) < $longitudMinima) {
-            return false;
-        }
-        if (!preg_match('/^[A-Z]/', $nombre)) {
-            return false;
-        }
-        if (preg_match('/[0-9]/', $nombre)) {
-            return false;
-        }
-
-        return true;
-    }
-    if (validarNombre($nombre)) {
-        $datos["nombre"] = $nombre;
-    } else {
-        $datos["nombre"] = "No Valido";
-    }
+if(!empty($nombre)){
+    $ultimaPersona['nombre']=$nombre;
 }
 
 if (!empty($apellido)) {
-    function validarApellido($apellido)
-    {
-        $longitudMinima = 3;
-        if (strlen($apellido) < $longitudMinima) {
-            return false;
-        }
-
-        if (preg_match('/[0-9]/', $apellido)) {
-            return false;
-        }
-
-        return true;
-    }
-    if (validarApellido($apellido)) {
-        $datos["apellido"] = $apellido;
-    } else {
-        $datos["apellido"] = "No Valido";
-    }
+    $ultimaPersona['apellido'] = $apellido;
 }
 
 if (!empty($dni)) {
-    $datos["dni"] = $dni;
+    $ultimaPersona['dni'] = $dni;
 }
 
 if (!empty($cuil)) {
-    $datos["cuil"] = $cuil;
+    $ultimaPersona['cuil'] = $cuil;
 }
+
 if (!empty($estado_civil)) {
-    $datos["estado_civil"] = $estado_civil;
+    $ultimaPersona['estado_civil'] = $estado_civil;
 }
 
 if (!empty($email)) {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $datos["email"] = $email;
-    } else {
-        $datos["email"] = "No Valido";
-    }
+    $ultimaPersona['email'] = $email;
 }
 
 if (!empty($tel)) {
@@ -228,29 +188,144 @@ if (!empty($fech_nac)) {
     }
 
     if ($fechaValida) {
-        $datos["fech_nac"] = $fechaFormateada;
+        $ultimaPersona["fech_nac"] = $fechaFormateada;
     }
 }
 
 if (!empty($nac)) {
-    $datos["nac"] = $nac;
+    $ultimaPersona["nac"] = $nac;
 }
 
 if (!empty($dir)) {
-    $datos["dir"] = $dir;
+    $ultimaPersona["dir"] = $dir;
 }
 
 if (!empty($ciudad)) {
-    $datos["ciudad"] = $ciudad;
+    $ultimaPersona["ciudad"] = $ciudad;
 }
 
-if (!empty($genero)) {
-    $datos["genero"] = $genero;
-}
 
 if (!empty($localidad)) {
-    $datos["localidad"] = $localidad;
+    $ultimaPersona["localidad"] = $localidad;
 }
+if (!empty($genero)) {
+    $ultimaPersona["genero"] = $genero;
+}
+
+
+// Nombre del archivo CSV
+$nombre_archivo = 'datos.csv';
+
+// Función para leer los datos actuales desde el archivo CSV y cargarlos en el array $datos
+function leerDatosDesdeCSV($nombre_archivo)
+{
+    $datos = array();
+    if (($gestor = fopen($nombre_archivo, "r")) !== FALSE) {
+        // Leer las columnas de la cabecera y descartarlas
+        fgetcsv($gestor);
+
+        // Leer cada fila del archivo CSV y cargar los datos en el array
+        while (($fila = fgetcsv($gestor)) !== FALSE) {
+            $dni = $fila[2];
+            $datos[$dni] = array(
+                'nombre' => $fila[0],
+                'apellido' => $fila[1],
+                'dni' => $fila[2],
+                'cuil' => $fila[3],
+                'estado_civil' => $fila[4],
+                'email' => $fila[5],
+                'tel' => $fila[6],
+                'tel_alt' => $fila[7],
+                'fech_nac' => $fila[8],
+                'cod_postal' => $fila[9],
+                'dir' => $fila[10],
+                'nac' => $fila[11],
+                'ciudad' => $fila[12],
+                'localidad' => $fila[13],
+                'genero' => $fila[14],
+
+                // Agregar más campos según corresponda a tu CSV
+            );
+        }
+        fclose($gestor);
+    }
+    return $datos;
+}
+
+function guardarDatosEnCSV($nombre_archivo, $datos)
+{
+    // Eliminar datos duplicados manteniendo solo las últimas entradas
+    $datos = array_unique($datos, SORT_REGULAR);
+
+    $archivo_csv = fopen($nombre_archivo, 'w');
+
+    // Verificar si el archivo está vacío, en cuyo caso escribiremos la cabecera
+    $columnas = array('NOMBRE', 'APELLIDO', 'DNI', 'CUIL', 'ESTADO CIVIL', 'EMAIL','TELEFONO','TELEFONO ALT','FECHA NACIMIENTO','COD.POSTAL','DIRECCION','NACIONALIDAD','CIUDAD','LOCALIDAD','GENERO');
+    fputcsv($archivo_csv, $columnas);
+
+    // Recorrer el array y escribir los datos en el archivo CSV
+    foreach ($datos as $dni => $persona) {  
+        $fila = array($persona['nombre'], $persona['apellido'], $persona['dni'], $persona['cuil'], $persona['estado_civil'], $persona['email'], isset($persona['tel'])? $persona['tel']:'', isset($persona['tel_alt']) ? $persona['tel_alt'] : '', isset($persona['fech_nac'])? $persona['fech_nac']:'', isset($persona['cod_postal'])? $persona['cod_postal']:'', isset($persona['dir'])? $persona['dir']:'',isset($persona['nac'])? $persona['nac']:'' , isset($persona['ciudad'])? $persona['ciudad']:'', isset($persona['localidad'])? $persona['localidad']:'', isset($persona['genero'])? $persona['genero']:'');
+        fputcsv($archivo_csv, $fila);
+    }
+
+    fclose($archivo_csv);
+}
+
+
+// Cargar datos actuales desde el archivo CSV solo si existen datos previos
+if (filesize($nombre_archivo) > 0) {
+    $datos = leerDatosDesdeCSV($nombre_archivo);
+} else {
+    $datos = array(); // Inicializamos $datos como un array vacío
+}
+
+if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !empty($estado_civil) && !empty($email)) {
+
+    // Verificar si ya existe un dato con el mismo dni
+    if (isset($datos[$dni])) {
+        // Actualizar los datos de la persona existente
+        $datos[$dni]['nombre'] = $nombre;
+        $datos[$dni]['apellido'] = $apellido;
+        $datos[$dni]['cuil'] = $cuil;
+        $datos[$dni]['estado_civil'] = $estado_civil;
+        $datos[$dni]['email'] = $email;
+        // Actualizar más campos según corresponda
+    } else {
+        // Agregar una nueva persona al array
+        $datos[$dni] = array(
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'dni' => $dni,
+            'cuil' => $cuil,
+            'estado_civil' => $estado_civil,
+            'email' => $email,
+            // Agregar más campos según corresponda
+        );
+    }
+
+    if(isset($datos[$dni])&& !empty($tel) && !empty($tel_alt) && !empty($cod_postal) && !empty($fech_nac) && !empty($dir) && !empty($nac) && !empty($ciudad) && !empty($localidad) && !empty($genero)){
+        $datos[$dni]['telefono'] = $tel;
+        $datos[$dni]['tel_alt'] = $tel_alt;
+        $datos[$dni]['cod_postal'] = $cod_postal;
+        $datos[$dni]['fech_nac'] = $fech_nac;
+        $datos[$dni]['dir'] = $dir;
+        $datos[$dni]['nac'] = $nac;
+        $datos[$dni]['ciudad'] = $ciudad;
+        $datos[$dni]['localidad'] = $localidad;
+        $datos[$dni]['genero'] = $genero;
+    }
+
+    // Guardar los datos actualizados en el archivo CSV
+    guardarDatosEnCSV($nombre_archivo, $datos);
+
+    // Obtener la última persona ingresada o actualizada
+    $ultimaPersona = $datos[$dni];
+}
+
+
+
+
 
 if (!empty($web)) {
     $datos["web"] = $web;
@@ -258,6 +333,9 @@ if (!empty($web)) {
 
 if (!empty($info_perfil)) {
     $datos["info_perfil"] = $info_perfil;
+}
+
+if (!empty($datos["nombre"]) && !empty($datos["apellido"]) && !empty($datos["dni"])) {
 }
 
 //=========================================================
@@ -286,7 +364,7 @@ for ($i = 0; $i < count($empleos); $i++) {
         $fechaFormateadaDesde = date('d/m/Y', strtotime($desdeEmpleo));
     }
     if (strtotime($hastaEmpleo)) {
-        $fechaValidaHasta= true;
+        $fechaValidaHasta = true;
         $fechaFormateadaHasta = date('d/m/Y', strtotime($hastaEmpleo));
     }
 
@@ -409,7 +487,7 @@ for ($i = 0; $i < count($nomb_cursos); $i++) {
 
 
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $datos, 'experiencias' => $experiencias);
+$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $experiencias);
 
 
 echo json_encode($response);

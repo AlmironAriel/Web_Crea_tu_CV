@@ -5,6 +5,7 @@ $(document).ready(function () {
     const expr_dir = /^[a-zA-Z0-9\s]+$/;
     const expr_cp = /^\d{4}$/;
     var timeoutId; // Variable para almacenar el ID del timeout
+    var cartelMostrado= false;
 
     $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"],input[name^= "tel_alt"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "localidad"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
         clearTimeout(timeoutId); // Reinicia el temporizador en cada entrada de datos
@@ -18,6 +19,20 @@ $(document).ready(function () {
                 success: function (response) {
                     var datos = JSON.parse(response);
                     console.log(datos);
+
+                    // Si los datos se han ingresado correctamente, mostrar el mensaje de éxito
+                    if (datos.datos.nombre && datos.datos.apellido && datos.datos.dni && datos.datos.cuil && datos.datos.estado_civil && datos.datos.email){
+                        // Si los datos se han ingresado correctamente y el cartel no ha sido mostrado
+                        if (datos.status === 'success' && !cartelMostrado) {
+                            $('#mensajeExito').show(); // Mostrar el mensaje de éxito
+                            cartelMostrado = true; // Marcar el cartel como mostrado
+                            // Ocultar el cartel después de 5 segundos
+                            setTimeout(function () {
+                                $('#mensajeExito').hide();
+                            }, 5000);
+                        }
+                    }
+                   
 
                     function validarName(nombre) {
                         if (nombre && nombre !== "No Valido" && nombre.trim().length > 2 && /^[A-Z].*/g.test(nombre) && nombre[0] === nombre[0].toUpperCase()) {
@@ -371,7 +386,7 @@ $(document).ready(function () {
     });
 
 
-    $('#dataForm').on('change input', function () {
+    $('#dataForm').on('change input','input[name^="empleo"],input[name^="ciudad_empleo"],input[name^="empresa_empleo"],input[name^="desde_empleo"],input[name^="hasta_empleo"]', function () {
         enviarDatos();
     });
 
