@@ -80,6 +80,12 @@
             <p>Los datos se guardaron correctamente en el sistema.</p>
         </div>
 
+        <!-- Div para mostrar el mensaje de éxito (oculto inicialmente) -->
+        <div id="mensajeExitoAdicionales" style="display: none; background-color: #4CAF50; color: white; padding: 10px;">
+            <h2>Datos ingresados correctamente</h2>
+            <p>Los datos se guardaron correctamente en el sistema.</p>
+        </div>
+
         <form id="dataForm" method="post">
             <h2 class="h2">DATOS PERSONALES</h2>
             <div class="datos_personales" id="dp">
@@ -142,10 +148,10 @@
                             <div id="mensaje_tel_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <div class="field">
-                            <div class="label" for="tel">Telefono Alternativo</div>
+                            <div class="label" for="tel_alt">Telefono Alternativo</div>
                             <input type="tel_alt" id="tel_alt" name="tel_alt">
-                            <div id="check_tel" class="check"><i class="fa-regular fa-circle-check"></i></div>
-                            <div id="mensaje_tel_error" class="errores">Ingrese un telefono valido</div>
+                            <div id="check_telAlt" class="check"><i class="fa-regular fa-circle-check"></i></div>
+                            <div id="mensaje_telAlt_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <div class="field">
                             <div class="label" for="cod_postal">Codigo Postal</div>
@@ -1041,8 +1047,8 @@
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
                                         <li>Tel: <span id="telModal">1189237483</span></li>
-                                        <li>Tel alt: <span id="telefono_alternativoModal">1137387464</span></li>
-                                        <li>Sitio: <span id="sitio_web">JorgeAlvarezportafolio.com.ar</span></li>
+                                        <li>Tel alt: <span id="telAltModal">1137387464</span></li>
+                                        <li id="li1">Sitio: <span id="sitio_webModal">JorgeAlvarezportafolio.com.ar</span></li>
                                     </ul>
                                 </div>
 
@@ -1234,7 +1240,6 @@
     </div>
     </div>
     <script src="./ajax/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

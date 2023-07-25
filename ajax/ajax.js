@@ -5,9 +5,10 @@ $(document).ready(function () {
     const expr_dir = /^[a-zA-Z0-9\s]+$/;
     const expr_cp = /^\d{4}$/;
     var timeoutId; // Variable para almacenar el ID del timeout
-    var cartelMostrado= false;
+    var cartelMostradoPersonales= false;
+    var cartelMostradoAdicionales = false;
 
-    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"],input[name^= "tel_alt"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "localidad"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
+    $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"],input[name^= "tel_alt"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "localidad"],input[name^="web"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
         clearTimeout(timeoutId); // Reinicia el temporizador en cada entrada de datos
         var formData = $('#dataForm').serialize();
 
@@ -23,19 +24,32 @@ $(document).ready(function () {
                     // Si los datos se han ingresado correctamente, mostrar el mensaje de éxito
                     if (datos.datos.nombre && datos.datos.apellido && datos.datos.dni && datos.datos.cuil && datos.datos.estado_civil && datos.datos.email){
                         // Si los datos se han ingresado correctamente y el cartel no ha sido mostrado
-                        if (datos.status === 'success' && !cartelMostrado) {
+                        if (datos.status === 'success' && !cartelMostradoPersonales) {
                             $('#mensajeExito').show(); // Mostrar el mensaje de éxito
-                            cartelMostrado = true; // Marcar el cartel como mostrado
+                            cartelMostradoPersonales = true; // Marcar el cartel como mostrado
                             // Ocultar el cartel después de 5 segundos
                             setTimeout(function () {
                                 $('#mensajeExito').hide();
                             }, 5000);
                         }
                     }
+
+                    // Si los datos se han ingresado correctamente, mostrar el mensaje de éxito
+                    if (datos.datos.tel && datos.datos.tel_alt && datos.datos.cod_postal && datos.datos.fech_nac && datos.datos.dir && datos.datos.nac && datos.datos.ciudad && datos.datos.localidad && datos.datos.genero) {
+                        // Si los datos se han ingresado correctamente y el cartel no ha sido mostrado
+                        if (datos.status === 'success' && !cartelMostradoAdicionales) {
+                            $('#mensajeExitoAdicionales').show(); // Mostrar el mensaje de éxito
+                            cartelMostradoAdicionales = true; // Marcar el cartel como mostrado
+                            // Ocultar el cartel después de 5 segundos
+                            setTimeout(function () {
+                                $('#mensajeExitoAdicionales').hide();
+                            }, 5000);
+                        }
+                    }
                    
 
                     function validarName(nombre) {
-                        if (nombre && nombre !== "No Valido" && nombre.trim().length > 2 && /^[A-Z].*/g.test(nombre) && nombre[0] === nombre[0].toUpperCase()) {
+                        if (nombre && nombre !== "No Valido" && nombre[0] === nombre[0].toUpperCase()) {
                             nombre = nombre.toUpperCase();
                             $('#mensaje_nombre_error').fadeOut();
                             $('#check_nombre').fadeIn();
@@ -58,7 +72,7 @@ $(document).ready(function () {
                     }
 
                     function validarApellido(apellido) {
-                        if (apellido && apellido !== "No Valido" && apellido.trim().length > 2 && /^[A-Z].*/g.test(apellido) && apellido[0] === apellido[0].toUpperCase()) {
+                        if (apellido && apellido !== "No Valido" && apellido[0] === apellido[0].toUpperCase()) {
                             apellido = apellido.toUpperCase();
                             $('#mensaje_apellido_error').fadeOut();
                             $('#check_apellido').fadeIn();
@@ -82,7 +96,7 @@ $(document).ready(function () {
 
 
                     function validarDni(dni) {
-                        if (dni && dni.trim().length > 2 && /^[0-9].*/g.test(dni)) {
+                        if (dni && dni !== 'No Valido') {
                             $('#mensaje_dni_error').fadeOut();
                             $('#check_dni').fadeIn();
                             $('#dni').css({
@@ -128,20 +142,19 @@ $(document).ready(function () {
                     }
 
                     function validarCuil(cuil) {
-                        if (!cuil || !expr_cuil.test(cuil)) {
-                            $('#mensaje_cuil_error').fadeIn();
-                            $('#check_cuil').fadeOut();
-                            $('#cuil').css({
-                                'border': '3px solid red'
-                            });
-
-                        } else {
+                        if (cuil!=='' && cuil !== 'No Valido') {
                             $('#mensaje_cuil_error').fadeOut();
                             $('#check_cuil').fadeIn();
                             $('#cuil').css({
                                 'border': '3px solid green'
                             });
                             $('#cuilModal').html(cuil);
+                        } else {
+                            $('#mensaje_cuil_error').fadeIn();
+                            $('#check_cuil').fadeOut();
+                            $('#cuil').css({
+                                'border': '3px solid red'
+                            });
                         }
                     }
 
@@ -170,6 +183,29 @@ $(document).ready(function () {
 
                     if (datos.datos.tel) {
                         validarTel(datos.datos.tel);
+
+                    }
+
+                    function validarTelAlt(tel) {
+                        const tel_limpio = tel.replace(/\s+/g, '').replace(/-/g, '');
+                        if (tel_limpio && tel_limpio.trim().length > 2 && /^[0-9].*/g.test(tel_limpio) && expr_tel.test(tel_limpio)) {
+                            $('#mensaje_telAlt_error').fadeOut();
+                            $('#check_telAlt').fadeIn();
+                            $('#tel_alt').css({
+                                'border': '3px solid green'
+                            });
+                            $('#telAltModal').html(tel);
+                        } else {
+                            $('#mensaje_telAlt_error').fadeIn();
+                            $('#check_telAlt').fadeOut();
+                            $('#tel_alt').css({
+                                'border': '3px solid red'
+                            });
+                        }
+                    }
+
+                    if (datos.datos.tel_alt) {
+                        validarTelAlt(datos.datos.tel_alt);
 
                     }
 
@@ -266,6 +302,18 @@ $(document).ready(function () {
                     if (datos.datos.genero) {
                         validarGenero(datos.datos.genero);
 
+                    }
+
+                    function validarWeb(web) {
+                        if (!web || web == '') {
+                            $('#li1').remove();
+                        } else {
+                            $('#sitio_webModal').html(web);
+                        }
+                    }
+
+                    if (datos.datos.web) {
+                        validarWeb(datos.datos.web);
                     }
 
 
@@ -394,7 +442,6 @@ $(document).ready(function () {
        clearTimeout(timeoutId);
 
        var formData = $('#dataForm').serialize();
-       console.log(formData);
 
        timeoutId = setTimeout(function () {
            $.ajax({
@@ -403,6 +450,7 @@ $(document).ready(function () {
                data: formData,
                success: function (response) {
                    var experiencias = JSON.parse(response);
+                   console.log(experiencias);
 
                    // Mostrar datos en secciones diferentes
                    $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos

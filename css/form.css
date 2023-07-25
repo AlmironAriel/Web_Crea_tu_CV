@@ -372,3 +372,37 @@ main{
         opacity: 0;
     }
 }
+
+/* Estilos para el cartel de éxito */
+#mensajeExitoAdicionales {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    animation: fadeInOut 1s ease-in-out;
+}
+
+/* Animación para mostrar y ocultar el cartel */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
