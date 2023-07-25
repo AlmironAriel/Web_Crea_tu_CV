@@ -1,6 +1,2 @@
 NOMBRE,APELLIDO,DNI,CUIL,"ESTADO CIVIL",EMAIL,TELEFONO,"TELEFONO ALT","FECHA NACIMIENTO",COD.POSTAL,DIRECCION,NACIONALIDAD,CIUDAD,LOCALIDAD,GENERO,WEB,"INFO PERFIL",EMPLEO,EMPRESA,"CIUDAD EMPRESA","PERIODIO DESDE","PERIODO HASTA",DESCRIPCION
-Leandro,Peralta,42193517,20-42193517-4,Soltero,leandroemmanuel_99@outlook.es,1130922414,1139922415,23/10/1999,1744,"Reservistas Argentinos 2495",Argentino,"Buenos Aires",Moreno,Masculino,,,,,,,
-Marta,Fernandez,28345627,29-42817345-3,Soltero,marta-99@gmail.com,,,,,,,,,,,,,,,,
-Maria,Bezerra,12345678,20-42183745-4,Casado,maria_99@gmai.com,,,,,,,,,,,,,,,,
-Urgot,Lol,23456789,20-42183456-4,Soltero,urgot_99@gmail.com,,,,,,,,,,,,,,,,
-Leandro,Peralta,93248567,20-48273456-5,Soltero,leandroemmanuel_99@gmail.com,,,,,,,,,,,,,,,,
+Leandro,Peralta,42193517,20-42193517-4,Soltero,leandroemmanuel_99@outlook.es,1130922414,1130922415,23/10/1999,1744,"Reservistas Argentinos 2495",,,,,,,,,,,,
