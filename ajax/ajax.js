@@ -469,7 +469,7 @@ $(document).ready(function () {
                                '<div class="descripcion">' +
                                '<h4 class="exp_title titulo_empleo">' + 'DESCRIPCION' + '</h4>' +
                                '<div id="p_descripcion">' +
-                               '<p>' + experiencia.descripcion + '</p>' +
+                                experiencia.descripcion +
                                '</div>' +
                                '</div>';
 
@@ -485,6 +485,7 @@ $(document).ready(function () {
     $('#dataForm').on('input', 'input[name^="habilidad"]', function () {
         var formData = $('#dataForm').serialize();
 
+        timeoutId = setTimeout(function () {
         $.ajax({
             type: 'POST',
             url: './php/data.php',
@@ -503,7 +504,7 @@ $(document).ready(function () {
             }
 
         });
-
+    },1000);
     });
 
     $('#dataForm').on('input', 'input[name^="hab_it"]', function () {
@@ -539,6 +540,7 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var educacion = JSON.parse(response);
+                console.log(educacion);
 
                 $('#formacion_academica').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
                 if (educacion.educacion.instituto !== "" || educacion.educacion.carrera !== "" || educacion.educacion.localidad !== "" || educacion.educacion.grado !== "" || educacion.educacion.estado !== "" || educacion.educacion.desde !== "" || educacion.educacion.hasta !== "") {

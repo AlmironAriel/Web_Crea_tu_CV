@@ -135,12 +135,14 @@ if (isset($_POST['hab_it']) && !empty($_POST['hab_it'])) {
 
 $datos = array();
 $experiencias = array();
+$laborales = array();
 $arr_habilidades = array();
 $arr_habilidadesIT = array();
 $arr_educacion = array();
 $arr_cursos = array();
 $ultimaPersona = array();
 $datosPersonalesLaborales = array();
+$datos_combinados = array();
 
 //=========================================================
 //VALIDACION DE DATOS PERSONALES
@@ -300,13 +302,13 @@ if (!empty($genero)) {
     $ultimaPersona['genero'] = $genero;
 }
 
-if (!empty($web)) {
+if (isset($web)) {
     $ultimaPersona["web"] = $web;
 } else {
     $ultimaPersona["web"] = '';
 }
 
-if (!empty($info_perfil)) {
+if (isset($info_perfil)) {
     $ultimaPersona["info_perfil"] = $info_perfil;
 }
 
@@ -315,68 +317,313 @@ if (!empty($info_perfil)) {
 // Nombre del archivo CSV
 $nombre_archivo = 'datos.csv';
 
-// Función para leer los datos actuales desde el archivo CSV y cargarlos en el array $datos
 function leerDatosDesdeCSV($nombre_archivo)
 {
     $datos = array();
     if (($gestor = fopen($nombre_archivo, "r")) !== FALSE) {
         // Leer las columnas de la cabecera y descartarlas
-        fgetcsv($gestor);
+        $cabecera = fgetcsv($gestor);
+
+        // Verificar si la cabecera se leyó correctamente
+        if (!is_array($cabecera)) {
+            fclose($gestor);
+            return $datos;
+        }
+
+        // Obtener el índice de la columna de habilidades
+        $indiceHabilidades = is_array($cabecera) ? array_search('HABILIDADES', $cabecera) : false;
+        // Obtener el índice de la columna de habilidades IT
+        $indiceHabilidadesIT = is_array($cabecera) ? array_search('HABILIDADES IT', $cabecera) : false;
+        // Obtener el índice de la columna de LABORALES
+        $indiceLabores = is_array($cabecera) ? array_search('LABORALES', $cabecera) : false;
+
+
+       // Obtener los índices para los campos de educación
+        $indicesEducacion = array();
+        if (is_array($cabecera)) {
+            for ($i = 1; $i <= 4; $i++) {
+                $indicesEducacion[] = array_search("EDUCACION-INSTITUTO $i", $cabecera);
+                $indicesEducacion[] = array_search("CARRERA $i", $cabecera);
+                $indicesEducacion[] = array_search("LOCALIDAD $i", $cabecera);
+                $indicesEducacion[] = array_search("GRADO $i", $cabecera);
+                $indicesEducacion[] = array_search("ESTADO $i", $cabecera);
+                $indicesEducacion[] = array_search("DESDE EDUCACION $i", $cabecera);
+                $indicesEducacion[] = array_search("HASTA EDUCACION $i", $cabecera);
+                $indicesEducacion[] = array_search("DESCRIPCION $i", $cabecera);
+            }
+        }
 
         // Leer cada fila del archivo CSV y cargar los datos en el array
         while (($fila = fgetcsv($gestor)) !== FALSE) {
             $dni = $fila[2];
-            $datos[$dni] = array(
-                'nombre' => $fila[0],
-                'apellido' => $fila[1],
-                'dni' => $fila[2],
-                'cuil' => $fila[3],
-                'estado_civil' => $fila[4],
-                'email' => $fila[5],
-                'tel' => $fila[6],
-                'tel_alt' => $fila[7],
-                'fech_nac' => $fila[8],
-                'cod_postal' => $fila[9],
-                'dir' => $fila[10],
-                'nac' => $fila[11],
-                'ciudad' => $fila[12],
-                'localidad' => $fila[13],
-                'genero' => $fila[14],
 
-                // Agregar más campos según corresponda a tu CSV
-            );
+            if (isset($indiceLabores)) {
+                $experiencias_laborales_str = $fila[$indiceLabores];
+
+                // Dividir las experiencias laborales si están en una sola celda separadas por ";"
+                $experiencias_laborales = explode('|', $experiencias_laborales_str);
+
+                // Procesar cada experiencia laboral por separado
+                foreach ($experiencias_laborales as $experiencia_laboral) {
+                    // Obtener los datos individuales de cada experiencia laboral
+                    $experiencia_data = explode(',', $experiencia_laboral);
+
+                    $empresaEmpleo = isset($experiencia_data[0]) ? $experiencia_data[0] : '';
+                    $empleo = isset($experiencia_data[1]) ? $experiencia_data[1] : '';
+                    $desdeEmpleo = isset($experiencia_data[2]) ? $experiencia_data[2] : '';
+                    $hastaEmpleo = isset($experiencia_data[3]) ? $experiencia_data[3] : '';
+                    $descripcion = isset($experiencia_data[4]) ? $experiencia_data[4] : '';
+
+                    // Crear el arreglo con los datos de la experiencia laboral
+                    $experiencia = array(
+                        'empresaEmpleo' => $empresaEmpleo,
+                        'empleo' => $empleo,
+                        'desdeEmpleo' => $desdeEmpleo,
+                        'hastaEmpleo' => $hastaEmpleo,
+                        'descripcion' => $descripcion
+                    );
+
+                    // Agregar la experiencia laboral al arreglo $experiencias
+                    $experiencias[] = $experiencia;
+                }
+            }
+
+            // Verificar si el DNI ya existe en el array de datos
+            if (isset($datos[$dni])) {
+                // Si existe, agregamos la experiencia laboral solo si no se ha agregado previamente
+                if (!isset($datos[$dni]['experiencias'])) {
+                    $datos[$dni]['experiencias'] = array();
+                }
+                $datos[$dni]['experiencias'][] = $experiencia;
+            } else {
+                // Si no existe, creamos un nuevo registro con los datos personales y la experiencia laboral, evitando agregar elementos vacíos
+                $persona = array(
+                    'nombre' => $fila[0],
+                    'apellido' => $fila[1],
+                    'dni' => $dni,
+                    'cuil' => isset($fila[3]) ? $fila[3] : '',
+                    'estado_civil' => isset($fila[4]) ? $fila[4] : '',
+                    'email' => isset($fila[5]) ? $fila[5] : '',
+                    'tel' => isset($fila[6]) ? $fila[6] : '',
+                    'tel_alt' => isset($fila[7]) ? $fila[7] : '',
+                    'fech_nac' => isset($fila[8]) ? $fila[8] : '',
+                    'cod_postal' => isset($fila[9]) ? $fila[9] : '',
+                    'dir' => isset($fila[10]) ? $fila[10] : '',
+                    'nac' => isset($fila[11]) ? $fila[11] : '',
+                    'ciudad' => isset($fila[12]) ? $fila[12] : '',
+                    'localidad' => isset($fila[13]) ? $fila[13] : '',
+                    'genero' => isset($fila[14]) ? $fila[14] : '',
+                    'web' => isset($fila[15]) ? $fila[15] : '',
+                    'info_perfil' => isset($fila[16]) ? $fila[16] : '',
+                    'experiencias'=> isset($experiencias)?$experiencias:'',
+                );
+
+                if (isset($indiceLabores)) {
+                    $persona['experiencias'] = array($experiencia);
+                }
+
+                $datos[$dni] = $persona;
+            }
+
+            // Verificar si la fila tiene habilidades y agregarlas al array correspondiente
+            if (!empty($indiceHabilidades)) {
+                $habilidades = isset($fila[$indiceHabilidades]) ? $fila[$indiceHabilidades] : '';
+                if (!empty($habilidades)) {
+                    $habilidades_array = array();
+                    foreach (explode(', ', $habilidades) as $habilidad) {
+                        $habilidades_array[] = $habilidad;
+                    }
+                    $datos[$dni]['habilidades'] = $habilidades_array;
+                }
+            }
+
+            // Verificar si la fila tiene habilidades IT y agregarlas al array correspondiente
+            if (!empty($indiceHabilidadesIT)) {
+                $habilidadesIT = isset($fila[$indiceHabilidadesIT]) ? $fila[$indiceHabilidadesIT] : '';
+                if (!empty($habilidadesIT)) {
+                    $habilidadesIT_array = array();
+                    foreach (explode(', ', $habilidadesIT) as $habilidadIT) {
+                        $habilidadesIT_array[] = $habilidadIT;
+                    }
+                    $datos[$dni]['habilidadesit'] = $habilidadesIT_array;
+                }
+            }
+
+            
+            
         }
         fclose($gestor);
     }
     return $datos;
 }
 
+
+
 function guardarDatosEnCSV($nombre_archivo, $datos)
 {
-    // Eliminar datos duplicados manteniendo solo las últimas entradas
-    $datos = array_unique($datos, SORT_REGULAR);
+    if (!function_exists('eliminar_caracteres_especiales')) {
+        function eliminar_caracteres_especiales($text)
+        {
+            // Eliminar las etiquetas HTML y obtener solo el contenido
+            $text = strip_tags($text);
 
-    $archivo_csv = fopen($nombre_archivo, 'w');
+            // Reemplazar los saltos de línea con un espacio en blanco
+            $text = str_replace(array("\r\n", "\r", "\n"), ' ', $text);
 
-    // Verificar si el archivo está vacío, en cuyo caso escribiremos la cabecera
-    $columnas = array('NOMBRE', 'APELLIDO', 'DNI', 'CUIL', 'ESTADO CIVIL', 'EMAIL', 'TELEFONO', 'TELEFONO ALT', 'FECHA NACIMIENTO', 'COD.POSTAL', 'DIRECCION', 'NACIONALIDAD', 'CIUDAD', 'LOCALIDAD', 'GENERO', 'WEB', 'INFO PERFIL', 'EMPLEO', 'EMPRESA', 'CIUDAD EMPRESA', 'PERIODIO DESDE', 'PERIODO HASTA', 'DESCRIPCION');
-    fputcsv($archivo_csv, $columnas);
+            // Reemplazar '&nbsp;' con un espacio en blanco
+            $text = str_replace('&nbsp;', ' ', $text);
 
-    // Recorrer el array y escribir los datos en el archivo CSV
-    foreach ($datos as $dni => $persona) {
-        $fila = array($persona['nombre'], $persona['apellido'], $persona['dni'], $persona['cuil'], $persona['estado_civil'], $persona['email'], isset($persona['tel']) ? $persona['tel'] : '', isset($persona['tel_alt']) ? $persona['tel_alt'] : '', isset($persona['fech_nac']) ? $persona['fech_nac'] : '', isset($persona['cod_postal']) ? $persona['cod_postal'] : '', isset($persona['dir']) ? $persona['dir'] : '', isset($persona['nac']) ? $persona['nac'] : '', isset($persona['ciudad']) ? $persona['ciudad'] : '', isset($persona['localidad']) ? $persona['localidad'] : '', isset($persona['genero']) ? $persona['genero'] : '', isset($persona['web']) ? $persona['web'] : '', isset($persona['info_perfil']) ? $persona['info_perfil'] : '', isset($persona['empleo']) ? $persona['empleo'] : '', isset($persona['ciudadEmpleo']) ? $persona['ciudadEmpleo'] :'', isset($persona['desdeEmpleo']) ? $persona['desdeEmpleo'] : '', isset($persona['empresaEmpleo']) ? $persona['empresaEmpleo'] : '', isset($persona['hastaEmpleo']) ? $persona['hastaEmpleo'] : '', isset($persona['descripcion']) ? $persona['descripcion'] : '');
-        fputcsv($archivo_csv, $fila);
+            // Eliminar espacios en blanco innecesarios
+            $text = trim(preg_replace('/\s+/', ' ', $text));
+
+            return $text;
+        }
     }
 
+    // Verificar si el archivo está vacío
+    $archivo_vacio = true;
+
+    // Abre el archivo CSV en modo de escritura
+    $archivo_csv = fopen($nombre_archivo, 'w');
+
+    // Escribir la cabecera solo si el archivo no existe
+
+    $cabecera = array(
+        'NOMBRE', 'APELLIDO', 'DNI', 'CUIL', 'ESTADO CIVIL', 'EMAIL', 'TELEFONO', 'TELEFONO ALT',
+        'FECHA NACIMIENTO', 'COD POSTAL', 'DIRECCION', 'NACIONALIDAD', 'CIUDAD', 'LOCALIDAD', 'GENERO', 'WEB',
+        'INFO PERFIL'
+    );
+
+    $cabecera[] = 'LABORALES';
+
+    $cabecera[] = 'HABILIDADES';
+    $cabecera[] = 'HABILIDADES IT';
+
+    $cabecera[] = 'EDUCACION';
+
+    fputcsv($archivo_csv, $cabecera);
+
+
+
+    foreach ($datos as $dni => $persona) {
+        // Guardar los datos personales en el arreglo $fila_persona
+        $persona['info_perfil'] = eliminar_caracteres_especiales($persona['info_perfil']);
+        $fila_persona = array(
+            $persona['nombre'], $persona['apellido'], $persona['dni'], $persona['cuil'], $persona['estado_civil'],
+            $persona['email'], $persona['tel'], $persona['tel_alt'], $persona['fech_nac'], $persona['cod_postal'],
+            $persona['dir'], $persona['nac'], $persona['ciudad'], $persona['localidad'], $persona['genero'],
+            $persona['web'], $persona['info_perfil']
+        );
+
+        // Verificar si la persona tiene experiencias laborales
+        if (isset($persona['experiencias'])) {
+            $experiencias = $persona['experiencias'];
+
+            // Inicializar un array para almacenar las experiencias laborales como cadena de texto separada por comas
+            $experiencias_laborales = array();
+
+            // Llenar el array con las experiencias laborales en formato de cadena
+            foreach ($experiencias as $experiencia) {
+                $experiencia['descripcion'] = eliminar_caracteres_especiales($experiencia['descripcion']);
+                // Construir la cadena para cada experiencia laboral
+                $experiencia_str = implode(', ', array(
+                    $experiencia['empresaEmpleo'],
+                    $experiencia['empleo'],
+                    $experiencia['desdeEmpleo'],
+                    $experiencia['hastaEmpleo'],
+                    $experiencia['descripcion'],
+                ));
+
+                // Agregar la cadena de la experiencia laboral al array
+                $experiencias_laborales[] = $experiencia_str;
+            }
+
+            // Convertir el array de experiencias laborales en una cadena separada por comas
+            $experiencias_laborales_str = implode(', ', $experiencias_laborales);
+
+            // Agregar la cadena de experiencias laborales a la fila de la persona
+            $fila_persona[] = $experiencias_laborales_str;
+        } else {
+            // Llenar con campo en blanco para las experiencias laborales no ingresadas
+            $fila_persona[] = '';
+        }
+        
+
+        if (isset($persona['habilidades'])) {
+            $habilidades = $persona['habilidades'];
+
+            // Inicializar el arreglo de habilidades para esta persona
+            $habilidades_array = array();
+
+            // Llenar el arreglo de habilidades con las habilidades correspondientes
+            foreach ($habilidades as $habilidad) {
+                // Verificar si el array $habilidades está definido y si el índice $i existe en el array
+                if (isset($habilidad['habilidad'])) {
+                    $habilidades_array[] = $habilidad['habilidad'];
+                }
+            }
+
+            // Convertir el arreglo de habilidades en una cadena separada por comas
+            $habilidades_str = implode(', ', $habilidades_array);
+
+            // Agregar las habilidades a la fila de la persona
+            $fila_persona[] = $habilidades_str;
+        } else {
+            // Llenar con campos en blanco para las habilidades no ingresadas
+            $fila_persona[] = '';
+        }
+
+        // Verificar si la persona tiene habilidades IT
+        if (isset($persona['habilidadesit'])) {
+            $habilidadesIT = $persona['habilidadesit'];
+
+            // Inicializar el arreglo de habilidades IT para esta persona
+            $habilidadesIT_array = array();
+
+            // Llenar el arreglo de habilidades IT con las habilidades correspondientes
+            foreach ($habilidadesIT as $habilidadIT) {
+                if (isset($habilidadIT['habilidadit'])) {
+                    $habilidadesIT_array[] = $habilidadIT['habilidadit'];
+                }
+            }
+
+            // Convertir el arreglo de habilidades IT en una cadena separada por comas
+            $habilidadesIT_str = implode(', ', $habilidadesIT_array);
+
+            // Agregar las habilidades IT a la fila de la persona
+            $fila_persona[] = $habilidadesIT_str;
+        } else {
+            // Llenar con campo en blanco para las habilidades IT no ingresadas
+            $fila_persona[] = '';
+        }
+
+        // Escribir la fila en el archivo CSV usando fputcsv
+        fputcsv($archivo_csv, $fila_persona);
+    }
+
+    // Cierra el archivo CSV
     fclose($archivo_csv);
 }
-
 
 // Cargar datos actuales desde el archivo CSV solo si existen datos previos
 if (filesize($nombre_archivo) > 0) {
     $datos = leerDatosDesdeCSV($nombre_archivo);
 } else {
     $datos = array(); // Inicializamos $datos como un array vacío
+}
+
+// Función para combinar los datos personales y las experiencias laborales
+function combinarDatosPersonalesLaborales($datosPersonales, $laborales)
+{
+    // Si no hay experiencias laborales, simplemente devuelve los datos personales
+    if (empty($laborales)) {
+        return $datosPersonales;
+    }
+
+    // Combinar los datos personales con las experiencias laborales
+    $datosPersonales['experiencias'] = $laborales;
+
+    return $datosPersonales;
 }
 
 if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !empty($estado_civil) && !empty($email)) {
@@ -389,7 +636,19 @@ if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !em
         $datos[$dni]['cuil'] = $cuil;
         $datos[$dni]['estado_civil'] = $estado_civil;
         $datos[$dni]['email'] = $email;
-        // Actualizar más campos según corresponda
+
+        isset($tel) ? $datos[$dni]['tel'] = $tel : '';
+        isset($tel_alt) ? $datos[$dni]['tel_alt'] = $tel_alt : '';
+        isset($fech_nac) ? $datos[$dni]['fech_nac'] = $fech_nac : '';
+        isset($cod_postal) ? $datos[$dni]['cod_postal'] = $cod_postal : '';
+        isset($dir) ? $datos[$dni]['dir'] = $dir : '';
+        isset($nac) ? $datos[$dni]['nac'] = $nac : '';
+        isset($ciudad) ? $datos[$dni]['ciudad'] = $ciudad : '';
+        isset($localidad) ? $datos[$dni]['localidad'] = $localidad : '';
+        isset($genero) ? $datos[$dni]['genero'] = $genero : '';
+        isset($web) ? $datos[$dni]['web'] = $web : '';
+        isset($info_perfil) ? $datos[$dni]['info_perfil'] = $info_perfil : '';
+
     } else {
         // Agregar una nueva persona al array
         $datos[$dni] = array(
@@ -399,66 +658,56 @@ if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !em
             'cuil' => $cuil,
             'estado_civil' => $estado_civil,
             'email' => $email,
-            // Agregar más campos según corresponda
+            'tel' => isset($_POST['tel']) ? $_POST['tel'] : '',
+            'tel_alt' => isset($_POST['tel_alt']) ? $_POST['tel_alt'] : '',
+            'fech_nac' => isset($_POST['fech_nac']) ? $_POST['fech_nac'] : '',
+            'cod_postal' => isset($_POST['cod_postal']) ? $_POST['cod_postal'] : '',
+            'dir' => isset($_POST['dir']) ? $_POST['dir'] : '',
+            'nac' => isset($_POST['nac']) ? $_POST['nac'] : '',
+            'ciudad' => isset($_POST['ciudad']) ? $_POST['ciudad'] : '',
+            'localidad' => isset($_POST['localidad']) ? $_POST['localidad'] : '',
+            'genero' => isset($_POST['genero']) ? $_POST['genero'] : '',
+            'web' => isset($_POST['web']) ? $_POST['web'] : '',
+            'info_perfil' => isset($_POST['info_perfil']) ? $_POST['info_perfil'] : '',
+            'experiencias' => array()
         );
     }
-
-    if (isset($datos[$dni]) && !empty($tel) || !empty($tel_alt) || !empty($cod_postal) || !empty($fech_nac) || !empty($dir) || !empty($nac) || !empty($ciudad) || !empty($localidad) || !empty($genero) || !empty($web)) {
-        isset($tel) ? $datos[$dni]['tel'] = $tel : '';
-        isset($tel_alt) ? $datos[$dni]['tel_alt'] = $tel_alt : '';
-        isset($cod_postal) ? $datos[$dni]['cod_postal'] = $cod_postal : '';
-        if (isset($fech_nac)) {
-            if (!empty($fech_nac)) {
-                // Validar el formato de la fecha (DD/MM/AAAA)
-                $fechaValida = false;
-                $fechaFormateada = '';
-
-                // Verificar si la fecha se puede analizar correctamente
-                if (strtotime($fech_nac)) {
-                    $fechaValida = true;
-                    $fechaFormateada = date('d/m/Y', strtotime($fech_nac));
-                }
-
-                if ($fechaValida) {
-                    $datos[$dni]['fech_nac'] = $fechaFormateada;
-                }
-            }
-        }
-        isset($dir) ? $datos[$dni]['dir'] = $dir : '';
-        isset($nac) ? $datos[$dni]['nac'] = $nac : '';
-        isset($ciudad) ? $datos[$dni]['ciudad'] = $ciudad : '';
-        isset($localidad) ? $datos[$dni]['localidad'] = $localidad : '';
-        isset($genero) ? $datos[$dni]['genero'] = $genero : '';
-        isset($web) ? $datos[$dni]['web'] = $web : '';
-    }
-
-    if (isset($datos[$dni]) && !empty($info_perfil)) {
-        $datos[$dni]['info_perfil'] = $info_perfil;
-    }
-
-    // Guardar los datos actualizados en el archivo CSV
-    guardarDatosEnCSV($nombre_archivo, $datos);
-
-    // Obtener la última persona ingresada o actualizada
-    $ultimaPersona = $datos[$dni];
 }
+
+
+
+// Verificar si los campos opcionales están presentes en el formulario y asignarlos si es necesario
+$tel = isset($_POST['tel']) ? $_POST['tel'] : '';
+$tel_alt = isset($_POST['tel_alt']) ? $_POST['tel_alt'] : '';
+$fech_nac = isset($_POST['fech_nac']) ? $_POST['fech_nac'] : '';
+$cod_postal = isset($_POST['cod_postal']) ? $_POST['cod_postal'] : '';
+$dir = isset($_POST['dir']) ? $_POST['dir'] : '';
+$nac = isset($_POST['nac']) ? $_POST['nac'] : '';
+$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
+$localidad = isset($_POST['localidad']) ? $_POST['localidad'] : '';
+$genero = isset($_POST['genero']) ? $_POST['genero'] : '';
+$web = isset($_POST['web']) ? $_POST['web'] : '';
+$info_perfil = isset($_POST['info_perfil']) ? $_POST['info_perfil'] : '';
 
 
 //=========================================================
 //VALIDACION DE DATOS LABORALES
 //=========================================================
 
-if (!empty($empleos)) {
+if (isset($_POST['empleo']) && is_array($_POST['empleo'])) {
 
+    // Construir el array $laborales con el formato adecuado
+    $experiencias = array();
+    $laborales = array();
 
     // Itera sobre los datos ingresados y crea un array de experiencias laborales
     for ($i = 0; $i < count($empleos); $i++) {
-        $empleo = trim($empleos[$i]);
-        $ciudadEmpleo = trim($ciudadEmpleos[$i]);
-        $empresaEmpleo = trim($empresaEmpleos[$i]);
-        $desdeEmpleo = trim($desdeEmpleos[$i]);
-        $hastaEmpleo = trim($hastaEmpleos[$i]);
-        $descripcion = trim($descripcion_lab[$i]);
+        $empleo = isset($empleos[$i]) ? trim($empleos[$i]) : '';
+        $ciudadEmpleo = isset($ciudadEmpleos[$i]) ? trim($ciudadEmpleos[$i]) : '';
+        $empresaEmpleo = isset($empresaEmpleos[$i]) ? trim($empresaEmpleos[$i]) : '';
+        $desdeEmpleo = isset($desdeEmpleos[$i]) ? trim($desdeEmpleos[$i]) : '';
+        $hastaEmpleo = isset($hastaEmpleos[$i]) ? trim($hastaEmpleos[$i]) : '';
+        $descripcion = isset($descripcion_lab[$i]) ? trim($descripcion_lab[$i]) : '';
 
         $fechaValidaDesde = false;
         $fechaValidaHasta = false;
@@ -483,13 +732,37 @@ if (!empty($empleos)) {
             $hastaEmpleo = $fechaFormateadaHasta;
         }
 
-        // Eliminar las etiquetas HTML y codificar el texto para evitar problemas de seguridad
-        $descripcion = htmlspecialchars($descripcion);
 
         if (!empty($empleo) || !empty($ciudadEmpleo) || !empty($empresaEmpleo) || !empty($desdeEmpleo) || !empty($hastaEmpleo) || !empty($descripcion)) {
             // Aca se realizan las operaciones necesarias con los datos de cada experiencia laboral, como almacenarlos en una base de datos
-            $experiencias[] = array(
-                'dni' => $dni,
+            // Eliminar las etiquetas HTML y codificar el texto para evitar problemas de seguridad
+            $descripcion_sin_etiquetas = strip_tags($descripcion);
+
+            $dni = isset($_POST['dni']) ? $_POST['dni'] : '';
+
+            // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
+            $experiencias = isset($datos[$dni]['experiencias']) ? $datos[$dni]['experiencias'] : array();
+            $existe_experiencia = false;
+            foreach ($experiencias as $experiencia) {
+                if ($experiencia['empleo'] === $empleo && $experiencia['descripcion'] === $descripcion && $experiencia['ciudadEmpleo'] === $ciudadEmpleo && $experiencia['empresaEmpleo'] === $empresaEmpleo) {
+                    $existe_experiencia = true;
+                    break;
+                }
+            }
+
+            // Si no existe, agregamos la nueva experiencia laboral
+            if (!$existe_experiencia) {
+                $datos[$dni]['experiencias'][] = array(
+                    'empleo' => $empleo,
+                    'ciudadEmpleo' => $ciudadEmpleo,
+                    'empresaEmpleo' => $empresaEmpleo,
+                    'desdeEmpleo' => $desdeEmpleo,
+                    'hastaEmpleo' => $hastaEmpleo,
+                    'descripcion' => $descripcion_sin_etiquetas
+                );
+            }
+
+            $laborales[] = array(
                 'empleo' => $empleo,
                 'ciudadEmpleo' => $ciudadEmpleo,
                 'empresaEmpleo' => $empresaEmpleo,
@@ -499,105 +772,125 @@ if (!empty($empleos)) {
             );
         }
     }
-
-
-    // Guardar los datos actuales desde el archivo CSV solo si existen datos previos
-    if (filesize($nombre_archivo) > 0) {
-        $datos = leerDatosDesdeCSV($nombre_archivo);
-    } else {
-        $datos = array(); // Inicializamos $datos como un array vacío
-    }
-
-    // Verificar si hay datos en $experiencias para agregar al archivo CSV
-    if (!empty($experiencias)) {
-        foreach ($experiencias as $experiencia) {
-            $dni = $experiencia['dni'];
-
-            // Eliminar las etiquetas HTML y codificar el texto de descripción para evitar problemas de seguridad
-            $experiencia['descripcion'] = strip_tags($experiencia['descripcion']);
-            $experiencia['descripcion'] = htmlspecialchars($experiencia['descripcion']);
-
-
-            // Verificar si el DNI existe en $datos
-            if (isset($datos[$dni])) {
-                // Fusionar los datos de $datos y $experiencia para cada DNI
-                $datos[$dni] = array_merge($datos[$dni], $experiencia);
-            }
-        }
-
-        // Guardar los datos actualizados (con las experiencias) en el archivo CSV
-        guardarDatosEnCSV($nombre_archivo, $datos);
-    }
-    }
-
-
+}
 
 
 //=========================================================
 //VALIDACION DE HABILIDADES
 //=========================================================
 
-for ($i = 0; $i < count($habilidades); $i++) {
-    $habilidad = trim($habilidades[$i]);
+if (isset($habilidades)) {
 
-    if (!empty($habilidad)) {
-        $arr_habilidades[] = array(
-            'habilidad' => $habilidad,
-        );
+    for ($i = 0; $i < count($habilidades); $i++) {
+        $habilidad = trim($habilidades[$i]);
+
+        if (!empty($habilidad)) {
+            $datos[$dni]['habilidades'][] = array(
+                'habilidad' => $habilidad,
+            );
+
+            $arr_habilidades[] = array(
+                'habilidad' => $habilidad,
+            );
+        }
     }
 }
 
 //=========================================================
 //VALIDACION DE HABILIDADES IT
 //=========================================================
+if (isset($habilidadesIT)) {
 
+    for ($i = 0; $i < count($habilidadesIT); $i++) {
+        $habilidadIT = trim($habilidadesIT[$i]);
 
-for ($i = 0; $i < count($habilidadesIT); $i++) {
-    $habilidadIT = trim($habilidadesIT[$i]);
+        if (!empty($habilidadIT)) {
+            $datos[$dni]['habilidadesit'][] = array(
+                'habilidadit' => $habilidadIT,
+            );
 
-    if (!empty($habilidadIT)) {
-        $arr_habilidadesIT[] = array(
-            'habilidadit' => $habilidadIT,
-        );
+            $arr_habilidadesIT[] = array(
+                'habilidadit' => $habilidadIT,
+            );
+        }
     }
 }
+
+
+
+
+
 
 //=========================================================
 //VALIDACION DE DATOS EDUCATIVOS
 //=========================================================
 
+if (isset($_POST['instituto']) && is_array($_POST['instituto'])) {
+    $educaciones = array();
 
+    for ($i = 0; $i < count($institutos); $i++) {
+        $instituto = trim($institutos[$i]);
+        $carrera = trim($carreras[$i]);
+        $localidad_insti = trim($localidad_instis[$i]);
+        $grado_instituto = trim($grado_institutos[$i]);
+        $estado_carrera = trim($estado_carreras[$i]);
+        $desde = trim($cursado_desde[$i]);
+        $hasta = trim($cursado_hasta[$i]);
+        $desc = trim($desc_educacion[$i]);
 
-for ($i = 0; $i < count($institutos); $i++) {
-    $instituto = trim($institutos[$i]);
-    $carrera = trim($carreras[$i]);
-    $localidad_insti = trim($localidad_instis[$i]);
-    $grado_instituto = trim($grado_institutos[$i]);
-    $estado_carrera = trim($estado_carreras[$i]);
-    $desde = trim($cursado_desde[$i]);
-    $hasta = trim($cursado_hasta[$i]);
-    $desc = trim($desc_educacion[$i]);
+        if (
+            !empty($instituto) || !empty($carrera)  || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) || !empty($desde)
+            || !empty($hasta) || !empty($desc)
+        ) {
 
-    if (
-        !empty($instituto) || !empty($carrera)  || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) || !empty($desde)
-        || !empty($hasta) || !empty($desc)
-    ) {
+            $descripcion_sin_etiquetas = strip_tags($desc);
 
+            $dni = isset($_POST['dni']) ? $_POST['dni'] : '';
 
-        // aca se realizan las operaciones necesarias con los datos academicos, como almacenarlos en una base de datos
+            // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
+            $educaciones = isset($datos[$dni]['educacion']) ? $datos[$dni]['educacion'] : array();
+            $existe_educacion = false;
 
-        $arr_educacion[] = array(
-            'instituto' => $instituto,
-            'carrera' => $carrera,
-            'localidad' => $localidad_insti,
-            'grado' => $grado_instituto,
-            'estado' => $estado_carrera,
-            'desde' => $desde,
-            'hasta' => $hasta,
-            'descripcion' => $desc
-        );
+            foreach ($educaciones as $educacion) {
+                if ($educacion['instituto'] === $instituto && $educacion['carrera'] === $carrera) {
+                    $existe_educacion = true;
+                    break;
+                }
+            }
+            // aca se realizan las operaciones necesarias con los datos academicos, como almacenarlos en una base de datos
+            if (!$existe_educacion) {
+                $datos[$dni]['educacion'][] = array(
+                    'instituto' => $instituto,
+                    'carrera' => $carrera,
+                    'localidad' => $localidad_insti,
+                    'grado' => $grado_instituto,
+                    'estado' => $estado_carrera,
+                    'desde' => $desde,
+                    'hasta' => $hasta,
+                    'descripcion' => $descripcion_sin_etiquetas
+                );
+            }
+            $arr_educacion[] = array(
+                'instituto' => $instituto,
+                'carrera' => $carrera,
+                'localidad' => $localidad_insti,
+                'grado' => $grado_instituto,
+                'estado' => $estado_carrera,
+                'desde' => $desde,
+                'hasta' => $hasta,
+                'descripcion' => $desc
+            );
+        }
     }
 }
+
+// Comprobar si $laborales es un array antes de llamar a la función
+if (is_array($laborales) && !empty($laborales)) {
+    $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
+}
+
+// Guardar los datos actualizados en el archivo CSV
+guardarDatosEnCSV($nombre_archivo, $datos);
 
 //=========================================================
 //VALIDACION DE DATOS cursos
@@ -629,7 +922,7 @@ for ($i = 0; $i < count($nomb_cursos); $i++) {
 
 
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $experiencias);
+$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $laborales);
 
 
 echo json_encode($response);
