@@ -240,41 +240,17 @@ navbar a:hover{
 
 
 
-/* pagina sobre Nosotros  */
-.us-wrap{
-  height: 100vh;
-  width: 100%;
-   background-color: #1F1F1F;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-.us-main{
-  width: 80%;
-  height: 80%;
-  display: flex;
-}
-.us-main .us-img{
-  width: 30%;
-  height: 100%;
-  background-image: url('./../img/programacion-2-e1551291144973.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.us-main .us-text{
-  width: 70%;
-  height: 100%;
-  padding: 30px;
-  color: #fff;
-}
-.us-main h2{
-  font-size: 50px;
-  font-family: 'lobster', cursive;
-  margin-bottom: 30px;
-}
-.us-main h3{
-  font-size: 30px;
-  margin-bottom: 20px;
-  color: orange;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
