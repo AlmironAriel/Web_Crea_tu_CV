@@ -773,7 +773,7 @@
                     <div class="field">
                         <div class="label" for="idioma">Idioma</div>
                         <select name="idioma[]">
-                            <option>Seleccione un Idioma</option>
+                            <option value="">Seleccione un Idioma</option>
                             <option value="ingles">Ingles</option>
                             <option value="frances">Frances</option>
                             <option value="portugues">Portugues</option>
@@ -788,7 +788,7 @@
                     <div class="field">
                         <div class="label" for="nivel_idioma">Nivel</div>
                         <select name="idioma_nivel[]">
-                            <option value="#">Nivel</option>
+                            <option value="">Nivel</option>
                             <option value="nativo">Nativo</option>
                             <option value="basico">Basico</option>
                             <option value="intermedio">Intermedio</option>
@@ -810,7 +810,7 @@
                         <div class="field">
                             <div class="label" for="idioma_2">Idioma</div>
                             <select name="idioma[]">
-                                <option>Seleccione un Idioma</option>
+                                <option value="">Seleccione un Idioma</option>
                                 <option value="ingles">Ingles</option>
                                 <option value="frances">Frances</option>
                                 <option value="portugues">Portugues</option>
@@ -825,7 +825,7 @@
                         <div class="field">
                             <div class="label" for="nivel_idioma_2">Nivel</div>
                             <select name="idioma_nivel[]">
-                                <option value="#">Nivel</option>
+                                <option value="">Nivel</option>
                                 <option value="nativo">nativo</option>
                                 <option value="Avanzado">Avanzado</option>
                                 <option value="Competente">Competente</option>
@@ -848,7 +848,7 @@
                             <div class="field">
                                 <div class="label" for="idioma_3">Idioma</div>
                                 <select name="idioma[]">
-                                    <option>Seleccione un Idioma</option>
+                                    <option value="">Seleccione un Idioma</option>
                                     <option value="ingles">Ingles</option>
                                     <option value="frances">Frances</option>
                                     <option value="portugues">Portugues</option>
@@ -863,7 +863,7 @@
                             <div class="field">
                                 <div class="label" for="nivel_idioma_3">Nivel</div>
                                 <select name="idioma_nivel[]">
-                                    <option value="#">Nivel</option>
+                                    <option value="">Nivel</option>
                                     <option value="nativo">nativo</option>
                                     <option value="Avanzado">Avanzado</option>
                                     <option value="Competente">Competente</option>
@@ -886,7 +886,7 @@
                                 <div class="field">
                                     <div class="label" for="idioma_4">Idioma</div>
                                     <select name="idioma[]">
-                                        <option>Seleccione un Idioma</option>
+                                        <option value="">Seleccione un Idioma</option>
                                         <option value="ingles">Ingles</option>
                                         <option value="frances">Frances</option>
                                         <option value="portugues">Portugues</option>
@@ -901,7 +901,7 @@
                                 <div class="field">
                                     <div class="label" for="nivel_idioma_4">Nivel</div>
                                     <select name="idioma_nivel[]">
-                                        <option value="#">Nivel</option>
+                                        <option value="">Nivel</option>
                                         <option value="nativo">nativo</option>
                                         <option value="Avanzado">Avanzado</option>
                                         <option value="Competente">Competente</option>
@@ -1077,7 +1077,7 @@
                                 <!-- IDIOMAS  -->
                                 <div class="idiom">
                                     <h4 class="title">IDIOMAS</h4>
-                                    <ul>
+                                    <ul id="container_idiomas">
                                         <li><span id="idioma" class="bold">Frances</span><span> : </span><span id="nivel">Intermedio</span></li>
                                         <li><span id="idioma" class="bold">Aleman</span><span> : </span><span id="nivel">Basico</span></li>
                                         <li><span id="idioma" class="bold"></span><span> </span><span id="nivel"></span></li>

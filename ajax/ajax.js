@@ -5,7 +5,7 @@ $(document).ready(function () {
     const expr_dir = /^[a-zA-Z0-9\s]+$/;
     const expr_cp = /^\d{4}$/;
     var timeoutId; // Variable para almacenar el ID del timeout
-    var cartelMostradoPersonales= false;
+    var cartelMostradoPersonales = false;
     var cartelMostradoAdicionales = false;
 
     $('#dataForm').on('input', 'input[name^="name"], input[name^="apellido"], input[name^="email"], input[name^="cuil"], input[name^="dni"],input[name^= "tel"],input[name^= "tel_alt"], input[name^= "dir"], input[name^= "cod_postal"], input[name^= "fech_nac"], select[name^= "genero"],input[name^= "nac"], input[name^= "ciudad"], input[name^= "localidad"],input[name^="web"], textarea[name^= "info_perfil"], select[name^="estado_civil"]', function () {
@@ -22,7 +22,7 @@ $(document).ready(function () {
                     console.log(datos);
 
                     // Si los datos se han ingresado correctamente, mostrar el mensaje de éxito
-                    if (datos.datos.nombre && datos.datos.apellido && datos.datos.dni && datos.datos.cuil && datos.datos.estado_civil && datos.datos.email){
+                    if (datos.datos.nombre && datos.datos.apellido && datos.datos.dni && datos.datos.cuil && datos.datos.estado_civil && datos.datos.email) {
                         // Si los datos se han ingresado correctamente y el cartel no ha sido mostrado
                         if (datos.status === 'success' && !cartelMostradoPersonales) {
                             $('#mensajeExito').show(); // Mostrar el mensaje de éxito
@@ -46,7 +46,7 @@ $(document).ready(function () {
                             }, 5000);
                         }
                     }
-                   
+
 
                     function validarName(nombre) {
                         if (nombre && nombre !== "No Valido" && nombre[0] === nombre[0].toUpperCase()) {
@@ -142,7 +142,7 @@ $(document).ready(function () {
                     }
 
                     function validarCuil(cuil) {
-                        if (cuil!=='' && cuil !== 'No Valido') {
+                        if (cuil !== '' && cuil !== 'No Valido') {
                             $('#mensaje_cuil_error').fadeOut();
                             $('#check_cuil').fadeIn();
                             $('#cuil').css({
@@ -434,77 +434,77 @@ $(document).ready(function () {
     });
 
 
-    $('#dataForm').on('change input','input[name^="empleo"],input[name^="ciudad_empleo"],input[name^="empresa_empleo"],input[name^="desde_empleo"],input[name^="hasta_empleo"]', function () {
+    $('#dataForm').on('change input', 'input[name^="empleo"],input[name^="ciudad_empleo"],input[name^="empresa_empleo"],input[name^="desde_empleo"],input[name^="hasta_empleo"]', function () {
         enviarDatos();
     });
 
-   function enviarDatos(){
-       clearTimeout(timeoutId);
+    function enviarDatos() {
+        clearTimeout(timeoutId);
 
-       var formData = $('#dataForm').serialize();
+        var formData = $('#dataForm').serialize();
 
-       timeoutId = setTimeout(function () {
-           $.ajax({
-               type: 'POST',
-               url: './php/data.php',
-               data: formData,
-               success: function (response) {
-                   var experiencias = JSON.parse(response);
-                   console.log(experiencias);
+        timeoutId = setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url: './php/data.php',
+                data: formData,
+                success: function (response) {
+                    var experiencias = JSON.parse(response);
+                    console.log(experiencias);
 
-                   // Mostrar datos en secciones diferentes
-                   $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
+                    // Mostrar datos en secciones diferentes
+                    $('#expe_laboral').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
 
-                   if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "" || experiencias.experiencias.descripcion !== "") {
-                       for (var i = 0; i < experiencias.experiencias.length; i++) {
-                           var experiencia = experiencias.experiencias[i];
+                    if (experiencias.experiencias.empleo !== "" || experiencias.experiencias.empresaEmpleo !== "" || experiencias.experiencias.desdeEmpleo !== "" || experiencias.experiencias.hastaEmpleo !== "" || experiencias.experiencias.descripcion !== "") {
+                        for (var i = 0; i < experiencias.experiencias.length; i++) {
+                            var experiencia = experiencias.experiencias[i];
 
 
-                           var experienciaHTML = '<div class="exp_lab">' +
-                               '<div class="info">' +
-                               '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
-                               '<span id="empresa">' + experiencia.empresaEmpleo + '</span>' + '<br>' +
-                               '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo + '</span>' +
-                               '</div>' +
-                               '<div class="descripcion">' +
-                               '<h4 class="exp_title titulo_empleo">' + 'DESCRIPCION' + '</h4>' +
-                               '<div id="p_descripcion">' +
+                            var experienciaHTML = '<div class="exp_lab">' +
+                                '<div class="info">' +
+                                '<span id="fech_ini">' + experiencia.desdeEmpleo + '</span>' + '<span>' + ' - ' + '</span>' + '<span id="fech_fin">' + experiencia.hastaEmpleo + '</span>' + '<br>' +
+                                '<span id="empresa">' + experiencia.empresaEmpleo.toUpperCase() + '</span>' + '<br>' +
+                                '<strong>' + 'RUBRO: ' + '</strong>' + '<span>' + experiencia.empleo.toUpperCase() + '</span>' +
+                                '</div>' +
+                                '<div class="descripcion">' +
+                                '<h4 class="exp_title titulo_empleo">' + 'DESCRIPCION' + '</h4>' +
+                                '<div id="p_descripcion">' +
                                 experiencia.descripcion +
-                               '</div>' +
-                               '</div>';
+                                '</div>' +
+                                '</div>';
 
-                           $('#expe_laboral').append(experienciaHTML);
-                       }
-                   }
+                            $('#expe_laboral').append(experienciaHTML);
+                        }
+                    }
 
-               }
-           });
-       }, 1000);
-   }
+                }
+            });
+        }, 1000);
+    }
 
     $('#dataForm').on('input', 'input[name^="habilidad"]', function () {
         var formData = $('#dataForm').serialize();
 
         timeoutId = setTimeout(function () {
-        $.ajax({
-            type: 'POST',
-            url: './php/data.php',
-            data: formData,
-            success: function (response) {
-                var habilidades = JSON.parse(response);
+            $.ajax({
+                type: 'POST',
+                url: './php/data.php',
+                data: formData,
+                success: function (response) {
+                    var habilidades = JSON.parse(response);
 
-                $('#container_habilidades').empty();
+                    $('#container_habilidades').empty();
 
-                for (let i = 0; i < habilidades.habilidades.length; i++) {
-                    var habilidad = habilidades.habilidades[i];
-                    var habilidadHTML = '<li type="disc">' + '<span id="habilidad_1">' + habilidad.habilidad + '</span>' + '</li>';
+                    for (let i = 0; i < habilidades.habilidades.length; i++) {
+                        var habilidad = habilidades.habilidades[i];
+                        var habilidadHTML = '<li type="disc">' + '<span id="habilidad_1">' + habilidad.habilidad + '</span>' + '</li>';
 
-                    $('#container_habilidades').append(habilidadHTML);
+                        $('#container_habilidades').append(habilidadHTML);
+                    }
                 }
-            }
 
-        });
-    },1000);
+            });
+        }, 1000);
     });
 
     $('#dataForm').on('input', 'input[name^="hab_it"]', function () {
@@ -543,27 +543,10 @@ $(document).ready(function () {
                 console.log(educacion);
 
                 $('#formacion_academica').empty(); // Limpiar el contenedor antes de agregar los nuevos datos
-                if (educacion.educacion.instituto !== "" || educacion.educacion.carrera !== "" || educacion.educacion.localidad !== "" || educacion.educacion.grado !== "" || educacion.educacion.estado !== "" || educacion.educacion.desde !== "" || educacion.educacion.hasta !== "") {
+                if (educacion.educacion.instituto !== "" || educacion.educacion.carrera !== "" || educacion.educacion.localidad !== "" || educacion.educacion.grado !== "" || educacion.educacion.estado !== "" || educacion.educacion.desde !== "" || educacion.educacion.hasta !== "" || educacion.educacion.descripcion !== "") {
 
                     for (var i = 0; i < educacion.educacion.length; i++) {
                         var edu = educacion.educacion[i];
-
-                        if (edu.estado == "en_curso") {
-                            var educacionHTML = '<div class="form_acad">' +
-                                '<div class="info">' +
-                                '<span id="periodo">' + '<span id="fech_ini">' + edu.desde + '</span>' + '<span>' + '-' + '</span>' + '<span id="fech_fin">' + 'En Curso' + '</span>' + '</span>' + '<br>' +
-                                '<span id="instituto" class="bold">' + edu.instituto + '</span>' + '<br>' +
-                                '<span id="carrera">' + edu.carrera + '</span>' + '<br>' +
-                                '<span id="ciudad">' + edu.localidad + '</span>' +
-                                '</div>' +
-                                '<div class="descripcion">' +
-                                '<h4 class="exp_title">' + 'DESCRIPCION' + '</h4>' +
-                                '<div id="p_descripcion">' + edu.descripcion + '</div>' +
-                                '</div>' +
-                                '</div>';
-                            $('#formacion_academica').append(educacionHTML);
-                            continue;
-                        }
 
                         var educacionHTML = '<div class="form_acad">' +
                             '<div class="info">' +
@@ -578,11 +561,8 @@ $(document).ready(function () {
                             '<div id="p_descripcion">' + edu.descripcion + '</div>' +
                             '</div>' +
                             '</div>';
+
                         $('#formacion_academica').append(educacionHTML);
-
-
-
-
                     }
                 }
 
@@ -625,6 +605,29 @@ $(document).ready(function () {
                     }
                 }
 
+
+            }
+        });
+    });
+
+    $('#dataForm').on('input', 'select[name^="idioma"],select[name^="idioma_nivel"]', function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var idiomas = JSON.parse(response);
+                $('#container_idiomas').empty();
+                if (idiomas.idiomas.idioma !== '' && idiomas.idiomas.nivel !== '') {
+                    for (let i = 0; i < idiomas.idiomas.length; i++) {
+                        var idioma = idiomas.idiomas[i];
+                        var HTMLidioma = '<li>' + '<span id="idioma" class="bold">' + idioma.idioma + '</span>' + '<span>' + ':' + '</span>' + '<span id="nivel">' + idioma.nivel + '</span>' + '</li>';
+                        $('#container_idiomas').append(HTMLidioma);
+                    }
+
+                }
 
             }
         });

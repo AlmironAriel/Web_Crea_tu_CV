@@ -132,6 +132,14 @@ if (isset($_POST['hab_it']) && !empty($_POST['hab_it'])) {
     $habilidadesIT = $_POST['hab_it'];
 }
 
+//datos idiomas
+if (isset($_POST['idioma']) && !empty($_POST['idioma'])) {
+    $idiomas = $_POST['idioma'];
+}
+if (isset($_POST['idioma_nivel']) && !empty($_POST['idioma_nivel'])) {
+    $nivel_idiomas = $_POST['idioma_nivel'];
+}
+
 
 $datos = array();
 $experiencias = array();
@@ -305,7 +313,7 @@ if (!empty($genero)) {
 if (isset($web)) {
     $ultimaPersona["web"] = $web;
 } else {
-    $ultimaPersona["web"] = '';
+    $ultimaPersona["web"] = "";
 }
 
 if (isset($info_perfil)) {
@@ -338,7 +346,7 @@ function leerDatosDesdeCSV($nombre_archivo)
         $indiceLabores = is_array($cabecera) ? array_search('LABORALES', $cabecera) : false;
 
 
-       // Obtener los índices para los campos de educación
+        // Obtener los índices para los campos de educación
         $indicesEducacion = array();
         if (is_array($cabecera)) {
             for ($i = 1; $i <= 4; $i++) {
@@ -415,7 +423,7 @@ function leerDatosDesdeCSV($nombre_archivo)
                     'genero' => isset($fila[14]) ? $fila[14] : '',
                     'web' => isset($fila[15]) ? $fila[15] : '',
                     'info_perfil' => isset($fila[16]) ? $fila[16] : '',
-                    'experiencias'=> isset($experiencias)?$experiencias:'',
+                    'experiencias' => isset($experiencias) ? $experiencias : '',
                 );
 
                 if (isset($indiceLabores)) {
@@ -448,9 +456,6 @@ function leerDatosDesdeCSV($nombre_archivo)
                     $datos[$dni]['habilidadesit'] = $habilidadesIT_array;
                 }
             }
-
-            
-            
         }
         fclose($gestor);
     }
@@ -547,7 +552,7 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
             // Llenar con campo en blanco para las experiencias laborales no ingresadas
             $fila_persona[] = '';
         }
-        
+
 
         if (isset($persona['habilidades'])) {
             $habilidades = $persona['habilidades'];
@@ -648,7 +653,6 @@ if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !em
         isset($genero) ? $datos[$dni]['genero'] = $genero : '';
         isset($web) ? $datos[$dni]['web'] = $web : '';
         isset($info_perfil) ? $datos[$dni]['info_perfil'] = $info_perfil : '';
-
     } else {
         // Agregar una nueva persona al array
         $datos[$dni] = array(
@@ -673,22 +677,6 @@ if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !em
         );
     }
 }
-
-
-
-// Verificar si los campos opcionales están presentes en el formulario y asignarlos si es necesario
-$tel = isset($_POST['tel']) ? $_POST['tel'] : '';
-$tel_alt = isset($_POST['tel_alt']) ? $_POST['tel_alt'] : '';
-$fech_nac = isset($_POST['fech_nac']) ? $_POST['fech_nac'] : '';
-$cod_postal = isset($_POST['cod_postal']) ? $_POST['cod_postal'] : '';
-$dir = isset($_POST['dir']) ? $_POST['dir'] : '';
-$nac = isset($_POST['nac']) ? $_POST['nac'] : '';
-$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
-$localidad = isset($_POST['localidad']) ? $_POST['localidad'] : '';
-$genero = isset($_POST['genero']) ? $_POST['genero'] : '';
-$web = isset($_POST['web']) ? $_POST['web'] : '';
-$info_perfil = isset($_POST['info_perfil']) ? $_POST['info_perfil'] : '';
-
 
 //=========================================================
 //VALIDACION DE DATOS LABORALES
@@ -825,22 +813,48 @@ if (isset($habilidadesIT)) {
 //VALIDACION DE DATOS EDUCATIVOS
 //=========================================================
 
-if (isset($_POST['instituto']) && is_array($_POST['instituto'])) {
+if (isset($_POST['instituto']) && is_array($_POST['instituto'])&&!empty($_POST['instituto'])) {
+    $institutos = $_POST['instituto'];
+    $carreras = $_POST['carreras'];
+    $localidad_instis = $_POST['localidad_insti'];
+    $grado_institutos = $_POST['grado_instituto'];
+    $estado_carreras = $_POST['estado_carrera'];
+    $cursado_desde = $_POST['cursado_desde'];
+    $cursado_hasta = $_POST['cursado_hasta'];
+    $desc_educacion = $_POST['desc_educacion'];
     $educaciones = array();
 
     for ($i = 0; $i < count($institutos); $i++) {
-        $instituto = trim($institutos[$i]);
-        $carrera = trim($carreras[$i]);
-        $localidad_insti = trim($localidad_instis[$i]);
-        $grado_instituto = trim($grado_institutos[$i]);
-        $estado_carrera = trim($estado_carreras[$i]);
-        $desde = trim($cursado_desde[$i]);
-        $hasta = trim($cursado_hasta[$i]);
-        $desc = trim($desc_educacion[$i]);
+        $instituto = isset($institutos[$i]) ? trim($institutos[$i]) : '';
+        $carrera = isset($carreras[$i]) ? trim($carreras[$i]) : '';
+        $localidad_insti = isset($localidad_instis[$i]) ? trim($localidad_instis[$i]) : '';
+        $grado_instituto = isset($grado_institutos[$i]) ? trim($grado_institutos[$i]) : '';
+        $estado_carrera = isset($estado_carreras[$i]) ? trim($estado_carreras[$i]) : '';
+        $desde = isset($cursado_desde[$i]) ? trim($cursado_desde[$i]) : '';
+        $hasta = isset($cursado_hasta[$i]) ? trim($cursado_hasta[$i]) : '';
+        $desc = isset($desc_educacion[$i]) ? trim($desc_educacion[$i]) : '';
+
+        // Verificar si la fecha se puede analizar correctamente
+        if (strtotime($desde)) {
+            $fechaValidaDesde = true;
+            $fechaFormateadaDesde = date('d/m/Y', strtotime($desde));
+        }
+        if (strtotime($hasta)) {
+            $fechaValidaHasta = true;
+            $fechaFormateadaHasta = date('d/m/Y', strtotime($hasta));
+        }
+
+        if ($fechaValidaDesde) {
+            $desde = $fechaFormateadaDesde;
+        }
+
+        if ($fechaValidaHasta) {
+            $hasta = $fechaFormateadaHasta;
+        }
 
         if (
-            !empty($instituto) || !empty($carrera)  || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) || !empty($desde)
-            || !empty($hasta) || !empty($desc)
+            !empty($instituto) || !empty($carrera) || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) && !empty($desde)
+            && !empty($hasta) && !empty($desc)
         ) {
 
             $descripcion_sin_etiquetas = strip_tags($desc);
@@ -870,7 +884,7 @@ if (isset($_POST['instituto']) && is_array($_POST['instituto'])) {
                     'descripcion' => $descripcion_sin_etiquetas
                 );
             }
-            $arr_educacion[] = array(
+           $educacion= array(
                 'instituto' => $instituto,
                 'carrera' => $carrera,
                 'localidad' => $localidad_insti,
@@ -880,6 +894,7 @@ if (isset($_POST['instituto']) && is_array($_POST['instituto'])) {
                 'hasta' => $hasta,
                 'descripcion' => $desc
             );
+            $arr_educacion[] = $educacion;
         }
     }
 }
@@ -918,11 +933,29 @@ for ($i = 0; $i < count($nomb_cursos); $i++) {
     }
 }
 
+//=========================================================
+//VALIDACION DE DATOS idomas
+//=========================================================
+
+if(isset($_POST['idioma'])&&!empty($_POST['idioma']) && isset($_POST['idioma_nivel']) && !empty($_POST['idioma_nivel'])){
+    $idioma_nivel= array();
+    for($i = 0; $i<=count($idiomas);$i++ ){
+        $idioma = isset($idiomas[$i]) ? trim($idiomas[$i]) : '';
+        $nivel_idioma = isset($nivel_idiomas[$i]) ? trim($nivel_idiomas[$i]) : '';
+
+        if(!empty($idioma)&&!empty($nivel_idioma)){
+            $idioma_nivel[]=array(
+                'idioma'=>$idioma,
+                'nivel'=>$nivel_idioma
+            );
+        }
+    }
+}
 
 
 
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $laborales);
+$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito','idiomas'=>$idioma_nivel, 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $laborales);
 
 
 echo json_encode($response);
