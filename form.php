@@ -490,7 +490,7 @@
                         <div class="label" for="grado">Grado</div>
                         <select name="grado_instituto[]" id="grado_instituto">
                             <option value="">Grado</option>
-                            <option value="secundario">Secunadario</option>
+                            <option value="secundario">secundario</option>
                             <option value="terciario">Terciario</option>
                             <option value="universitario">Universitario</option>
                         </select>
@@ -544,7 +544,7 @@
                             <div class="label" for="grado">Grado</div>
                             <select name="grado_instituto[]" id="grado_instituto">
                                 <option value="">Grado</option>
-                                <option value="secundario">Secunadario</option>
+                                <option value="secundario">secundario</option>
                                 <option value="terciario">Terciario</option>
                                 <option value="universitario">Universitario</option>
                             </select>
@@ -596,7 +596,7 @@
                                 <div class="label" for="grado">Grado</div>
                                 <select name="grado_instituto[]" id="grado_instituto">
                                     <option value="">Grado</option>
-                                    <option value="secundario">Secunadario</option>
+                                    <option value="secundario">secundario</option>
                                     <option value="terciario">Terciario</option>
                                     <option value="universitario">Universitario</option>
                                 </select>
@@ -649,7 +649,7 @@
                                     <div class="label" for="grado">Grado</div>
                                     <select name="grado_instituto[]" id="grado_instituto">
                                         <option value="">Grado</option>
-                                        <option value="secundario">Secunadario</option>
+                                        <option value="secundario">secundario</option>
                                         <option value="terciario">Terciario</option>
                                         <option value="universitario">Universitario</option>
                                     </select>
