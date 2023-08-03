@@ -224,9 +224,7 @@
 
             <!-- EXPERIENCIA LABORAL -->
             <h2 class="h2" id="el">EXPERIENCIA LABORAL</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae optio neque possimus aliquid consectetur
-                quae amet inventore et velit, at facilis similique dolorem ipsam nihil! Suscipit non temporibus eius
-                voluptate!</p>
+            <p> El historial laboral es, por supuesto, de gran importancia para muchos puestos. La empresa a la que postulas obtendrá una buena impresión de tus competencias.</p>
             <div class="experiencia_laboral">
                 <div class="columna_1">
                     <div class="field">
@@ -377,9 +375,7 @@
             <!-- HABILIDADES -->
             <div class="habilidad wrap">
                 <H2 class="H2" id="hab">HABILIDADES</H2>
-                <p class="txt_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam minus expedita,
-                    repellendus harum nobis atque laborum consequatur quo blanditiis officia voluptates magni, dolorum
-                    voluptatibus libero tempore commodi dolores amet recusandae.</p>
+                <p class="txt_info">Por habilidades se entiende un lado más práctico. Son cosas en las que eres bueno y que has demostrado en la práctica. ¿Aún no tienes una determinada habilidad? Entonces, en la mayoría de los casos, esto se puede enseñar. Las habilidades se ajustan a tu currículum en la sección de experiencia y pueden ser cualquier cosa: por ejemplo, puedes ser muy bueno con Photoshop o escribir a la velocidad de la luz. Pero también cosas como ser capaz de conducir una carretilla elevadora o saber poner moqueta son ejemplos de habilidades. </p>
                 <div class="field">
                     <div class="label" for="habilidad">Agregar una Habilidad</div>
                     <input type="text" id="habilidad" name="habilidad[]">
@@ -416,9 +412,7 @@
 
             <!-- HABILIDADAES IT -->
             <h2 class="h2" id="habit">HABILIDADES IT</h2>
-            <P class="text_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem itaque
-                libero quasi quo. Impedit incidunt dolorum quibusdam amet, dicta facilis iusto est esse! Beatae
-                voluptatibus fugiat iure voluptas. Nostrum!</P>
+            <P class="text_info"> Las habilidades que están relacionadas con big data incluyen habilidades efectivas para resolver problemas, habilidades de manejo de datos y comprensión de lenguajes de programación.</P>
             <div class="habilidades_it">
                 <div class="field">
                     <label class="label" for="habilidad_it">Agregar Habilidad IT</label>
@@ -465,9 +459,7 @@
 
             <!-- EDUCACION -->
             <h2 class="h2" id="fa">FORMACION ACADEMICA</h2>
-            <P class="txt_info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quod, reprehenderit
-                numquam aliquid fuga fugit natus sapiente rerum sequi, autem sint nobis ab facere nostrum ipsa amet non
-                eaque blanditiis?</P>
+            <P class="txt_info">Estudios realizados, indicando fechas, centro, y lugar donde se han realizado. Formación complementaria: Estudios y seminarios que amplian y complementan tu formación reglada, indicando las fechas, el centro y el lugar donde fueron realizados.</P>
             <div class="educacion">
                 <!-- columna 1 -->
                 <div class="columna_1">
@@ -690,9 +682,7 @@
             <!-- FIN DE EDUCACION  -->
 
             <h2 class="h2" id="cu">CURSOS</h2>
-            <p class="txt_info">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, mollitia magni
-                incidunt, laboriosam et rerum aut voluptatem culpa voluptatibus dolores beatae aspernatur amet
-                provident! Nesciunt vel delectus soluta voluptas quo.</p>
+            <p class="txt_info">La formación complementaria que demuestran los cursos es una forma de añadir valor inmediato a tu currículum y, posicionarte como un candidato con conocimientos académicos a la altura de las necesidades de casi cualquier empleo, y también, demostrarle a los seleccionadores de talento que no eres de los que se conforman con los aprendizajes básicos, sino que vas siempre un paso más allá para adquirir nuevas habilidades o actualizarte con las tendencias de tu sector profesional.</p>
             <div class="curso">
                 <!-- columna 1 -->
                 <div class="columna_1">
@@ -764,10 +754,7 @@
 
             <!-- IDIOMAS -->
             <h2 class="h2" id="id">IDIOMAS</h2>
-            <p class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio laudantium fugit
-                animi, autem est eaque? Unde natus inventore facilis officiis, culpa esse fuga iure iusto sit, deleniti
-                rem consectetur velit.
-            </p>
+            <p class="text_info">Dentro de la sección de idiomas del currículum, no basta con listar los idiomas que conozcamos. Los responsables de recursos humanos también deberán hacerse una idea de cual es tu nivel respecto a cada lengua que hables.</p>
             <div class="idiomas">
                 <div class="columna_1">
                     <div class="field">
@@ -1002,9 +989,6 @@
                 <input type="submit" class="enviar action_btn" id="enviar" name="register"></input>
             </div>
         </form>
-        <?php
-        include("registrar.php");
-        ?>
     </main>
     <!--
 ========================================================================================================
@@ -1029,26 +1013,26 @@
 
                             <div class="aside_padding">
                                 <!-- nombre titulo  -->
-                                <h1 id="nombreModal">JORGE</h1> <br>
-                                <h1 id="apellidoModal">ALVAREZ RODRIGUEZ</h1>
+                                <h1 id="nombreModal"></h1> <br>
+                                <h1 id="apellidoModal"></h1>
 
                                 <!-- informacion de contacto  -->
                                 <div class="info_contacto">
                                     <h4 class="title">INFO CONTACTO</h4>
                                     <ul>
-                                        <li>Fecha de nacimiento: <span id="nacimientoModal">20/06/2002</span></li>
+                                        <li>Fecha de nacimiento: <span id="nacimientoModal"></span></li>
                                         <li>Genero: <span id="generoModal"></span></li>
-                                        <li>Estado civil: <span id="estado_civilModal">Soltero</span></li>
-                                        <li>DNI: <span id="dniModal">94485324</span></li>
-                                        <li>Direccion: <span id="dirModal">Lincoln</span></li>
-                                        <li>Localidad: <span id="localidadModal">moreno</span></li>
-                                        <li>Ciudad: <span id="ciudadModal">Buenos Aires</span></li>
-                                        <li>Nacionalidad: <span id="nacionalidadModal">Argentino</span></li>
+                                        <li>Estado civil: <span id="estado_civilModal"></span></li>
+                                        <li>DNI: <span id="dniModal"></span></li>
+                                        <li>Direccion: <span id="dirModal"></span></li>
+                                        <li>Localidad: <span id="localidadModal"></span></li>
+                                        <li>Ciudad: <span id="ciudadModal"></span></li>
+                                        <li>Nacionalidad: <span id="nacionalidadModal"></span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
-                                        <li>Tel: <span id="telModal">1189237483</span></li>
-                                        <li>Tel alt: <span id="telAltModal">1137387464</span></li>
-                                        <li id="li1">Sitio: <span id="sitio_webModal">JorgeAlvarezportafolio.com.ar</span></li>
+                                        <li>Tel: <span id="telModal"></span></li>
+                                        <li>Tel alt: <span id="telAltModal"></span></li>
+                                        <li id="li1">Sitio: <span id="sitio_webModal"></span></li>
                                     </ul>
                                 </div>
 
@@ -1056,10 +1040,10 @@
                                 <div class="habilidades">
                                     <h4 class="title">HABILIDADES</h4>
                                     <ul id="container_habilidades">
-                                        <li><span id="habilidad_1">Resolucion de problemas</span></li>
-                                        <li><span id="habilidad_2">Capacidad de análisis</span></li>
-                                        <li><span id="habilidad_3">Trabajo en equipo</span></li>
-                                        <li><span id="habilidad_4">Flexibilidad y adaptabilidad</span></li>
+                                        <li><span id="habilidad_1"></span></li>
+                                        <li><span id="habilidad_2"></span></li>
+                                        <li><span id="habilidad_3"></span></li>
+                                        <li><span id="habilidad_4"></span></li>
                                     </ul>
                                 </div>
 
@@ -1078,10 +1062,10 @@
                                 <div class="idiom">
                                     <h4 class="title">IDIOMAS</h4>
                                     <ul id="container_idiomas">
-                                        <li><span id="idioma" class="bold">Frances</span><span> : </span><span id="nivel">Intermedio</span></li>
-                                        <li><span id="idioma" class="bold">Aleman</span><span> : </span><span id="nivel">Basico</span></li>
-                                        <li><span id="idioma" class="bold"></span><span> </span><span id="nivel"></span></li>
-                                        <li><span id="idioma" class="bold"></span><span> </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold"></span><span> : </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold"></span><span> : </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold"></span><span> : </span><span id="nivel"></span></li>
+                                        <li><span id="idioma" class="bold"></span><span> : </span><span id="nivel"></span></li>
                                     </ul>
 
                                 </div>
@@ -1093,10 +1077,7 @@
                             <!-- perfil  -->
                             <div class="cv_perfil">
                                 <h4 class="main_title">PERFIL</h4>
-                                <p id="perfil_descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Veniam iure iste molestiae accusamus illum quasi incidunt pariatur velit
-                                    necessitatibus tenetur, reiciendis ipsum modi neque itaque consequuntur molestias
-                                    delectus inventore? Officia!</p>
+                                <p id="perfil_descripcion"></p>
                             </div>
 
                             <!-- experiencia laboral  -->
@@ -1104,42 +1085,31 @@
                             <div id="expe_laboral" class="expe_laboral">
                                 <div class="exp_lab">
                                     <div class="info">
-                                        <span id="fech_ini">20/07/2003</span><span> - </span><span id="fech_fin">30/06/2009</span> <br>
-                                        <span id="empresa">LA SERENISIMA</span> <br>
-                                        <strong>PUESTO:</strong><span id="rubro">SISTEMAS</span>
+                                        <span id="fech_ini"></span><span> - </span><span id="fech_fin"></span> <br>
+                                        <span id="empresa"></span> <br>
+                                        <strong>PUESTO:</strong><span id="rubro"></span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">Desarrollador Web</span> -->
                                     </div>
                                     <div class="descripcion">
-                                        <h4 class="exp_title titulo_empleo">DESARROLLADOR WEB</h4>
+                                        <h4 class="exp_title titulo_empleo"></h4>
                                         <div id="p_descripcion">
-                                            * Desarrollador de páginas y sitios funcionales <br>
-                                            e intuitivos para el usuario. <br>
-                                            * Trabajo con distintas bases de datos y contextos <br>
-                                            back-end y front-end <br>
-                                            * Uso de diferentes lenguajes de programacion y de herramientas de desarrollo apropiadas a cada proyecto.
                                         </div>
                                     </div>
                                 </div>
                                 <!-- experiencia laboral extra  -->
                                 <div class="exp_lab">
                                     <div class="info">
-                                        <span id="fech_ini">02/2015</span><span> - </span><span id="fech_fin">07/2021</span> <br>
-                                        <span id="empresa" class="bold">SOFTWARE INC.</span> <br>
-                                        <strong>PUESTO:</strong><span id="empleoModal-2">SISTEMAS</span>
+                                        <span id="fech_ini"></span><span> - </span><span id="fech_fin"></span> <br>
+                                        <span id="empresa" class="bold"></span> <br>
+                                        <strong>PUESTO:</strong><span id="empleoModal-2"></span>
                                         <span> </span> <br>
                                         <!-- <strong>PUESTO:</strong><span id="rubro">TESTER DE SOFTWARE</span> -->
                                     </div>
                                     <div class="descripcion">
-                                        <h4 class="exp_title titulo_empleo">TESTER DE SOFTWARE</h4>
+                                        <h4 class="exp_title titulo_empleo"></h4>
                                         <div id="p_descripcion">
-                                            * Redaccion de informes sobre los problemas y mejoras del producto final.
-                                            <br>
-                                            * Ejecucion de pruebas manuales para pruebas funcionales y no funcionales.
-                                            <br>
-                                            * Control y seguimiento de la calidad deñl producto.
-                                            <br>
-                                            * Desarrollo y ejecucion de planes de prueba y procedimientos de garantia de calidad del software.
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -1151,43 +1121,43 @@
                             <div id="formacion_academica" class="formacion_academica">
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">02/2023</span><span> - </span><span id="fech_fin">04/2039</span></span> <br>
-                                        <span id="instituto" class="bold">UTN-Argentina Programa</span> <br>
-                                        <span id="carrera">ANALISTA DE TESTING QA: Testing de Software</span> <br>
+                                        <span id="periodo"><span id="fech_ini"></span><span> - </span><span id="fech_fin"></span></span> <br>
+                                        <span id="instituto" class="bold"></span> <br>
+                                        <span id="carrera"></span> <br>
                                         <!-- <span id="estado">INCOMPLETO</span> no se si es relevante -->
-                                        <span id="ciudad">Moreno</span>
+                                        <span id="ciudad"></span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
-                                        <div id="p_descripcion">Tecnicatura especializada en analisis de sistemas computacionales y tester de calidad de productos de software</div>
+                                        <div id="p_descripcion"></div>
                                     </div>
                                 </div>
 
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">03/2022</span><span> - </span><span id="fech_fin">07/2023</span></span> <br>
-                                        <span id="instituto" class="bold">I.S.F.T 179 Dr. Carlos Pellegrini</span> <br>
-                                        <span id="carrera">ANALISTA DE SISTEMAS</span> <br>
-                                        <span id="estado">En Curso</span>
-                                        <span id="ciudad">Moreno</span>
+                                        <span id="periodo"><span id="fech_ini"></span><span> - </span><span id="fech_fin"></span></span> <br>
+                                        <span id="instituto" class="bold"></span> <br>
+                                        <span id="carrera"></span> <br>
+                                        <span id="estado"></span>
+                                        <span id="ciudad"></span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
-                                        <div id="p_descripcion">Tecnicatura Superior en Analisis de Sistemas y programacion básica. Formacion en lenguajes de programacion como Python y lenguajes de servidor como PHP.</div>
+                                        <div id="p_descripcion"></div>
                                     </div>
                                 </div>
 
                                 <div class="form_acad">
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">02/2012</span><span> - </span><span id="fech_fin">12/2018</span></span> <br>
-                                        <span id="instituto" class="bold">Instituto Juan XXIII.</span> <br>
-                                        <span id="carrera">Bachillerato en Ciencias naturales</span> <br>
-                                        <span id="estado">Secunadario Completo</span>
-                                        <span id="ciudad">Moreno</span>
+                                        <span id="periodo"><span id="fech_ini"></span><span> - </span><span id="fech_fin"></span></span> <br>
+                                        <span id="instituto" class="bold"></span> <br>
+                                        <span id="carrera"></span> <br>
+                                        <span id="estado"></span>
+                                        <span id="ciudad"></span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
-                                        <div id="p_descripcion">Tecnicatura Superior en Analisis de Sistemas y programacion básica. Formacion en lenguajes de programacion como Python y lenguajes de servidor como PHP.</div>
+                                        <div id="p_descripcion"></div>
                                     </div>
                                 </div>
                             </div> <!--Fin de informacion academica-->
@@ -1199,14 +1169,12 @@
                                 <div class="cursos">
 
                                     <div class="info">
-                                        <span id="periodo"><span id="fech_ini">07/2009</span><span> - </span><span id="fech_fin">05/2010</span></span> <br>
-                                        <span id="curso_insituto" class="bold">Educacion IT</span>
+                                        <span id="periodo"><span id="fech_ini"></span><span> - </span><span id="fech_fin"></span></span> <br>
+                                        <span id="curso_insituto" class="bold"></span>
                                     </div>
                                     <div class="descripcion">
                                         <h4 class="exp_title">DESCRIPCION</h4>
                                         <div id="p_descripcion">
-                                            Curso presencial con certificado en Maquetacion Web y Diseño de interfaces UI. CSS avanzado
-                                            y programacion orientada a web con Javascript.
                                         </div>
                                     </div>
                                 </div>
@@ -1217,12 +1185,12 @@
                             <div class="referencias">
 
                                 <div class="info">
-                                    <span class="contacto bold">Esteban Reyes</span> <br>
-                                    <span class="empresa_contacto">Software Inc.</span>
+                                    <span class="contacto bold"></span> <br>
+                                    <span class="empresa_contacto"></span>
                                 </div>
                                 <div class="descripcion">
-                                    <span id="">StebanReyes@GMAIL.COM</span>
-                                    <span id="tel-contacto">1165748292</span>
+                                    <span id=""></span>
+                                    <span id="tel-contacto"></span>
                                 </div>
                             </div>
 
