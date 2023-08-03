@@ -374,6 +374,7 @@ function leerDatosDesdeCSV($nombre_archivo)
                     'experiencias' => array(),
                     'educacion' => array(),
                     'cursos' => array(),
+                    'idiomas' => array(),
                 );
             }
             // Si existe, agregamos la experiencia laboral solo si no se ha agregado previamente
@@ -443,19 +444,22 @@ function leerDatosDesdeCSV($nombre_archivo)
                 // Convertir la cadena en un array de datos de cursos
                 $cursos_array = array_map('trim', explode('|', $cursos_str));
 
-                    // Procesar cada curso por separado
-                    foreach ($cursos_array as $curso_str) {
-                        // Obtener los datos individuales de cada curso
-                        $curso_data = explode(',', $curso_str);
+                // Limpiar los cursos existentes antes de agregar nuevos cursos
+                $datos[$dni]['cursos'] = array();
 
-                        $nomb_curso = isset($curso_data[0]) ? $curso_data[0] : '';
-                        $desde_curso = isset($curso_data[1]) ? $curso_data[1] : '';
-                        $instituto_curso = isset($curso_data[2]) ? $curso_data[2] : '';
-                        $hasta_curso = isset($curso_data[3]) ? $curso_data[3] : '';
-                        $desc_curso = isset($curso_data[4]) ? $curso_data[4] : '';
+                // Procesar cada curso por separado
+                foreach ($cursos_array as $curso_str) {
+                    // Obtener los datos individuales de cada curso
+                    $curso_data = explode(',', $curso_str);
 
-                        // Crear el arreglo con los datos del curso
-                        $curso = array(
+                    $nomb_curso = isset($curso_data[0]) ? $curso_data[0] : '';
+                    $desde_curso = isset($curso_data[1]) ? $curso_data[1] : '';
+                    $instituto_curso = isset($curso_data[2]) ? $curso_data[2] : '';
+                    $hasta_curso = isset($curso_data[3]) ? $curso_data[3] : '';
+                    $desc_curso = isset($curso_data[4]) ? $curso_data[4] : '';
+
+                    // Crear el arreglo con los datos del curso
+                    $curso = array(
                             'nomb_curso' => $nomb_curso,
                             'desde_curso' => $desde_curso,
                             'instituto_curso' => $instituto_curso,
@@ -463,9 +467,9 @@ function leerDatosDesdeCSV($nombre_archivo)
                             'desc_curso' => $desc_curso
                         );
 
-                        // Agregar el curso al arreglo de cursos
-                        $datos[$dni]['cursos'][] = $curso;
-                    }
+                    // Agregar el curso al arreglo de cursos
+                    $datos[$dni]['cursos'][] = $curso;
+                }
             }
 
             // Agregar idiomas si existen
@@ -940,27 +944,20 @@ if (isset($_POST['dni']) && !empty($_POST['dni'])) {
                 $perdiodo_curso_hasta = isset($perdiodo_cursos_hasta[$i]) ? trim($perdiodo_cursos_hasta[$i]) : '';
                 $desc_curso = isset($desc_cursos[$i]) ? trim($desc_cursos[$i]) : '';
 
-                if (!empty($nomb_curso) || !empty($perdiodo_curso_desde) || !empty($instituto_curso) || !empty($perdiodo_curso_hasta) && !empty($desc_curso)) {
+                if (!empty($nomb_curso) && !empty($perdiodo_curso_desde) && !empty($instituto_curso) && !empty($perdiodo_curso_hasta) && !empty($desc_curso)) {
 
                     // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
-                    $cursos = isset($datos[$dni]['cursos']) ? $datos[$dni]['cursos'] : array();
-                    $existe_cursos = false;
-                    foreach ($cursos as $curso) {
-                        if ($curso['curso'] === $nomb_curso && $curso['instituto'] === $instituto_curso) {
-                            $existe_cursos = true;
-                            break;
-                        }
-                    }
-                    // Aca se realizan las operaciones necesarias con los datos de cada experiencia laboral, como almacenarlos en una base de datos
-                    if (!$existe_cursos) {
-                        $datos[$dni]['cursos'][] = array(
+                    
+                        $cursos = array(
                             'curso' => $nomb_curso,
                             'desde' => $perdiodo_curso_desde,
                             'instituto' => $instituto_curso,
                             'hasta' => $perdiodo_curso_hasta,
                             'descripcion' => $desc_curso
                         );
-                    }
+
+                    // Agregar el nuevo curso a la persona correspondiente en $datos
+                    $datos[$dni]['cursos'][] = $cursos;
 
                     $arr_cursos[] = array(
                         'curso' => $nomb_curso,
@@ -1006,7 +1003,6 @@ if (isset($_POST['idioma']) && !empty($_POST['idioma']) && isset($_POST['idioma_
 if (is_array($laborales) && !empty($laborales)) {
     $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
 }
-
 
 // Guardar los datos actualizados en el archivo CSV
 guardarDatosEnCSV($nombre_archivo, $datos);
