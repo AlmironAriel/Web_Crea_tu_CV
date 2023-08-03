@@ -352,7 +352,7 @@ function leerDatosDesdeCSV($nombre_archivo)
             // Verificar si el DNI ya existe en el array de datos
             if (isset($datos[$dni])) {
                 // Si existe, agregamos la experiencia laboral solo si no se ha agregado previamente
-                if (isset($indiceLabores) && isset($fila[$indiceLabores])) {
+                if (isset($indiceLabores) && isset($fila[$indiceLabores]) && !empty(trim($fila[$indiceLabores]))) {
                     $experiencias_laborales_str = $fila[$indiceLabores];
 
                     // Dividir las experiencias laborales si están en una sola celda separadas por ";"
@@ -383,31 +383,33 @@ function leerDatosDesdeCSV($nombre_archivo)
                     }
                 }
 
-                if (isset($indiceEducacion) && isset($fila[$indiceEducacion]) && trim($fila[$indiceEducacion]) !== '') {
+                if (isset($indiceEducacion) && isset($fila[$indiceEducacion]) && !empty(trim($fila[$indiceEducacion]))) {
                     // Obtener la cadena de la columna EDUCACION
                     $educacion_str = $fila[$indiceEducacion];
 
                     // Convertir la cadena en un array de datos de educación
                     $educaciones = array_map('trim', explode(',', $educacion_str));
 
-                    // Obtener los datos individuales de educación si existen
-                    $maximoNivel = isset($educaciones[0]) ? $educaciones[0] : '';
-                    $tituloSecundario = isset($educaciones[1]) ? $educaciones[1] : '';
-                    $tituloTerciarioUniversitario = isset($educaciones[2]) ? $educaciones[2] : '';
-                    $nombreTituloTerciario = isset($educaciones[3]) ? $educaciones[3] : '';
-                    $nombreTituloUniversitario = isset($educaciones[4]) ? $educaciones[4] : '';
+                    if (!empty(array_filter($educaciones))) {
+                        // Obtener los datos individuales de educación si existen
+                        $maximoNivel = isset($educaciones[0]) ? $educaciones[0] : '';
+                        $tituloSecundario = isset($educaciones[1]) ? $educaciones[1] : '';
+                        $tituloTerciarioUniversitario = isset($educaciones[2]) ? $educaciones[2] : '';
+                        $nombreTituloTerciario = isset($educaciones[3]) ? $educaciones[3] : '';
+                        $nombreTituloUniversitario = isset($educaciones[4]) ? $educaciones[4] : '';
 
-                    // Crear el arreglo con los datos de educación
-                    $educacion = array(
-                        'maximoNivel' => $maximoNivel,
-                        'tituloSecundario' => $tituloSecundario,
-                        'tituloTerciarioUniversitario' => $tituloTerciarioUniversitario,
-                        'nombreTituloTerciario' => $nombreTituloTerciario,
-                        'nombreTituloUniversitario' => $nombreTituloUniversitario,
-                    );
+                        // Crear el arreglo con los datos de educación
+                        $educacion = array(
+                            'maximoNivel' => $maximoNivel,
+                            'tituloSecundario' => $tituloSecundario,
+                            'tituloTerciarioUniversitario' => $tituloTerciarioUniversitario,
+                            'nombreTituloTerciario' => $nombreTituloTerciario,
+                            'nombreTituloUniversitario' => $nombreTituloUniversitario,
+                        );
 
-                    // Sobrescribir los datos de educación de la persona
-                    $datos[$dni]['educacion'] = $educacion;
+                        // Sobrescribir los datos de educación de la persona
+                        $datos[$dni]['educacion'] = $educacion;
+                    }
                 }
             } else {
                 // Si no existe, creamos un nuevo registro con los datos personales y la experiencia laboral, evitando agregar elementos vacíos
@@ -427,9 +429,15 @@ function leerDatosDesdeCSV($nombre_archivo)
                     'ciudad' => isset($fila[12]) ? $fila[12] : '',
                     'localidad' => isset($fila[13]) ? $fila[13] : '',
                     'genero' => isset($fila[14]) ? $fila[14] : '',
-                    'experiencias' => array(), // Inicializamos el arreglo de experiencias
-                    'educacion' => array(),
                 );
+
+                // Combinar las experiencias y educación anteriores con las nuevas
+                if (isset($datos[$dni]['experiencias'])) {
+                    $persona['experiencias'] = array_merge($datos[$dni]['experiencias'], $persona['experiencias']);
+                }
+                if (isset($datos[$dni]['educacion'])) {
+                    $persona['educacion'] = array_merge($datos[$dni]['educacion'], $persona['educacion']);
+                }
 
                 // Agregar la persona al arreglo $datos
                 $datos[$dni] = $persona;
@@ -485,16 +493,14 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
 
     fputcsv($archivo_csv, $cabecera);
 
-
-
     foreach ($datos as $dni => $persona) {
+        $educacionString = '';
+        if (isset($persona['educacion']) && is_array($persona['educacion'])) {
+            $educacionArray = $persona['educacion'];
 
-         // Procesar cada experiencia laboral por separado y eliminar caracteres especiales
-        $experiencias_laborales = isset($persona['experiencias']) ? implode('|', array_map(function ($experiencia) {
-            $experiencia['descripcion'] = eliminar_caracteres_especiales($experiencia['descripcion']);
-            return implode(',', array_values($experiencia));
-        }, $persona['experiencias'])) : '';
-
+            // Crear una cadena con los valores de educación
+            $educacionString = implode(', ', $educacionArray);
+        }
         // Guardar los datos personales en el arreglo $fila_persona
         $fila_persona = array(
             isset($persona['nombre']) ? $persona['nombre'] : '',
@@ -512,10 +518,12 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
             isset($persona['ciudad']) ? $persona['ciudad'] : '',
             isset($persona['localidad']) ? $persona['localidad'] : '',
             isset($persona['genero']) ? $persona['genero'] : '',
-            isset($experiencias_laborales)?$experiencias_laborales:'',
-            isset($persona['educacion']) ? implode(', ', array_map(function ($educacion) {
-                return implode(',', array_values($educacion));
-            }, $persona['educacion'])) : '',
+            isset($persona['experiencias']) ? implode('|', array_map(function ($experiencia) {
+                // Eliminar caracteres especiales de la descripción
+                $experiencia['descripcion'] = eliminar_caracteres_especiales($experiencia['descripcion']);
+                return implode(',', array_map('eliminar_caracteres_especiales', array_values($experiencia)));
+            }, $persona['experiencias'])) : '',
+            isset($educacionString) ? $educacionString : '',
         );
 
         // Escribir la fila en el archivo CSV usando fputcsv
@@ -554,6 +562,7 @@ if (!empty($nombre) && !empty($apellido) && !empty($dni) && !empty($cuil) && !em
         // Actualizar los datos de la persona existente
         $datos[$dni]['nombre'] = $nombre;
         $datos[$dni]['apellido'] = $apellido;
+        $datos[$dni]['dni'] = $dni;
         $datos[$dni]['cuil'] = $cuil;
         $datos[$dni]['estado_civil'] = $estado_civil;
         $datos[$dni]['email'] = $email;
@@ -719,134 +728,141 @@ if (isset($habilidadesIT)) {
 //VALIDACION DE DATOS EDUCATIVOS
 //=========================================================
 
-if (isset($_POST['instituto']) && is_array($_POST['instituto']) && !empty($_POST['instituto'])) {
-    $educaciones = array();
+if (isset($_POST['dni']) && !empty($_POST['dni'])) {
+    $dni = $_POST['dni'];
 
-    $maximoNivel = '';
-    $tituloSecundario = '';
-    $tituloTerciarioUniversitario = '';
-    $nombreTituloTerciario = '';
-    $nombreTituloUniversitario = '';
-    $carreraUniversitario = '';
-    $carreraTerciario = '';
-    $seEncontroSecundario = false;
-    $arr_educacion = array();
+    if (isset($datos[$dni])) {
 
-    for ($i = 0; $i < count($institutos); $i++) {
-        $instituto = isset($institutos[$i]) ? trim($institutos[$i]) : '';
-        $carrera = isset($carreras[$i]) ? trim($carreras[$i]) : '';
-        $localidad_insti = isset($localidad_instis[$i]) ? trim($localidad_instis[$i]) : '';
-        $grado_instituto = isset($grado_institutos[$i]) ? trim($grado_institutos[$i]) : '';
-        $estado_carrera = isset($estado_carreras[$i]) ? trim($estado_carreras[$i]) : '';
-        $desde = isset($cursado_desde[$i]) ? trim($cursado_desde[$i]) : '';
-        $hasta = isset($cursado_hasta[$i]) ? trim($cursado_hasta[$i]) : '';
-        $desc = isset($desc_educacion[$i]) ? trim($desc_educacion[$i]) : '';
+        if (isset($_POST['instituto']) && is_array($_POST['instituto']) && !empty($_POST['instituto'])) {
+            $educaciones = array();
 
-        // Verificar si la fecha se puede analizar correctamente
-        if (strtotime($desde)) {
-            $fechaValidaDesde = true;
-            $fechaFormateadaDesde = date('d/m/Y', strtotime($desde));
-        }
-        if (strtotime($hasta)) {
-            $fechaValidaHasta = true;
-            $fechaFormateadaHasta = date('d/m/Y', strtotime($hasta));
-        }
+            $maximoNivel = '';
+            $tituloSecundario = '';
+            $tituloTerciarioUniversitario = '';
+            $nombreTituloTerciario = '';
+            $nombreTituloUniversitario = '';
+            $carreraUniversitario = '';
+            $carreraTerciario = '';
+            $seEncontroSecundario = false;
+            $arr_educacion = array();
 
-        if ($fechaValidaDesde) {
-            $desde = $fechaFormateadaDesde;
-        }
+            for ($i = 0; $i < count($institutos); $i++) {
+                $instituto = isset($institutos[$i]) ? trim($institutos[$i]) : '';
+                $carrera = isset($carreras[$i]) ? trim($carreras[$i]) : '';
+                $localidad_insti = isset($localidad_instis[$i]) ? trim($localidad_instis[$i]) : '';
+                $grado_instituto = isset($grado_institutos[$i]) ? trim($grado_institutos[$i]) : '';
+                $estado_carrera = isset($estado_carreras[$i]) ? trim($estado_carreras[$i]) : '';
+                $desde = isset($cursado_desde[$i]) ? trim($cursado_desde[$i]) : '';
+                $hasta = isset($cursado_hasta[$i]) ? trim($cursado_hasta[$i]) : '';
+                $desc = isset($desc_educacion[$i]) ? trim($desc_educacion[$i]) : '';
 
-        if ($fechaValidaHasta) {
-            $hasta = $fechaFormateadaHasta;
-        }
-
-        if (
-            !empty($instituto) || !empty($carrera) || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) && !empty($desde)
-            && !empty($hasta) && !empty($desc)
-        ) {
-            $dni = isset($_POST['dni']) ? $_POST['dni'] : '';
-
-            $educacion = array(
-                'instituto' => $instituto,
-                'carrera' => $carrera,
-                'localidad' => $localidad_insti,
-                'grado' => $grado_instituto,
-                'estado' => $estado_carrera,
-                'desde' => $desde,
-                'hasta' => $hasta,
-                'descripcion' => $desc
-            );
-            $arr_educacion[] = $educacion;
-
-            // Asignar los nombres de las carreras según el mayor nivel alcanzado
-            if ($grado_instituto === 'universitario' || $grado_instituto === 'terciario') {
-                // El máximo nivel será "Universitario" o "Terciario" si ya no se había asignado un máximo nivel antes
-                if (!$maximoNivel || ($grado_instituto === 'universitario' && $maximoNivel === 'terciario')) {
-                    $maximoNivel = $grado_instituto;
+                // Verificar si la fecha se puede analizar correctamente
+                if (strtotime($desde)) {
+                    $fechaValidaDesde = true;
+                    $fechaFormateadaDesde = date('d/m/Y', strtotime($desde));
+                }
+                if (strtotime($hasta)) {
+                    $fechaValidaHasta = true;
+                    $fechaFormateadaHasta = date('d/m/Y', strtotime($hasta));
                 }
 
-                // Asignar el nombre de la carrera al título universitario o terciario
-                if ($grado_instituto === 'universitario') {
-                    $carreraUniversitario = $carrera;
-                    // Si hay una educación universitaria, entonces la carrera universitaria también será el título universitario
-                    $tituloTerciarioUniversitario = $carreraUniversitario;
-                } elseif ($grado_instituto === 'terciario') {
-                    $carreraTerciario = $carrera;
-                    // Si hay una educación terciaria, entonces la carrera terciaria será el título terciario
-                    $nombreTituloTerciario = $carreraTerciario;
-                }
-            } elseif ($grado_instituto === 'secundario') {
-                // Si el máximo nivel aún no ha sido asignado, será "Secundario"
-                if (!$maximoNivel) {
-                    $maximoNivel = 'secundario';
+                if ($fechaValidaDesde) {
+                    $desde = $fechaFormateadaDesde;
                 }
 
-                // Asignar el nombre de la carrera al título secundario solo si aún no se ha encontrado una educación secundaria
-                if (!$seEncontroSecundario) {
-                    $tituloSecundario = $carrera;
-                    $seEncontroSecundario = true;
+                if ($fechaValidaHasta) {
+                    $hasta = $fechaFormateadaHasta;
+                }
+
+
+
+                if (
+                    !empty($instituto) || !empty($carrera) || !empty($localidad_insti) || !empty($grado_instituto) || !empty($estado_carrera) && !empty($desde)
+                    && !empty($hasta) && !empty($desc)
+                ) {
+
+
+                    $educacion = array(
+                        'instituto' => $instituto,
+                        'carrera' => $carrera,
+                        'localidad' => $localidad_insti,
+                        'grado' => $grado_instituto,
+                        'estado' => $estado_carrera,
+                        'desde' => $desde,
+                        'hasta' => $hasta,
+                        'descripcion' => $desc
+                    );
+                    $arr_educacion[] = $educacion;
+
+                    // Asignar los nombres de las carreras según el mayor nivel alcanzado
+                    if ($grado_instituto === 'universitario' || $grado_instituto === 'terciario') {
+                        // El máximo nivel será "Universitario" o "Terciario" si ya no se había asignado un máximo nivel antes
+                        if (!$maximoNivel || ($grado_instituto === 'universitario' && $maximoNivel === 'terciario')) {
+                            $maximoNivel = $grado_instituto;
+                        }
+
+                        // Asignar el nombre de la carrera al título universitario o terciario
+                        if ($grado_instituto === 'universitario') {
+                            $carreraUniversitario = $carrera;
+                            // Si hay una educación universitaria, entonces la carrera universitaria también será el título universitario
+                            $tituloTerciarioUniversitario = $carreraUniversitario;
+                        } elseif ($grado_instituto === 'terciario') {
+                            $carreraTerciario = $carrera;
+                            // Si hay una educación terciaria, entonces la carrera terciaria será el título terciario
+                            $nombreTituloTerciario = $carreraTerciario;
+                        }
+                    } elseif ($grado_instituto === 'secundario') {
+                        // Si el máximo nivel aún no ha sido asignado, será "Secundario"
+                        if (!$maximoNivel) {
+                            $maximoNivel = 'secundario';
+                        }
+
+                        // Asignar el nombre de la carrera al título secundario solo si aún no se ha encontrado una educación secundaria
+                        if (!$seEncontroSecundario) {
+                            $tituloSecundario = $carrera;
+                            $seEncontroSecundario = true;
+                        }
+                    }
                 }
             }
+            // Verificar si aún no se ha asignado el título secundario y si el máximo nivel no es "Secundario"
+            if (!$tituloSecundario && $maximoNivel !== 'secundario') {
+                // Asignar los datos de educación con grado secundario como título secundario
+                if (isset($arr_educacion[0]['carrera'])) {
+                    $tituloSecundario = $arr_educacion[0]['carrera'];
+                }
+            }
+
+            // Asignar los nombres de las carreras según el mayor nivel alcanzado
+            if ($maximoNivel === 'universitario') {
+                $tituloTerciarioUniversitario = $carreraUniversitario;
+                $nombreTituloUniversitario = $carreraUniversitario;
+            } elseif ($maximoNivel === 'terciario') {
+                $tituloTerciarioUniversitario = $carreraTerciario;
+                $nombreTituloTerciario = $carreraTerciario;
+            }
+
+            // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
+            $educaciones = isset($datos[$dni]['educacion']) ? $datos[$dni]['educacion'] : array();
+
+            // aca se realizan las operaciones necesarias con los datos academicos, como almacenarlos en una base de datos
+            $datos[$dni]['educacion'] = array(
+                'maximoNivel' => $maximoNivel,
+                'tituloSecundario' => $tituloSecundario,
+                'tituloTerciarioUniversitario' => $tituloTerciarioUniversitario,
+                'nombreTituloTerciario' => $nombreTituloTerciario,
+                'nombreTituloUniversitario' => $nombreTituloUniversitario,
+            );
         }
     }
-    // Verificar si aún no se ha asignado el título secundario y si el máximo nivel no es "Secundario"
-    if (!$tituloSecundario && $maximoNivel !== 'secundario') {
-        // Asignar los datos de educación con grado secundario como título secundario
-        if (isset($arr_educacion[0]['carrera'])) {
-            $tituloSecundario = $arr_educacion[0]['carrera'];
-        }
-    }
-
-    // Asignar los nombres de las carreras según el mayor nivel alcanzado
-    if ($maximoNivel === 'universitario') {
-        $tituloTerciarioUniversitario = $carreraUniversitario;
-        $nombreTituloUniversitario = $carreraUniversitario;
-    } elseif ($maximoNivel === 'terciario') {
-        $tituloTerciarioUniversitario = $carreraTerciario;
-        $nombreTituloTerciario = $carreraTerciario;
-    }
-
-    // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
-    $educaciones = isset($datos[$dni]['educacion']) ? $datos[$dni]['educacion'] : array();
-
-    // aca se realizan las operaciones necesarias con los datos academicos, como almacenarlos en una base de datos
-    $educaciones = array(
-        array(
-            'maximoNivel' => $maximoNivel,
-            'tituloSecundario' => $tituloSecundario,
-            'tituloTerciarioUniversitario' => $tituloTerciarioUniversitario,
-            'nombreTituloTerciario' => $nombreTituloTerciario,
-            'nombreTituloUniversitario' => $nombreTituloUniversitario,
-        )
-    );
-    // Asignar el array de educaciones al array de datos
-    $datos[$dni]['educacion'] = $educaciones;
 }
 
 // Comprobar si $laborales es un array antes de llamar a la función
 if (is_array($laborales) && !empty($laborales)) {
     $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
 }
+
+var_dump($datos);
 
 // Guardar los datos actualizados en el archivo CSV
 guardarDatosEnCSV($nombre_archivo, $datos);
