@@ -1007,7 +1007,6 @@ if (is_array($laborales) && !empty($laborales)) {
     $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
 }
 
-var_dump($datos);
 
 // Guardar los datos actualizados en el archivo CSV
 guardarDatosEnCSV($nombre_archivo, $datos);
