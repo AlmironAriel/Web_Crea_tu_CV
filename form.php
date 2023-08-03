@@ -989,9 +989,6 @@
                 <input type="submit" class="enviar action_btn" id="enviar" name="register"></input>
             </div>
         </form>
-        <?php
-        include("registrar.php");
-        ?>
     </main>
     <!--
 ========================================================================================================
