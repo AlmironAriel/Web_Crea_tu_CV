@@ -1,2 +1,3 @@
 NOMBRE,APELLIDO,DNI,CUIL,"ESTADO CIVIL",EMAIL,TELEFONO,"TELEFONO ALT","FECHA NACIMIENTO","COD POSTAL",DIRECCION,NACIONALIDAD,CIUDAD,LOCALIDAD,GENERO,LABORALES,EDUCACION,CURSOS,IDIOMAS
-Leandro,Peralta,42193517,20-42193517-4,Soltero,leandroemmanuel_99@gmail.com,,,,,,,,,,"Sistemas,Moreno,Lapsa WEB,23/10/1999,23/10/1999,sdadasasdsad","terciario, Bachillerato, Bachillerato, Bachillerato, ",,
+Leandro,"Peralta ",42193517,20-42193517-4,Soltero,leandroemmanuel_99@gmail.com,,,,,,,,,,,,"Desarrollador,1999-10-23,Udemy,1999-10-23,A|Testing QA,1999-10-23,Udemy,1999-10-23,s","ingles,intermedio|frances,Avanzado"
+Alejandro,Peralta,84594567,20-42845633-4,Soltero,leandroemmanuel_99@gmail.com,,,,,,,,,,,", , , , ","QA,1999-10-23,UDEMY,1999-10-23,A","portugues,nativo"

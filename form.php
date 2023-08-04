@@ -813,11 +813,10 @@
                             <div class="label" for="nivel_idioma_2">Nivel</div>
                             <select name="idioma_nivel[]">
                                 <option value="">Nivel</option>
-                                <option value="nativo">nativo</option>
-                                <option value="Avanzado">Avanzado</option>
-                                <option value="Competente">Competente</option>
-                                <option value="Conversacional">Conversacional</option>
-                                <option value="Principiante">Principiante</option>
+                                <option value="nativo">Nativo</option>
+                                <option value="basico">Basico</option>
+                                <option value="intermedio">Intermedio</option>
+                                <option value="avanzado">Avanzado</option>
                                 <option value="a1">A1</option>
                                 <option value="a2">A2</option>
                                 <option value="b1">B1</option>
@@ -851,11 +850,10 @@
                                 <div class="label" for="nivel_idioma_3">Nivel</div>
                                 <select name="idioma_nivel[]">
                                     <option value="">Nivel</option>
-                                    <option value="nativo">nativo</option>
-                                    <option value="Avanzado">Avanzado</option>
-                                    <option value="Competente">Competente</option>
-                                    <option value="Conversacional">Conversacional</option>
-                                    <option value="Principiante">Principiante</option>
+                                    <option value="nativo">Nativo</option>
+                                    <option value="basico">Basico</option>
+                                    <option value="intermedio">Intermedio</option>
+                                    <option value="avanzado">Avanzado</option>
                                     <option value="a1">A1</option>
                                     <option value="a2">A2</option>
                                     <option value="b1">B1</option>
@@ -889,11 +887,10 @@
                                     <div class="label" for="nivel_idioma_4">Nivel</div>
                                     <select name="idioma_nivel[]">
                                         <option value="">Nivel</option>
-                                        <option value="nativo">nativo</option>
-                                        <option value="Avanzado">Avanzado</option>
-                                        <option value="Competente">Competente</option>
-                                        <option value="Conversacional">Conversacional</option>
-                                        <option value="Principiante">Principiante</option>
+                                        <option value="nativo">Nativo</option>
+                                        <option value="basico">Basico</option>
+                                        <option value="intermedio">Intermedio</option>
+                                        <option value="avanzado">Avanzado</option>
                                         <option value="a1">A1</option>
                                         <option value="a2">A2</option>
                                         <option value="b1">B1</option>
@@ -923,11 +920,11 @@
             <div class="sitio_web">
                 <div class="field">
                     <div class="label" for="nom_link">Nombre del Enlace</div>
-                    <input type="text" name="nom_link">
+                    <input type="text" name="nom_link[]">
                 </div>
                 <div class="field">
                     <div class="label" for="dir_link">Direccion de Enlace</div>
-                    <input type="text" name="dir_link">
+                    <input type="text" name="dir_link[]">
                 </div>
             </div>
             <details>
@@ -935,11 +932,11 @@
                 <div class="sitio_web">
                     <div class="field">
                         <div class="label" for="nom_link_2">Nombre del Enlace</div>
-                        <input type="text" name="nom_link">
+                        <input type="text" name="nom_link[]">
                     </div>
                     <div class="field">
                         <div class="label" for="dir_link_2">Direccion de Enlace</div>
-                        <input type="text" name="dir_link">
+                        <input type="text" name="dir_link[]">
                     </div>
                 </div>
                 <details>
@@ -947,11 +944,11 @@
                     <div class="sitio_web">
                         <div class="field">
                             <div class="label" for="nom_link">Nombre del Enlace</div>
-                            <input type="text" name="nom_link">
+                            <input type="text" name="nom_link[]">
                         </div>
                         <div class="field">
                             <div class="label" for="dir_link">Direccion de Enlace</div>
-                            <input type="text" name="dir_link">
+                            <input type="text" name="dir_link[]">
                         </div>
                     </div>
                 </details>
@@ -1109,7 +1106,7 @@
                                     <div class="descripcion">
                                         <h4 class="exp_title titulo_empleo"></h4>
                                         <div id="p_descripcion">
-                                        
+
                                         </div>
                                     </div>
                                 </div>

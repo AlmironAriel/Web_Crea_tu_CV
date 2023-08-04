@@ -633,6 +633,21 @@ $(document).ready(function () {
         });
     });
 
+    $('#dataForm').on('input', 'input[name^="nom_link"],input[name^="dir_link"], input[name^= "ref_cont"], input[name^= "cont_mail"], input[name^= "emp_cont"], input[name^= "tel_cont"]', function () {
+        var formData = $('#dataForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: './php/data.php',
+            data: formData,
+            success: function (response) {
+                var referencias = JSON.parse(response);
+                
+
+            }
+        });
+    });
+
 
     $('.tinymce').each(function () {
         var textareaName = $(this).attr('name');

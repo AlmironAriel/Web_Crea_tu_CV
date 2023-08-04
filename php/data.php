@@ -140,6 +140,25 @@ if (isset($_POST['idioma_nivel']) && !empty($_POST['idioma_nivel'])) {
     $nivel_idiomas = $_POST['idioma_nivel'];
 }
 
+//referencias
+if (isset($_POST['nom_link']) && !empty($_POST['nom_link'])) {
+    $link = $_POST['nom_link'];
+}
+if (isset($_POST['dir_link']) && !empty($_POST['dir_link'])) {
+    $dir_link = $_POST['dir_link'];
+}
+if (isset($_POST['ref_cont']) && !empty($_POST['ref_cont'])) {
+    $ref_cont = $_POST['ref_cont'];
+}
+if (isset($_POST['cont_mail']) && !empty($_POST['cont_mail'])) {
+    $contactoMail = $_POST['cont_mail'];
+}
+if (isset($_POST['emp_cont']) && !empty($_POST['emp_cont'])) {
+    $empresaCont = $_POST['emp_cont'];
+}
+if (isset($_POST['tel_cont']) && !empty($_POST['tel_cont'])) {
+    $empresaCont = $_POST['tel_cont'];
+}
 
 $datos = array();
 $experiencias = array();
@@ -373,7 +392,7 @@ function leerDatosDesdeCSV($nombre_archivo)
                     'genero' => isset($fila[14]) ? $fila[14] : '',
                     'experiencias' => array(),
                     'educacion' => array(),
-                    'cursos' => array(),
+                    'cursosPersona' => array(),
                     'idiomas' => array(),
                 );
             }
@@ -445,30 +464,31 @@ function leerDatosDesdeCSV($nombre_archivo)
                 $cursos_array = array_map('trim', explode('|', $cursos_str));
 
                 // Limpiar los cursos existentes antes de agregar nuevos cursos
-                $datos[$dni]['cursos'] = array();
+                $datos[$dni]['cursosPersona'] = array();
 
                 // Procesar cada curso por separado
                 foreach ($cursos_array as $curso_str) {
                     // Obtener los datos individuales de cada curso
                     $curso_data = explode(',', $curso_str);
 
-                    $nomb_curso = isset($curso_data[0]) ? $curso_data[0] : '';
-                    $desde_curso = isset($curso_data[1]) ? $curso_data[1] : '';
-                    $instituto_curso = isset($curso_data[2]) ? $curso_data[2] : '';
-                    $hasta_curso = isset($curso_data[3]) ? $curso_data[3] : '';
-                    $desc_curso = isset($curso_data[4]) ? $curso_data[4] : '';
+                    $nomb_curso = isset($curso_data[0]) ? trim($curso_data[0]) : '';
+                    $perdiodo_curso_desde = isset($curso_data[1]) ? trim($curso_data[1]) : '';
+                    $instituto_curso = isset($curso_data[2]) ? trim($curso_data[2]) : '';
+                    $perdiodo_curso_hasta = isset($curso_data[3]) ? trim($curso_data[3]) : '';
+                    $desc_curso = isset($curso_data[4]) ? trim($curso_data[4]) : '';
 
-                    // Crear el arreglo con los datos del curso
-                    $curso = array(
-                            'nomb_curso' => $nomb_curso,
-                            'desde_curso' => $desde_curso,
-                            'instituto_curso' => $instituto_curso,
-                            'hasta_curso' => $hasta_curso,
-                            'desc_curso' => $desc_curso
+                    if (!empty($nomb_curso) && !empty($instituto_curso) && !empty($perdiodo_curso_desde) && !empty($perdiodo_curso_hasta) && !empty($desc_curso)) {
+                        $curso = array(
+                            'curso' => $nomb_curso,
+                            'desde' => $perdiodo_curso_desde,
+                            'instituto' => $instituto_curso,
+                            'hasta' => $perdiodo_curso_hasta,
+                            'descripcion' => $desc_curso
                         );
 
-                    // Agregar el curso al arreglo de cursos
-                    $datos[$dni]['cursos'][] = $curso;
+                        // Agregar el curso al arreglo de cursos de la persona
+                        $datos[$dni]['cursosPersona'][] = $curso;
+                    }
                 }
             }
 
@@ -555,14 +575,14 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
             $educacionString = implode(', ', $educacionArray);
         }
 
-        if (isset($persona['cursos']) && is_array($persona['cursos'])) {
+        if (isset($persona['cursosPersona']) && is_array($persona['cursosPersona'])) {
             $cursosFormatted = implode('|', array_map(function ($curso) {
                 // Verificar si existe la clave 'desc_curso' en el array $curso
-                if (isset($curso['desc_curso'])) {
-                    $curso['desc_curso'] = eliminar_caracteres_especiales($curso['desc_curso']);
+                if (isset($curso['descripcion'])) {
+                    $curso['descripcion'] = eliminar_caracteres_especiales($curso['descripcion']);
                 }
                 return implode(',', array_map('eliminar_caracteres_especiales', array_values($curso)));
-            }, $persona['cursos']));
+            }, $persona['cursosPersona']));
         } else {
             $cursosFormatted = '';
         }
@@ -571,7 +591,7 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
         if (isset($persona['idiomas']) && is_array($persona['idiomas'])) {
             $idiomasArray = $persona['idiomas'];
             $idiomasString = implode('|', array_map(function ($idioma) {
-                return implode(',', array_map('eliminar_caracteres_especiales', array_values($idioma)));
+                return $idioma['idioma'] . ',' . $idioma['nivel'];
             }, $idiomasArray));
         }
         // Guardar los datos personales en el arreglo $fila_persona
@@ -597,7 +617,7 @@ function guardarDatosEnCSV($nombre_archivo, $datos)
                 return implode(',', array_map('eliminar_caracteres_especiales', array_values($experiencia)));
             }, $persona['experiencias'])) : '',
             isset($educacionString) ? $educacionString : '',
-            isset($persona['cursos']) ? $cursosFormatted : '',
+            isset($persona['cursosPersona']) ? $cursosFormatted : '',
             isset($idiomasString) ? $idiomasString : '',
         );
 
@@ -934,9 +954,10 @@ if (isset($_POST['dni']) && !empty($_POST['dni'])) {
     $dni = $_POST['dni'];
 
     if (isset($datos[$dni])) {
-        if (isset($_POST['nomb_curso']) && is_array($_POST['nomb_curso'])) {
 
-            $cursos = array();
+        $cursos_arr = array();
+        $cursos_vector = array();
+        if (!empty($nomb_cursos) || !empty($instituto_cursos) && !empty($perdiodo_cursos_desde) && !empty($perdiodo_cursos_hasta) && !empty($desc_cursos)) {
             for ($i = 0; $i < count($nomb_cursos); $i++) {
                 $nomb_curso = isset($nomb_cursos[$i]) ? trim($nomb_cursos[$i]) : '';
                 $perdiodo_curso_desde = isset($perdiodo_cursos_desde[$i]) ? trim($perdiodo_cursos_desde[$i]) : '';
@@ -944,11 +965,20 @@ if (isset($_POST['dni']) && !empty($_POST['dni'])) {
                 $perdiodo_curso_hasta = isset($perdiodo_cursos_hasta[$i]) ? trim($perdiodo_cursos_hasta[$i]) : '';
                 $desc_curso = isset($desc_cursos[$i]) ? trim($desc_cursos[$i]) : '';
 
-                if (!empty($nomb_curso) && !empty($perdiodo_curso_desde) && !empty($instituto_curso) && !empty($perdiodo_curso_hasta) && !empty($desc_curso)) {
+                if (!empty($nomb_curso) || !empty($instituto_curso) && !empty($perdiodo_curso_desde) && !empty($perdiodo_curso_hasta) && !empty($desc_curso)) {
 
+                    $cursos_vector = isset($datos[$dni]['cursosPersona']) ? $datos[$dni]['cursosPersona'] : array();
                     // Verificar si ya existe una experiencia laboral con el mismo empleo y descripción
-                    
-                        $cursos = array(
+                    $cursoExistente = false;
+                    foreach ($cursos_vector as $curso) {
+                        if ($curso['curso'] === $nomb_curso && $curso['instituto'] === $instituto_curso) {
+                            $cursoExistente = true;
+                            break;
+                        }
+                    }
+
+                    if (!$cursoExistente) {
+                        $cursos_arr = array(
                             'curso' => $nomb_curso,
                             'desde' => $perdiodo_curso_desde,
                             'instituto' => $instituto_curso,
@@ -956,8 +986,9 @@ if (isset($_POST['dni']) && !empty($_POST['dni'])) {
                             'descripcion' => $desc_curso
                         );
 
-                    // Agregar el nuevo curso a la persona correspondiente en $datos
-                    $datos[$dni]['cursos'][] = $cursos;
+                        // Agregar el nuevo curso a la persona correspondiente en $datos
+                        $datos[$dni]['cursosPersona'][] = $cursos_arr;
+                    }
 
                     $arr_cursos[] = array(
                         'curso' => $nomb_curso,
@@ -973,7 +1004,6 @@ if (isset($_POST['dni']) && !empty($_POST['dni'])) {
 }
 
 
-
 //=========================================================
 //VALIDACION DE DATOS idomas
 //=========================================================
@@ -987,10 +1017,22 @@ if (isset($_POST['idioma']) && !empty($_POST['idioma']) && isset($_POST['idioma_
 
         if (!empty($idioma) && !empty($nivel_idioma)) {
 
-            $datos[$dni]['idiomas'] = array(
-                'idioma' => $idioma,
-                'nivel' => $nivel_idioma
-            );
+            $idioma_encontrado = false;
+            foreach ($datos[$dni]['idiomas'] as $key => $idioma_actual) {
+                if ($idioma_actual['idioma'] === $idioma) {
+                    $datos[$dni]['idiomas'][$key]['nivel'] = $nivel_idioma;
+                    $idioma_encontrado = true;
+                    break;
+                }
+            }
+
+            // Si no se encontró el idioma, agregar una nueva entrada
+            if (!$idioma_encontrado) {
+                $datos[$dni]['idiomas'][] = array(
+                    'idioma' => $idioma,
+                    'nivel' => $nivel_idioma
+                );
+            }
             $idioma_nivel[] = array(
                 'idioma' => $idioma,
                 'nivel' => $nivel_idioma
@@ -1003,6 +1045,8 @@ if (isset($_POST['idioma']) && !empty($_POST['idioma']) && isset($_POST['idioma_
 if (is_array($laborales) && !empty($laborales)) {
     $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
 }
+
+var_dump($datos);
 
 // Guardar los datos actualizados en el archivo CSV
 guardarDatosEnCSV($nombre_archivo, $datos);
