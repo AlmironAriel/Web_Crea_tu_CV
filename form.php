@@ -1164,7 +1164,6 @@
                             <h4 class="main_title">CURSOS</h4>
                             <div id="cursos_contenedor">
                                 <div class="cursos">
-
                                     <div class="info">
                                         <span id="periodo"><span id="fech_ini"></span><span> - </span><span id="fech_fin"></span></span> <br>
                                         <span id="curso_insituto" class="bold"></span>
@@ -1178,19 +1177,20 @@
                             </div>
 
                             <!-- REFERENCIAS  -->
-                            <h4 class="main_title">REFERENCIAS</h4>
-                            <div class="referencias">
+                            <div id="refContainer">
+                                <h4 class="main_title">REFERENCIAS</h4>
+                                <div class="referencias">
 
-                                <div class="info">
-                                    <span class="contacto bold"></span> <br>
-                                    <span class="empresa_contacto"></span>
-                                </div>
-                                <div class="descripcion">
-                                    <span id=""></span>
-                                    <span id="tel-contacto"></span>
+                                    <div class="info">
+                                        <span class="contacto bold" id='contactoModal'></span> <br>
+                                        <span class="empresa_contacto" id='empresaContactoModal'></span>
+                                    </div>
+                                    <div class="descripcion">
+                                        <span id="emailContactoModal"></span>
+                                        <span id="telContactoModal"></span>
+                                    </div>
                                 </div>
                             </div>
-
 
 
                         </section>

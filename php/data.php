@@ -157,7 +157,7 @@ if (isset($_POST['emp_cont']) && !empty($_POST['emp_cont'])) {
     $empresaCont = $_POST['emp_cont'];
 }
 if (isset($_POST['tel_cont']) && !empty($_POST['tel_cont'])) {
-    $empresaCont = $_POST['tel_cont'];
+    $tel_cont = $_POST['tel_cont'];
 }
 
 $datos = array();
@@ -170,7 +170,7 @@ $arr_cursos = array();
 $ultimaPersona = array();
 $datosPersonalesLaborales = array();
 $datos_combinados = array();
-
+$referencias = array();
 //=========================================================
 //VALIDACION DE DATOS PERSONALES
 //=========================================================
@@ -1046,15 +1046,34 @@ if (is_array($laborales) && !empty($laborales)) {
     $datos[$dni] = combinarDatosPersonalesLaborales($datos[$dni], $laborales);
 }
 
-var_dump($datos);
-
 // Guardar los datos actualizados en el archivo CSV
 guardarDatosEnCSV($nombre_archivo, $datos);
+
+//referencias
+
+if (isset($link) && !empty($link)) {
+    $referencias['link'] = $link;
+}
+if (isset($dir_link) && !empty($dir_link)) {
+    $referencias['dir_link'] = $dir_link;
+}
+if (isset($ref_cont) && !empty($ref_cont)) {
+    $referencias['ref_cont'] = $ref_cont;
+}
+if (isset($contactoMail) && !empty($contactoMail)) {
+    $referencias['contactoMail'] = $contactoMail;
+}
+if (isset($empresaCont) && !empty($empresaCont)) {
+    $referencias['empresaCont'] = $empresaCont;
+}
+if (isset($tel_cont) && !empty($tel_cont)) {
+    $referencias['tel_cont'] = $tel_cont;
+}
 
 
 
 // Envía una respuesta al cliente con el array de experiencias laborales
-$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito', 'idiomas' => $idioma_nivel, 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $laborales);
+$response = array('status' => 'success', 'message' => 'Experiencias laborales agregadas con éxito','referencias'=>$referencias ,'idiomas' => $idioma_nivel, 'cursos' => $arr_cursos, 'educacion' => $arr_educacion, 'habilidadesit' => $arr_habilidadesIT, 'habilidades' => $arr_habilidades, 'datos' => $ultimaPersona, 'experiencias' => $laborales);
 
 
 echo json_encode($response);

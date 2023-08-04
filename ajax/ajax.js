@@ -548,6 +548,23 @@ $(document).ready(function () {
                     for (var i = 0; i < educacion.educacion.length; i++) {
                         var edu = educacion.educacion[i];
 
+                        if (edu.estado == 'en_curso') {
+                            var educacionHTML = '<div class="form_acad">' +
+                                '<div class="info">' +
+                                '<span id="periodo">' + '<span id="fech_ini">' + edu.desde + '</span>' + '<span>' + '-' + '</span>' + '<span id="fech_fin">' + 'En Curso' + '</span>' + '</span>' + '<br>' +
+                                '<span id="instituto" class="bold">' + edu.instituto + '</span>' + '<br>' +
+                                '<span id="carrera">' + edu.carrera + '</span>' + '<br>' +
+                                '<span id="ciudad">' + edu.localidad + '</span>' +
+                                '</div>' +
+                                '<div class="descripcion">' +
+                                '<h4 class="exp_title">' + 'DESCRIPCION' + '</h4>' +
+                                '<div id="p_descripcion">' + edu.descripcion + '</div>' +
+                                '</div>' +
+                                '</div>';
+                            $('#formacion_academica').append(educacionHTML);
+                            continue;
+                        }
+
                         var educacionHTML = '<div class="form_acad">' +
                             '<div class="info">' +
                             '<span id="periodo">' + '<span id="fech_ini">' + edu.desde + '</span>' + '<span>' + '-' + '</span>' + '<span id="fech_fin">' + edu.hasta + '</span>' + '</span>' + '<br>' +
@@ -642,8 +659,20 @@ $(document).ready(function () {
             data: formData,
             success: function (response) {
                 var referencias = JSON.parse(response);
-                
-
+                if (referencias.referencias.ref_cont || referencias.referencias.contactoMail || referencias.referencias.empresaCont || referencias.referencias.tel_cont)
+                    $('#refContainer').empty();
+                var HTMLref = '<h4 class="main_title">' + 'REFERENCIAS' + '</h4>' +
+                    '<div class="referencias">' +
+                    '<div class="info">' +
+                    '<span class="contacto bold" id="contactoModal">' + referencias.referencias.ref_cont + '</span>' + '<br>' +
+                    '<span class="empresa_contacto" id="empresaContactoModal">' + referencias.referencias.empresaCont + '</span>' +
+                    '</div>' +
+                    '<div class="descripcion">' +
+                    '<span id="emailContactoModal">' + referencias.referencias.contactoMail + '</span>' +
+                    '<span id="telContactoModal">' + referencias.referencias.tel_cont + '</span>' +
+                    '</div>' +
+                    '</div>';
+                $('#refContainer').append(HTMLref);
             }
         });
     });
