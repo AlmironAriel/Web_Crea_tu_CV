@@ -117,6 +117,8 @@
     /* display: flex; */
 }
 .maine .descripcion{
+    display: flex;
+        flex-direction: column;
     width: 60%;
     height: auto;
     padding: 0 1em 1em 1em ;

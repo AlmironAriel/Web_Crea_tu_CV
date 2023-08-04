@@ -198,7 +198,7 @@
                                 <option value="">Seleccione su genero</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
-                                <option value="Otro">Otro</option>
+                                <option value="X">X</option>
                             </select>
                             <div id="check_genero" class="check"><i class="fa-regular fa-circle-check"></i></div>
                             <div id="mensaje_genero_error" class="errores">Ingrese un genero valido</div>
@@ -983,7 +983,7 @@
             </details>
             </div>
             <div class="field buttn-send">
-                <input type="submit" class="enviar action_btn" id="enviar" name="register"></input>
+                <input type="submit" class="enviar action_btn" id="enviar" name="register" value="Nuevo Curriculum"></input>
             </div>
         </form>
     </main>
@@ -1185,7 +1185,7 @@
                                         <span class="contacto bold" id='contactoModal'></span> <br>
                                         <span class="empresa_contacto" id='empresaContactoModal'></span>
                                     </div>
-                                    <div class="descripcion">
+                                    <div class="info">
                                         <span id="emailContactoModal"></span>
                                         <span id="telContactoModal"></span>
                                     </div>

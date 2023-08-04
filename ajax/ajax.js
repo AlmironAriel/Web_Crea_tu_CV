@@ -283,7 +283,7 @@ $(document).ready(function () {
 
 
                     function validarGenero(genero) {
-                        if (genero && genero == 'Masculino' || genero == 'Femenino') {
+                        if (genero && genero == 'Masculino' || genero == 'Femenino'|| genero == 'X') {
                             $('#mensaje_genero_error').fadeOut();
                             $('#check_genero').fadeIn();
                             $('#genero').css({
@@ -719,6 +719,14 @@ $(document).ready(function () {
         previewFrame.style.display = 'block';
     });
 
-
+    $('#enviar').on('click',function(){
+        Swal.fire({
+            position:'top-end',
+            icon:'success',
+            title:'Datos Guardados Correctamente',
+            showConfirmButton:false,
+            timer:1500
+        })
+    });
 
 });
