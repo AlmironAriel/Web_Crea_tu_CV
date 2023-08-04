@@ -181,7 +181,7 @@
                             <div id="mensaje_nac_error" class="errores">Ingrese un telefono valido</div>
                         </div>
                         <div class="field">
-                            <div class="label" for="ciudad">Ciudad</div>
+                            <div class="label" for="ciudad">Provincia</div>
                             <input type="text" id="ciudad" name="ciudad">
                             <div id="check_ciudad" class="check"><i class="fa-regular fa-circle-check"></i></div>
                             <div id="mensaje_ciudad_error" class="errores">Ingrese una ciudad valida</div>
@@ -1023,7 +1023,7 @@
                                         <li>DNI: <span id="dniModal"></span></li>
                                         <li>Direccion: <span id="dirModal"></span></li>
                                         <li>Localidad: <span id="localidadModal"></span></li>
-                                        <li>Ciudad: <span id="ciudadModal"></span></li>
+                                        <li>Provincia: <span id="ciudadModal"></span></li>
                                         <li>Nacionalidad: <span id="nacionalidadModal"></span></li>
                                         <li>Email: <span id="emailModal"></span>
                                         </li>
@@ -1178,7 +1178,7 @@
 
                             <!-- REFERENCIAS  -->
                             <div id="refContainer">
-                                <h4 class="main_title">REFERENCIAS</h4>
+                                <h4 class="main_title"></h4>
                                 <div class="referencias">
 
                                     <div class="info">
