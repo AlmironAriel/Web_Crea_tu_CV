@@ -1,24 +1,27 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-.iframe{
-    width:60%;
-    height:100%;
+
+.iframe {
+    width: 60%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     overflow: auto;
     border: none;
 }
-.contain{
+
+.contain {
     width: 100%;
     height: 1120px;
     margin: auto;
     display: flex;
 }
-.side{
+
+.side {
     width: 30%;
     height: 1120px;
     background-color: #fff;
@@ -26,26 +29,33 @@
     color: #000000;
     padding: 30px;
 }
-.side p{
+
+.side p {
     font-size: 12px;
 }
-.side h1{
+
+.side h1 {
     font-size: 25px;
     text-align: center;
 }
-.side .title{
+
+.side .title {
     font-size: 16px;
 }
-.side #apellidoModal{
+
+.side #apellidoModal {
     margin-bottom: 20px
 }
-.side ul li{
+
+.side ul li {
     font-size: 12px;
 }
-.side .nombre_apellido{
+
+.side .nombre_apellido {
     margin-bottom: 10px;
 }
-.side .info_contacto{
+
+.side .info_contacto {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid lightgray;
@@ -53,24 +63,27 @@
 
 }
 
-#container_habilidades li{
+#container_habilidades li {
     list-style: none;
 }
 
 #container_habilidadesIT li {
     list-style: none;
 }
-.side ul li{
+
+.side ul li {
     padding: 3px;
     margin-bottom: 6px;
     list-style: none;
 }
-.title{
+
+.title {
     margin-bottom: 20px;
     font-size: 20px;
 }
+
 .side .habilidades,
-.side .habilidades_it{
+.side .habilidades_it {
     margin-bottom: 30px;
     border-bottom: 1px solid lightgray;
 }
@@ -82,56 +95,70 @@
 ================================= */
 .maine p,
 .maine span,
-.maine #p_descripcion{
+.maine #p_descripcion {
     font-size: 12px;
 }
-.maine .exp_title{
+
+.maine .exp_title {
     font-size: 14px;
 }
-.maine{
+
+.maine {
     width: 70%;
     height: 1120px;
     padding: 10px;
     background-color: #fff;
     color: #000;
 }
-.maine .main_title{
+
+.maine .main_title {
     margin: 10px 0;
     font-size: 16px;
 }
-.expe_laboral strong{
+
+.expe_laboral strong {
     font-size: 14px;
 }
+
 .exp_lab,
 .form_acad,
 .cursos,
-.referencias{
+.referencias {
     width: 100%;
     padding: 5px;
     display: flex;
-    
+
 }
-.maine .info{
+
+.maine .info {
     width: 40%;
     height: auto;
     /* display: flex; */
 }
-.maine .descripcion{
+
+.maine .descripcion {
     display: flex;
-        flex-direction: column;
+    flex-direction: column;
     width: 60%;
     height: auto;
-    padding: 0 1em 1em 1em ;
+    padding: 0 1em 1em 1em;
 }
+
+.maine .descripcion span{
+    margin-bottom: 7px;
+}
+
 #fech_ini,
-#fech_fin{
+#fech_fin {
     font-style: italic;
 }
-.exp_title{
+
+.exp_title {
     color: #285f81;
 }
+
 .maine .bold,
-.side .bold{
+.side .bold {
     font-weight: bolder;
 }
 
@@ -139,7 +166,7 @@
           cuadrito de vista previa
 ============================================= */
 
-iframe{
+iframe {
     width: 100%;
     height: 226px;
     border: none;

@@ -719,14 +719,12 @@ $(document).ready(function () {
         previewFrame.style.display = 'block';
     });
 
-    $('#enviar').on('click',function(){
-        Swal.fire({
-            position:'top-end',
-            icon:'success',
-            title:'Datos Guardados Correctamente',
-            showConfirmButton:false,
-            timer:1500
-        })
+    var formulario = $("#dataForm");
+    var botonBorrar = $("#enviar");
+
+    botonBorrar.click(function () {
+        formulario[0].reset();
+        location.reload(true);
     });
 
 });
